@@ -6,4 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/wallpaper_raja_ampat" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#40005ACC" />
+
+        <View
+            android:layout_width="348dp"
+            android:layout_height="290dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="31dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="196dp"
+            android:background="@drawable/popup_corner" />
+
+        <EditText
+            android:layout_width="293dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="242dp"
+            android:text="Email"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:layout_width="293dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="315dp"
+            android:text="Password"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:layout_width="293dp"
+            android:layout_height="39dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="59dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="412dp"
+            android:text="Login"
+            android:textColor="#FFF"
+            android:background="@drawable/button_corner2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="129dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="529dp"
+            android:textColor="#FFF"
+            android:text="Belum Memiliki Akun?"
+            android:gravity="top" />
+
+        <Button
+            android:layout_width="293dp"
+            android:layout_height="39dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="59dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="559dp"
+            android:background="@drawable/button_corner"
+            android:text="Register"
+            />
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
