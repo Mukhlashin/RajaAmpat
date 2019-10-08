@@ -26,4 +26,25 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    implementation 'com.airbnb.android:lottie:2.6.0'
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+
+    //qrCode
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+    implementation 'com.google.zxing:core:3.3.0'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //easy permissions
+    implementation 'pub.devrel:easypermissions:2.0.1'
+
+    //crop image
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
 }
