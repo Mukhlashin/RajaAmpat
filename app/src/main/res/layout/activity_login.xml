@@ -13,68 +13,63 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/wallpaper_raja_ampat" />
+            android:background="@drawable/wallpaper_raja_ampat" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#40005ACC" />
 
-        <View
-            android:layout_width="348dp"
-            android:layout_height="290dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="31dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="196dp"
-            android:background="@drawable/popup_corner" />
+            <LinearLayout
+                android:layout_width="348dp"
+                android:layout_height="290dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:padding="25dp"
+                android:orientation="vertical"
+                android:background="@drawable/popup_corner" >
 
-        <EditText
-            android:layout_width="293dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="242dp"
-            android:text="Email"
-            android:layout_centerHorizontal="true"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Email" />
 
-        <EditText
-            android:layout_width="293dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="315dp"
-            android:text="Password"
-            android:layout_centerHorizontal="true"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="Password" />
 
-        <Button
-            android:layout_width="293dp"
-            android:layout_height="39dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="59dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="412dp"
-            android:text="Login"
-            android:textColor="#FFF"
-            android:background="@drawable/button_corner2" />
+                <Button
+                    android:layout_width="293dp"
+                    android:layout_height="39dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/button_corner2"
+                    android:text="Login"
+                    android:textColor="#FFF" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="129dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="529dp"
-            android:textColor="#FFF"
-            android:text="Belum Memiliki Akun?"
-            android:gravity="top" />
+            </LinearLayout>
 
-        <Button
-            android:layout_width="293dp"
-            android:layout_height="39dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="59dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="559dp"
-            android:background="@drawable/button_corner"
-            android:text="Register"
-            />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="100dp"
+                    android:gravity="top"
+                    android:text="Belum Memiliki Akun?"
+                    android:textColor="#FFF" />
+
+                <Button
+                    android:layout_width="293dp"
+                    android:layout_height="39dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="50dp"
+                    android:background="@drawable/button_corner"
+                    android:text="Register" />
 
     </RelativeLayout>
 

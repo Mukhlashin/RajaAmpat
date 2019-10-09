@@ -7,9 +7,8 @@
     tools:context=".SplashScreen">
 
     <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,18 +17,15 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/splash03"
-            tools:layout_editor_absoluteX="242dp"
-            tools:layout_editor_absoluteY="578dp" />
+            android:background="@drawable/splash02" />
 
         <Button
             android:id="@+id/splash02_berikut"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="130dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="576dp"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="75dp"
             android:background="#3295A8"
             android:text="Lakukan Login"
             android:textColor="#FFF" />
