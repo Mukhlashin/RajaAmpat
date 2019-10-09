@@ -4,160 +4,187 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     tools:context=".EditProfileActivity">
 
-    <View
-        android:layout_width="128dp"
-        android:layout_height="170dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/profil" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="153dp"
-        android:gravity="left|center"
-        android:text="Edit Profile"
-        android:textColor="#000"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="215dp"
-        android:textSize="14dp"
-        android:textColor="#000"
-        android:text="Nama"
-        android:gravity="left|center" />
-
-    <EditText
+    <RelativeLayout
+        android:id="@+id/navbarnye"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="240dp"/>
+        android:layout_height="60dp"
+        android:background="#3295A8">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="315dp"
-        android:textSize="14dp"
-        android:textColor="#000"
-        android:text="Nomor KTP"
-        android:gravity="left|center" />
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/menu" />
 
-    <EditText
+        <ImageView
+            android:id="@+id/kembali_editprofile"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/back" />
+
+    </RelativeLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="340dp"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="415dp"
-        android:textSize="14dp"
-        android:textColor="#000"
-        android:text="Tempat Tanggal Lahir"
-        android:gravity="left|center" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="440dp"/>
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="170dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/profil" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="515dp"
-        android:textSize="14dp"
-        android:textColor="#000"
-        android:text="Alamat"
-        android:gravity="left|center" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="153dp"
+                android:gravity="left|center"
+                android:text="Edit Profile"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="540dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="215dp"
+                android:gravity="left|center"
+                android:text="Nama"
+                android:textColor="#000"
+                android:textSize="14dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="615dp"
-        android:textSize="14dp"
-        android:textColor="#000"
-        android:text="Kecamatan"
-        android:gravity="left|center" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="240dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="640dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="315dp"
+                android:gravity="left|center"
+                android:text="Nomor KTP"
+                android:textColor="#000"
+                android:textSize="14dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="715dp"
-        android:textSize="14dp"
-        android:textColor="#000"
-        android:text="Kelurahan"
-        android:gravity="left|center" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="340dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="740dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="415dp"
+                android:gravity="left|center"
+                android:text="Tempat Tanggal Lahir"
+                android:textColor="#000"
+                android:textSize="14dp" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="815dp"
-        android:text="Simpan Perubahan"
-        android:textColor="#FFF"
-        android:background="@drawable/button_corner3" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="440dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="515dp"
+                android:gravity="left|center"
+                android:text="Alamat"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="540dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="615dp"
+                android:gravity="left|center"
+                android:text="Kecamatan"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="640dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="715dp"
+                android:gravity="left|center"
+                android:text="Kelurahan"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="740dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="815dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/button_corner3"
+                android:text="Simpan Perubahan"
+                android:textSize="18dp"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
