@@ -6,4 +6,5 @@
     <color name="colorTransparent">#80000000</color>
     <color name="colorText">#005ACC</color>
     <color name="colorYellow">#FED806</color>
+    <color name="colorTextContact">#1DC2F6</color>
 </resources>
