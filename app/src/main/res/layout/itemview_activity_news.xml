@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_destination"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/misool_island"
+            android:layout_height="237dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/img_destination"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/detail_destination_back">
+
+            <TextView
+                android:id="@+id/tv_tanggal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@id/img_destination"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/poppinsregular"
+                android:gravity="center|start"
+                android:paddingLeft="20dp"
+                android:text="Pulau Misool"
+                android:textColor="@android:color/white"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="12sp"
+        android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="10sp"
+        android:textColor="@color/colorTextHighlight"
+        android:text="Baca Selengkapnya..."/>
+
+</LinearLayout>

@@ -17,7 +17,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        rlvHotel = findViewById(R.id.rlv_hotel);
+        rlvHotel = findViewById(R.id.rlv_common_services);
 
         rlvHotel.setOnClickListener(new View.OnClickListener() {
             @Override
