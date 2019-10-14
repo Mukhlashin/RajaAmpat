@@ -54,6 +54,7 @@
             android:background="@drawable/ban1"/>
 
         <ImageView
+            android:id="@+id/img_banner"
             android:layout_width="match_parent"
             android:layout_height="239dp"
             android:background="#40005ACC" />
@@ -172,27 +173,27 @@
         <RelativeLayout
             android:layout_width="112dp"
             android:layout_height="112dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="12dp"
             android:layout_weight="1"
             android:background="@drawable/main_feature_corner">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/ic_pengaduan"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ic_pengaduan" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="Pengaduan"
-                android:textSize="13sp"
                 android:layout_marginBottom="7dp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="center"
-                android:textColor="@color/colorText"/>
+                android:text="Pengaduan"
+                android:textColor="@color/colorText"
+                android:textSize="15sp" />
 
         </RelativeLayout>
 
@@ -200,12 +201,12 @@
             android:layout_width="112dp"
             android:layout_height="112dp"
             android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
+            android:layout_marginLeft="13dp"
             android:background="@drawable/main_feature_corner">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:background="@drawable/ic_tujuan_wisata"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"/>
@@ -216,36 +217,7 @@
                 android:layout_alignParentBottom="true"
                 android:text="Tujuan Wisata"
                 android:layout_marginBottom="7dp"
-                android:textSize="13sp"
-                android:fontFamily="@font/poppinsmedium"
-                android:gravity="center"
-                android:textColor="@color/colorText"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rlv_hotel"
-            android:layout_width="112dp"
-            android:layout_height="112dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:background="@drawable/main_feature_corner">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/ic_hotel"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="Hotel"
-                android:textSize="13sp"
-                android:layout_marginBottom="7dp"
+                android:textSize="15sp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="center"
                 android:textColor="@color/colorText"/>
@@ -259,45 +231,18 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_below="@id/lnr_1"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="25dp">
 
         <RelativeLayout
             android:layout_width="112dp"
             android:layout_height="112dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="12dp"
             android:layout_weight="1"
             android:background="@drawable/main_feature_corner">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/ic_layanan_kesehatan"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="Darurat"
-                android:textSize="13sp"
-                android:layout_marginBottom="7dp"
-                android:fontFamily="@font/poppinsmedium"
-                android:gravity="center"
-                android:textColor="@color/colorText"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="112dp"
-            android:layout_height="112dp"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
-            android:background="@drawable/main_feature_corner">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:background="@drawable/ic_gallery"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"/>
@@ -306,9 +251,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="Gallery &amp; news"
+                android:text="News"
+                android:textSize="15sp"
                 android:layout_marginBottom="7dp"
-                android:textSize="13sp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="center"
                 android:textColor="@color/colorText"/>
@@ -319,13 +264,13 @@
             android:layout_width="112dp"
             android:layout_height="112dp"
             android:layout_weight="1"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="13dp"
             android:background="@drawable/main_feature_corner">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/ic_map"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_hotel"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"/>
 
@@ -333,9 +278,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:text="Map"
-                android:textSize="13sp"
+                android:text="Hotel"
                 android:layout_marginBottom="7dp"
+                android:textSize="15sp"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="center"
                 android:textColor="@color/colorText"/>
