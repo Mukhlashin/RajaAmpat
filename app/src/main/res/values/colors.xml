@@ -9,4 +9,6 @@
     <color name="colorTextContact">#1DC2F6</color>
     <color name="colorStroke">#CCC8C8</color>
     <color name="colorTextHighlight">#005ACC</color>
+    <color name="colorMenuButtonYellow">#FAB651</color>
+    <color name="colorMenuButtonGreen">#9BB435</color>
 </resources>
