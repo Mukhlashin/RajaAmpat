@@ -43,7 +43,7 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/rlv_common_services"
+        android:id="@+id/frm_common_services"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp">
@@ -64,7 +64,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rlv_common_services"
+        android:layout_below="@+id/frm_common_services"
         android:background="@drawable/backhome"/>
 
     <View
@@ -161,62 +161,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_below="@id/rlv_common_services"
+        android:layout_below="@id/frm_common_services"
         android:layout_marginTop="20dp">
 
-        <RelativeLayout
+        <Button
+            android:id="@+id/btn_report"
             android:layout_width="112dp"
             android:layout_height="112dp"
+            android:paddingTop="19dp"
+            android:layout_marginRight="12dp"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_pengaduan"
+            android:text="Report"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center|bottom"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorText"
+            android:background="@drawable/main_feature_corner"/>
+
+        <Button
+            android:id="@+id/btn_travel"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:paddingTop="9dp"
             android:layout_marginRight="12dp"
             android:layout_weight="1"
-            android:background="@drawable/main_feature_corner">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/ic_pengaduan" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="7dp"
-                android:fontFamily="@font/poppinsmedium"
-                android:gravity="center"
-                android:text="Pengaduan"
-                android:textColor="@color/colorText"
-                android:textSize="15sp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="112dp"
-            android:layout_height="112dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="13dp"
-            android:background="@drawable/main_feature_corner">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/ic_tujuan_wisata"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="Tujuan Wisata"
-                android:layout_marginBottom="7dp"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppinsmedium"
-                android:gravity="center"
-                android:textColor="@color/colorText"/>
-
-        </RelativeLayout>
+            android:drawableTop="@drawable/ic_tujuan_wisata"
+            android:text="Travel Destination"
+            android:clickable="true"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center|bottom"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorText"
+            android:background="@drawable/main_feature_corner"/>
 
     </LinearLayout>
 
@@ -227,59 +207,39 @@
         android:layout_below="@id/lnr_1"
         android:layout_marginTop="25dp">
 
-        <RelativeLayout
+        <Button
+            android:id="@+id/btn_news"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:paddingTop="9dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_gallery"
+            android:text="News"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppinsmedium"
+            android:clickable="true"
+            android:gravity="center|bottom"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorText"
+            android:background="@drawable/main_feature_corner"/>
+
+        <Button
+            android:id="@+id/btn_hotel"
             android:layout_width="112dp"
             android:layout_height="112dp"
             android:layout_marginRight="12dp"
             android:layout_weight="1"
-            android:background="@drawable/main_feature_corner">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/ic_gallery"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="News"
-                android:textSize="15sp"
-                android:layout_marginBottom="7dp"
-                android:fontFamily="@font/poppinsmedium"
-                android:gravity="center"
-                android:textColor="@color/colorText"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="112dp"
-            android:layout_height="112dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="13dp"
-            android:background="@drawable/main_feature_corner">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/ic_hotel"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="Hotel"
-                android:layout_marginBottom="7dp"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppinsmedium"
-                android:gravity="center"
-                android:textColor="@color/colorText"/>
-
-        </RelativeLayout>
+            android:background="@drawable/main_feature_corner"
+            android:drawableTop="@drawable/ic_hotel"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center|bottom"
+            android:paddingTop="19dp"
+            android:paddingBottom="10dp"
+            android:clickable="true"
+            android:text="Hotel"
+            android:textAllCaps="false"
+            android:textColor="@color/colorText" />
 
     </LinearLayout>
 

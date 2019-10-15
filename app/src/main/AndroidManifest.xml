@@ -20,17 +20,19 @@
         <activity android:name=".DestinationActivity" />
         <activity android:name=".ReportActivity" />
         <activity android:name=".ContactActivity">
+
+        </activity>
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SplashScreen" />
+        <activity android:name=".HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditProfileActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashScreen" />
-        <activity android:name=".HomeActivity" />
     </application>
 
 </manifest>
