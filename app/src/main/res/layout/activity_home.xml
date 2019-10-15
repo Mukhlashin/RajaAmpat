@@ -42,7 +42,7 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/rlv_common_services"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,108 +59,102 @@
             android:layout_height="239dp"
             android:background="#40005ACC" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="28dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="140dp"
-            android:textSize="18sp"
-            android:text="26°C with clear sky"
-            android:textColor="#FFF"
-            android:gravity="center" />
+    </FrameLayout>
 
-        <View
-            android:layout_width="364dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="178dp"
-            android:background="@drawable/button_corner" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rlv_common_services"
+        android:background="@drawable/backhome"/>
 
-        <View
-            android:layout_width="364dp"
-            android:layout_height="83dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="215dp"
-            android:background="@drawable/popup_corner" />
+    <View
+        android:layout_width="364dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="178dp"
+        android:background="@drawable/button_corner" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="187dp"
-            android:textSize="14sp"
-            android:textColor="#000"
-            android:text="- Common Services -"
-            android:gravity="center"
-            android:textStyle="bold" />
+    <View
+        android:layout_width="364dp"
+        android:layout_height="83dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="215dp"
+        android:background="@drawable/popup_corner" />
 
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="64dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="225dp"
-            android:src="@drawable/cuaca"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="187dp"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:text="- Common Services -"
+        android:gravity="center"
+        android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="265dp"
-            android:textColor="#616161"
-            android:textSize="14sp"
-            android:gravity="center"
-            android:text="Weather" />
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="225dp"
+        android:src="@drawable/ec_home"/>
 
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="225dp"
-            android:src="@drawable/bus"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="265dp"
+        android:textColor="#616161"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="Emergency Call" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="265dp"
-            android:textColor="#616161"
-            android:textSize="14sp"
-            android:gravity="center"
-            android:text="Weather" />
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="225dp"
+        android:src="@drawable/tp_home"/>
 
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="64dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="225dp"
-            android:src="@drawable/coin"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="265dp"
+        android:textColor="#616161"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="Transport" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="265dp"
-            android:layout_marginRight="54dp"
-            android:textColor="#616161"
-            android:textSize="14sp"
-            android:gravity="center"
-            android:text="Currency" />
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="225dp"
+        android:src="@drawable/cr_home"/>
 
-    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="265dp"
+        android:layout_marginRight="54dp"
+        android:textColor="#616161"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="Currency" />
 
     <LinearLayout
         android:id="@+id/lnr_1"
