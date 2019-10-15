@@ -13,6 +13,9 @@ import android.view.animation.AnimationUtils;
 
 public class SplashScreen extends AppCompatActivity {
 
+    //Setting Dulu Durasi Splash Screennya...
+    private static int splashInterval = 2000;
+
     FragmentManager fm;
 
     @Override
@@ -24,6 +27,32 @@ public class SplashScreen extends AppCompatActivity {
         fm.beginTransaction()
                 .add(R.id.fragment_container, new SplashFragment())
                 .commit();
+
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        new Handler().postDelayed(new Runnable() {
+
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(SplashScreen.this, LoginActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+                startActivity(i); // Diubungin Dah...
+
+                // Semua Sudah Asiap
+                this.finish();
+            }
+
+            private void finish() {
+                // TODO Auto-generated method stub
+
+            }
+        }, splashInterval);
 
     }
 }
