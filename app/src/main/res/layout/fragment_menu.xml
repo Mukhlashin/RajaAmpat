@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".MenuFragment">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorMenuButtonYellow"
+        android:text="List Pengaduan"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/poppinsmedium"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:gravity="start|center"
+        android:drawablePadding="40dp"
+        android:drawableStart="@drawable/ic_chart"
+        android:paddingLeft="40dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorMenuButtonGreen"
+        android:text="Edit Profile"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/poppinsmedium"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:gravity="start|center"
+        android:drawablePadding="40dp"
+        android:drawableStart="@drawable/ic_avatar"
+        android:paddingLeft="40dp"/>
+
+</LinearLayout>
