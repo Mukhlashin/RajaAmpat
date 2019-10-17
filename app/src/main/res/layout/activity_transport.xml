@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,51 +8,54 @@
     tools:context=".TransportActivity">
 
     <LinearLayout
+        android:id="@+id/navbarnye"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#3295A8">
 
-        <LinearLayout
-            android:id="@+id/navbarnye"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:background="#3295A8">
-
-            <ImageButton
-                android:id="@+id/img_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:background="@drawable/back" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="25dp"
-                android:text="Jendela Raja Ampat"
-                android:textColor="#FFF"
-                android:textStyle="bold"
-                android:textSize="18dp"/>
-
-        </LinearLayout>
-
+        <ImageButton
+            android:id="@+id/img_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="Flight And Airlines"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="25dp"
+            android:text="Transport"
+            android:textColor="#FFF"
             android:textStyle="bold"
-            android:textColor="#000"
-            android:textSize="20sp"/>
+            android:textSize="18dp"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/navbarnye">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="Flight And Airlines"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="20sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -294,6 +297,7 @@
                         android:text="14.40 Waisai – Sorong"
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="15dp"
                         android:textStyle="normal"
                         android:textColor="#000"
                         android:textSize="14sp" />
@@ -304,6 +308,8 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        </RelativeLayout>
 
-</ScrollView>
+    </ScrollView>
+
+</RelativeLayout>
