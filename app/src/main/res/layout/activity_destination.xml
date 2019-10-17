@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DestinationActivity"
+    android:background="#E7E6E6"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -19,7 +20,7 @@
             android:layout_height="?attr/actionBarSize">
 
             <ImageButton
-                android:id="@+id/btn_back"
+                android:id="@+id/imb_back"
                 android:layout_width="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -62,8 +63,175 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_destination"
+                        android:layout_width="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/misool_island"
+                        android:layout_height="237dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_alignBottom="@+id/img_destination"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/detail_destination_back">
+
+                        <TextView
+                            android:id="@+id/tv_tanggal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBottom="@id/img_destination"
+                            android:layout_alignParentRight="true"
+                            android:fontFamily="@font/poppinsregular"
+                            android:gravity="center|start"
+                            android:paddingLeft="20dp"
+                            android:text="Pulau Misool"
+                            android:textColor="@android:color/white"
+                            android:textSize="13dp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp"
+                    android:text="Ke Misool, berarti kamu sudah menyentuh Raja Ampat. Ya, dari sini perjalanan dan petualangan Indonesia Timur kamu bisa dimulai."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_destination2"
+                        android:layout_width="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/img_batupensil"
+                        android:layout_height="237dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_alignBottom="@+id/img_destination2"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/detail_destination_back">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBottom="@id/img_destination"
+                            android:layout_alignParentRight="true"
+                            android:fontFamily="@font/poppinsregular"
+                            android:gravity="center|start"
+                            android:paddingLeft="20dp"
+                            android:text="Pulau Misool"
+                            android:textColor="@android:color/white"
+                            android:textSize="13dp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="3dp"
+                    android:textSize="12sp"
+                    android:text="Karang yang menjulang, dan sendirian di tengah Teluk Kabui ini menjadi ikon tersendiri. Saking terkenalnya, Batu Pensil selalu menjadi jujukan untuk berfoto."/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/img_destination3"
+                        android:layout_width="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/img_wayog"
+                        android:layout_height="237dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_alignBottom="@+id/img_destination3"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/detail_destination_back">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBottom="@id/img_destination"
+                            android:layout_alignParentRight="true"
+                            android:fontFamily="@font/poppinsregular"
+                            android:gravity="center|start"
+                            android:paddingLeft="20dp"
+                            android:text="Pulau Misool"
+                            android:textColor="@android:color/white"
+                            android:textSize="13dp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="12sp"
+                    android:text="Termasuk salah satu ikonnya Raja Ampat. Jejeran batu karang berbalut warna hijau di tengah lautan biru yang menyajikan panorama luar biasa indah."/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

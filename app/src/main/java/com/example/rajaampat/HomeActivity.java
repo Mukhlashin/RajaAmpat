@@ -5,19 +5,24 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class HomeActivity extends AppCompatActivity {
 
     Button btnReport, btnTravel, btnNews, btnHotel, btnEmergency, btnCurrency, btnTransport;
     ImageButton imbSetting;
+
+    FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +40,12 @@ public class HomeActivity extends AppCompatActivity {
         imbSetting = findViewById(R.id.imb_settings);
 
         imbSetting.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 Fragment fragment = new MenuFragment();
                 getSupportFragmentManager().beginTransaction().add(R.id.real_container, fragment)
-                .commit();
+                        .addToBackStack("balik")
+                        .commit();
             }
         });
 
@@ -63,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
         btnTravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToTravel = new Intent(HomeActivity.this, TransportActivity.class);
+                Intent goToTravel = new Intent(HomeActivity.this, DestinationActivity.class);
                 startActivity(goToTravel);
             }
         });
