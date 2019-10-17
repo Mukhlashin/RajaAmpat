@@ -1,18 +1,23 @@
 package com.example.rajaampat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button btnReport, btnTravel, btnNews, btnHotel, btnEmc, btnTrans, btnCur;
+    Button btnReport, btnTravel, btnNews, btnHotel, btnEmergency, btnCurrency, btnTransport;
+    ImageButton imbSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +28,21 @@ public class HomeActivity extends AppCompatActivity {
         btnHotel = findViewById(R.id.btn_hotel);
         btnNews = findViewById(R.id.btn_news);
         btnTravel = findViewById(R.id.btn_travel);
-        btnEmc = findViewById(R.id.btn_emc);
-        btnTrans = findViewById(R.id.btn_trans);
-        btnCur = findViewById(R.id.btn_cur);
+        btnCurrency = findViewById(R.id.btn_currency);
+        btnTransport = findViewById(R.id.btn_transport);
+        btnEmergency = findViewById(R.id.btn_emergency);
+
+        imbSetting = findViewById(R.id.imb_settings);
+
+        imbSetting.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new MenuFragment();
+                getSupportFragmentManager().beginTransaction().add(R.id.real_container, fragment)
+                .commit();
+            }
+        });
 
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +76,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        btnEmc.setOnClickListener(new View.OnClickListener() {
+        btnCurrency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goToCurrency = new Intent(HomeActivity.this, CurrencyActivity.class);
+                startActivity(goToCurrency);
+            }
+        });
+
+        btnEmergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToEmergency = new Intent(HomeActivity.this, ContactActivity.class);
@@ -67,19 +92,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        btnTrans.setOnClickListener(new View.OnClickListener() {
+        btnTransport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToTransport = new Intent(HomeActivity.this, TransportActivity.class);
                 startActivity(goToTransport);
-            }
-        });
-
-        btnCur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goToCurrency = new Intent(HomeActivity.this, CurrencyActivity.class);
-                startActivity(goToCurrency);
             }
         });
     }
