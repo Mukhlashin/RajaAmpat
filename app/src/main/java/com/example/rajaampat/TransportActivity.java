@@ -21,8 +21,7 @@ public class TransportActivity extends AppCompatActivity {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToHome = new Intent(TransportActivity.this, HomeActivity.class);
-                startActivity(goToHome);
+                onBackPressed();
             }
         });
 

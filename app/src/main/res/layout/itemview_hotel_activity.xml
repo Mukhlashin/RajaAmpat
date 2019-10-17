@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
     <ImageView
         android:layout_width="178dp"
         android:layout_height="210dp"
         android:background="@drawable/img_report_back"
         android:layout_marginVertical="20dp"
-        android:src="@drawable/rifalda_cottage"
+        android:src="@drawable/ic_hotel4"
         android:layout_marginLeft="20dp"/>
 
     <LinearLayout
@@ -22,7 +35,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rifalda Cottage"
+            android:text="Doberai Eco Resort and Doberai Asri Resort"
             android:fontFamily="@font/poppinsregular"
             android:layout_marginTop="30dp"/>
 
@@ -37,7 +50,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Jl. Yos Sudarso, Kimindores, Kota Waisai, Raja Ampat, Papua Barat, Indonesia"
+            android:text="Jl. H. Muri Salim III No. 17A, Cirendeu, Pd. Pucung, Pd. Aren, Kota Tangerang Selatan, Banten 15229"
             android:textSize="8sp"
             android:fontFamily="@font/poppinsregular" />
 
@@ -58,6 +71,7 @@
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="20dp"
+                android:layout_marginRight="15dp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppinsregular"
@@ -66,8 +80,233 @@
                 android:textColor="@android:color/black"
                 android:text="Rp. 2.000.000"/>
 
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:layout_width="178dp"
+                    android:layout_height="210dp"
+                    android:background="@drawable/img_report_back"
+                    android:layout_marginVertical="20dp"
+                    android:src="@drawable/ic_hotel1"
+                    android:layout_marginLeft="20dp"/>
+
+                <LinearLayout
+                    android:layout_marginVertical="20dp"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="10dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Rifalda Cottage"
+                        android:fontFamily="@font/poppinsregular"
+                        android:layout_marginTop="30dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat"
+                        android:textSize="9sp"
+                        android:fontFamily="@font/poppinsbold"
+                        android:layout_marginTop="30dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jl. Yos Sudarso, Kimindores, Kota Waisai, Raja Ampat, Papua Barat, Indonesia"
+                        android:textSize="8sp"
+                        android:fontFamily="@font/poppinsregular" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsregular"
+                            android:textSize="8sp"
+                            android:text="Harga Kamar"/>
+
+                        <TextView
+                            android:layout_width="75dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="15dp"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppinsregular"
+                            android:textSize="8sp"
+                            android:background="@drawable/price_corner"
+                            android:textColor="@android:color/black"
+                            android:text="Rp. 2.000.000"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:layout_width="178dp"
+            android:layout_height="210dp"
+            android:background="@drawable/img_report_back"
+            android:layout_marginVertical="20dp"
+            android:src="@drawable/ic_hotel2"
+            android:layout_marginLeft="20dp"/>
+
+        <LinearLayout
+            android:layout_marginVertical="20dp"
+            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Meridian Adventure Marina Club and Resort Waisai"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat"
+                android:textSize="9sp"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Waisai, Kota Waisai, Raja Ampat Regency, West Papua 98482, Indonesia"
+                android:textSize="8sp"
+                android:fontFamily="@font/poppinsregular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="8sp"
+                    android:text="Harga Kamar"/>
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="8sp"
+                    android:background="@drawable/price_corner"
+                    android:textColor="@android:color/black"
+                    android:text="Rp. 2.000.000"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:layout_width="178dp"
+            android:layout_height="210dp"
+            android:background="@drawable/img_report_back"
+            android:layout_marginVertical="20dp"
+            android:src="@drawable/ic_hotel3"
+            android:layout_marginLeft="20dp"/>
+
+        <LinearLayout
+            android:layout_marginVertical="20dp"
+            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HamuEco Dive Resort Raja Ampat"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat"
+                android:textSize="9sp"
+                android:fontFamily="@font/poppinsbold"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Saleo Beach, Waisai, Raja Ampat"
+                android:textSize="8sp"
+                android:fontFamily="@font/poppinsregular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="8sp"
+                    android:text="Harga Kamar"/>
+
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="8sp"
+                    android:background="@drawable/price_corner"
+                    android:textColor="@android:color/black"
+                    android:text="Rp. 2.000.000"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

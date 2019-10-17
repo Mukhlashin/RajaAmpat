@@ -121,7 +121,6 @@ public class ContactActivity extends AppCompatActivity {
     }
 
     public void goToHome(View view) {
-        Intent goToHome = new Intent(ContactActivity.this, HomeActivity.class);
-        startActivity(goToHome);
+        onBackPressed();
     }
 }

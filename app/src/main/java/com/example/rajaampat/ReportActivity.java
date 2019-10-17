@@ -23,6 +23,13 @@ public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMen
         btnContact = findViewById(R.id.btn_contact);
         btnMore = findViewById(R.id.btn_more);
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
