@@ -43,11 +43,11 @@
 
             <ImageView
                 android:layout_width="128dp"
-                android:layout_height="170dp"
+                android:layout_height="128dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="25dp"
-                android:background="@drawable/profil" />
+                android:background="@drawable/ic_profil" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,6 +71,7 @@
                 android:textSize="14dp" />
 
             <EditText
+                android:id="@+id/edt_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -90,6 +91,7 @@
                 android:textSize="14dp" />
 
             <EditText
+                android:id="@+id/edt_ktp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -109,6 +111,7 @@
                 android:textSize="14dp" />
 
             <EditText
+                android:id="@+id/edt_ttl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -128,6 +131,7 @@
                 android:textSize="14dp" />
 
             <EditText
+                android:id="@+id/edt_alamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -147,6 +151,7 @@
                 android:textSize="14dp" />
 
             <EditText
+                android:id="@+id/edt_kecamatan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -166,6 +171,7 @@
                 android:textSize="14dp" />
 
             <EditText
+                android:id="@+id/edt_kelurahan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -175,8 +181,10 @@
                 android:textSize="18dp" />
 
             <Button
+                android:id="@+id/btn_simpanedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="815dp"
                 android:layout_marginRight="25dp"

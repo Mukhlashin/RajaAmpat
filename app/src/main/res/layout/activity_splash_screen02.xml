@@ -20,7 +20,7 @@
             android:background="@drawable/splash02" />
 
         <Button
-            android:id="@+id/splash02_berikut"
+            android:id="@+id/btn_splash02"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
