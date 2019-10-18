@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -12,16 +13,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/vpg_detail_destination"
+<!--            <androidx.viewpager.widget.ViewPager-->
+<!--                android:id="@+id/vpg_detail_destination"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="435dp"/>-->
+
+            <ImageView
+                android:id="@+id/img"
                 android:layout_width="match_parent"
-                android:layout_height="435dp"/>
+                android:layout_height="wrap_content"
+                android:src="@drawable/misool_island"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@drawable/detail_destination_back"
-                android:layout_alignBottom="@+id/vpg_detail_destination">
+                android:layout_alignBottom="@+id/img">
+
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -35,7 +44,6 @@
             </LinearLayout>
 
         </RelativeLayout>
-
 
         <TextView
             android:layout_width="match_parent"
@@ -52,4 +60,4 @@ Selami setiap relung perairan di salah satu dari empat pulau besar di Raja Ampat
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>
