@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -173,7 +174,7 @@
                 android:clickable="true"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_pengaduan"
-                android:text="Report"
+                android:text="Pengaduan"
                 android:textAllCaps="false"
                 android:fontFamily="@font/poppinsmedium"
                 android:gravity="center|bottom"
@@ -245,12 +246,13 @@
 
     </ScrollView>
 
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/real_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
         android:orientation="vertical" />
 
-    </RelativeLayout>
-
-</ScrollView>
+</RelativeLayout>

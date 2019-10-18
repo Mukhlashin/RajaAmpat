@@ -35,7 +35,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(SplashScreen.this, SplashScreen2.class);
+                Intent i = new Intent(SplashScreen.this, LoginActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 

@@ -13,6 +13,17 @@
         android:layout_height="60dp"
         android:background="#3295A8">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+            android:text="Jendela Raja Ampat"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
+
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -86,6 +97,26 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="315dp"
                 android:gravity="left|center"
+                android:text="Nomor Whatsapp / Handphone"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/edt_wa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="340dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="415dp"
+                android:gravity="left|center"
                 android:text="Nomor KTP"
                 android:textColor="#000"
                 android:textSize="14dp" />
@@ -95,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="340dp"
+                android:layout_marginTop="440dp"
                 android:layout_marginRight="25dp"
                 android:textColor="#000"
                 android:textSize="18dp" />
@@ -104,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="415dp"
+                android:layout_marginTop="515dp"
                 android:gravity="left|center"
                 android:text="Tempat Tanggal Lahir"
                 android:textColor="#000"
@@ -112,26 +143,6 @@
 
             <EditText
                 android:id="@+id/edt_ttl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="440dp"
-                android:layout_marginRight="25dp"
-                android:textColor="#000"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="515dp"
-                android:gravity="left|center"
-                android:text="Alamat"
-                android:textColor="#000"
-                android:textSize="14dp" />
-
-            <EditText
-                android:id="@+id/edt_alamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -146,12 +157,12 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="615dp"
                 android:gravity="left|center"
-                android:text="Kecamatan"
+                android:text="Alamat"
                 android:textColor="#000"
                 android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/edt_kecamatan"
+                android:id="@+id/edt_alamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -166,6 +177,26 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="715dp"
                 android:gravity="left|center"
+                android:text="Kecamatan"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/edt_kecamatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="740dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="815dp"
+                android:gravity="left|center"
                 android:text="Kelurahan"
                 android:textColor="#000"
                 android:textSize="14dp" />
@@ -175,7 +206,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="740dp"
+                android:layout_marginTop="840dp"
                 android:layout_marginRight="25dp"
                 android:textColor="#000"
                 android:textSize="18dp" />
@@ -186,13 +217,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="815dp"
+                android:layout_marginTop="915dp"
                 android:layout_marginRight="25dp"
-                android:background="@drawable/button_corner3"
+                android:background="@drawable/button_background_yellow"
                 android:text="Simpan Perubahan"
                 android:textSize="18dp"
-                android:textColor="#FFF" />
+                android:textColor="@android:color/black" />
         </RelativeLayout>
+
     </ScrollView>
 
 </RelativeLayout>
