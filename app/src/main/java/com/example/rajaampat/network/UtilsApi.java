@@ -1,12 +1,12 @@
-package com.example.rajaampat.forLogin;
+package com.example.rajaampat.network;
 
 public class UtilsApi {
 
-    // 10.0.2.2 ini adalah localhost.
-    public static final String BASE_URL_API = "https://raja-ampat.dfiserver.com/api/auth/";
+    public static final String BASE_URL_API = "https://raja-ampat.dfiserver.com/";
 
     // Mendeklarasikan Interface BaseApiService
     public static BaseApiService getAPIService(){
         return RetrofitClient.getClient(BASE_URL_API).create(BaseApiService.class);
     }
+
 }

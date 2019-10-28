@@ -1,4 +1,4 @@
-package com.example.rajaampat.forLogin;
+package com.example.rajaampat.network;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -13,6 +13,7 @@ public class RetrofitClient {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
 
         if (retrofit == null){
             retrofit = new Retrofit.Builder()

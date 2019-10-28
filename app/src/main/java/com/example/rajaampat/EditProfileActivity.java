@@ -17,7 +17,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected Cursor cursor;
     DataHelper dbHelper;
     Button ton1;
-    EditText editNama, editKtp, editTtl, editAlamat, editKecamatan, editKelurahan;
+    EditText editNama, editKtp, editAlamat, editKecamatan, editKelurahan, editTempat, editTanggal;
 
     // Tombol Baligh
     ImageView baligh;
@@ -30,7 +30,8 @@ public class EditProfileActivity extends AppCompatActivity {
         dbHelper = new DataHelper(this);
         editNama = (EditText) findViewById(R.id.edt_nama);
         editKtp = (EditText) findViewById(R.id.edt_ktp);
-        editTtl = (EditText) findViewById(R.id.edt_ttl);
+        editTanggal = (EditText) findViewById(R.id.edt_tanggal_lahir);
+        editTempat = (EditText) findViewById(R.id.edt_tempat_lahir);
         editAlamat = (EditText) findViewById(R.id.edt_alamat);
         editKecamatan = (EditText) findViewById(R.id.edt_kecamatan);
         editKelurahan = (EditText) findViewById(R.id.edt_kelurahan);
@@ -44,10 +45,11 @@ public class EditProfileActivity extends AppCompatActivity {
             cursor.moveToPosition(0);
             editNama.setText(cursor.getString(0).toString());
             editKtp.setText(cursor.getString(1).toString());
-            editTtl.setText(cursor.getString(2).toString());
-            editAlamat.setText(cursor.getString(3).toString());
-            editKecamatan.setText(cursor.getString(4).toString());
-            editKelurahan.setText(cursor.getString(5).toString());
+            editTanggal.setText(cursor.getString(2).toString());
+            editTempat.setText(cursor.getString(3).toString());
+            editAlamat.setText(cursor.getString(4).toString());
+            editKecamatan.setText(cursor.getString(5).toString());
+            editKelurahan.setText(cursor.getString(6).toString());
         }
 
         ton1 = (Button) findViewById(R.id.btn_simpanedit);
@@ -60,7 +62,8 @@ public class EditProfileActivity extends AppCompatActivity {
                 db.execSQL("update biodataprofil set nama='"+
                         editNama.getText().toString() +"', ktp='" +
                         editKtp.getText().toString()+"', ttl='"+
-                        editTtl.getText().toString() +"', alamat='" +
+                        editTanggal.getText().toString() +"', tempat='" +
+                        editTempat.getText().toString() +"', alamat='" +
                         editAlamat.getText().toString() + "' kecamatan='" +
                         editKecamatan.getText().toString() + "' kelurahan='" +
                         editKelurahan.getText().toString()+"'");
