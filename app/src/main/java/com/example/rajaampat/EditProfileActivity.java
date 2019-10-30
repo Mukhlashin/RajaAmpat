@@ -34,6 +34,8 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
 
+
+
             }
         });
 

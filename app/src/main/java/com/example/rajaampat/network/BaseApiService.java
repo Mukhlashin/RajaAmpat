@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface BaseApiService {
 
@@ -18,20 +19,21 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("api/auth/login")
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
-    Call<ResponseUser> loginRequest(@Field("email") String email,
+    Call<ResponseUser> loginRequest(@Field("api_auth_key") String apiKey,
+                                    @Field("email") String email,
                                     @Field("pwd") String password);
 
     // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/users
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @GET("api/users/{id}")
-    Call<ResponseUser> singleUserRequest(@Path("id") String user_id);
+    Call<ResponseUser> singleUserRequest(@Query("id") String userId);
 
     // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/register.php
-
     @FormUrlEncoded
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @POST("api/register.php")
-    Call<ResponseUser> registerRequest(@Field("user_name") String nama,
+    Call<ResponseUser> registerRequest(@Field("api_auth_key") String apiKey,
+                                       @Field("user_name") String nama,
                                        @Field("email") String email,
                                        @Field("pwd") String password);
 
@@ -40,7 +42,8 @@ public interface BaseApiService {
     @FormUrlEncoded
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @POST("api/users/update")
-    Call<ResponseUser> updateRequest(@Field("user_name") String user_name,
+    Call<ResponseUser> updateRequest(@Field("api_auth_key") String apiKey,
+                                     @Field("user_name") String user_name,
                                      @Field("nama") String nama,
                                      @Field("email") String email,
                                      @Field("pwd") String password);

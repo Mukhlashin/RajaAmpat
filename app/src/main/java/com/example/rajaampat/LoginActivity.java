@@ -37,9 +37,6 @@ public class LoginActivity extends AppCompatActivity {
     Context mContext;
     BaseApiService mApiService;
 
-    private static final String PREF_NAME = "userPref";
-    private static final int PREF_MODE = Context.MODE_PRIVATE;
-
     //    TODO Taro di Gradle -fatih
     public String apiKey = "s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc";
 
@@ -51,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.edt_emailnye);
         etPassword = findViewById(R.id.edt_passwordnye);
         btnLogin = findViewById(R.id.btn_login);
-        myPref = mContext.getSharedPreferences(PREF_NAME, PREF_MODE);
         mApiService = UtilsApi.getAPIService();
 
         myPref = getSharedPreferences("userInfo", MODE_PRIVATE);
@@ -95,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         myPref = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editorLogin = myPref.edit();
         editorLogin.putString("id", user.getUserId());
-        editorLogin.putString("nama", user.getUserName());
+        editorLogin.putString("user_name", user.getUserName());
         editorLogin.putString("email", user.getEmail());
         editorLogin.putString("pass", pass);
         editorLogin.apply();
