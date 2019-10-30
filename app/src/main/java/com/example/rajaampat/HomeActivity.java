@@ -54,6 +54,8 @@ public class HomeActivity extends AppCompatActivity {
 
     String userId;
 
+    public String apiKey = "s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,11 +73,13 @@ public class HomeActivity extends AppCompatActivity {
 
         imbSetting = findViewById(R.id.imb_settings);
 
-        userId = myPref.getString("id", "");
+//        userId = myPref.getString("id", "");
+
+        Log.d("dapat id nya", myPref.getString("id", "gak dapat"));
 
         editor = getSharedPreferences("userInfo", MODE_PRIVATE).edit();
 
-        singleUserInquiry();
+//        singleUserInquiry();
 
 //        editor.putString("device_id", getDeviceUUID(context));
 
@@ -162,27 +166,27 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void singleUserInquiry() {
-        mApiService.singleUserRequest(userId)
-                .enqueue(new Callback<ResponseUser>() {
-                    @Override
-                    public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
-                        ResponseUser responseUser = response.body();
-                        editor.putString("nama", responseUser.getNama());
-                        editor.putString("alamat", responseUser.getAlamat());
-                        editor.putString("no_tlp", responseUser.getNomorTelepon());
-                        editor.putString("no_ktp", responseUser.getNomorKTP());
-                        editor.putString("tempat_lahir", responseUser.getTempatLahir());
-                        editor.putString("tanggal_lahir", responseUser.getTanggalLahir());
-                        editor.apply();
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseUser> call, Throwable t) {
-                        Log.e("debug", "onFailure: ERROR > " + t.getLocalizedMessage());
-                    }
-                });
-    }
+//    private void singleUserInquiry() {
+//        mApiService.singleUserRequest(apiKey, userId)
+//                .enqueue(new Callback<ResponseUser>() {
+//                    @Override
+//                    public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
+//                        ResponseUser responseUser = response.body();
+//                        editor.putString("nama", responseUser.getNama());
+//                        editor.putString("alamat", responseUser.getAlamat());
+//                        editor.putString("no_tlp", responseUser.getNomorTelepon());
+//                        editor.putString("no_ktp", responseUser.getNomorKTP());
+//                        editor.putString("tempat_lahir", responseUser.getTempatLahir());
+//                        editor.putString("tanggal_lahir", responseUser.getTanggalLahir());
+//                        editor.apply();
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponseUser> call, Throwable t) {
+//                        Log.e("debug", "onFailure: ERROR > " + t.getLocalizedMessage());
+//                    }
+//                });
+//    }
 
 //    public static String getDeviceUUID(Context context) {
 //        final TelephonyManager tm = (TelephonyManager) context

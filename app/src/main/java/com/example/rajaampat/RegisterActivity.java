@@ -91,7 +91,9 @@ public class RegisterActivity extends AppCompatActivity {
                         public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
                             if (response.isSuccessful()){
                                 Log.i("debug", "onResponse: BERHASIL");
+                                Toast.makeText(mContext, "Berhasil Register Akun", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
+                                goToHome();
                                 try {
                                     JSONObject jsonRESULTS = new JSONObject(response.body().toString());
                                     if (jsonRESULTS.getString("is_error").equals("false")){
@@ -106,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             } else {
                                 Log.i("debug", "onResponse: GA BERHASIL");
+                                Toast.makeText(mContext,  "Gagal Register Akun, Coba lagi", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
                             }
                         }
@@ -116,5 +119,10 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
                         }
                     });
+    }
+
+    private void goToHome() {
+        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }

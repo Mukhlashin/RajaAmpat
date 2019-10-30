@@ -24,14 +24,15 @@ public interface BaseApiService {
                                     @Field("pwd") String password);
 
     // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/users
+    @GET("api/users/{user_id}")
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
-    @GET("api/users/{id}")
-    Call<ResponseUser> singleUserRequest(@Query("id") String userId);
+    Call<ResponseUser> singleUserRequest(@Field("api_auth_key") String apiKey,
+                                         @Query("user_id") String userId);
 
     // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/register.php
     @FormUrlEncoded
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
-    @POST("api/register.php")
+    @POST("api/users/register")
     Call<ResponseUser> registerRequest(@Field("api_auth_key") String apiKey,
                                        @Field("user_name") String nama,
                                        @Field("email") String email,
