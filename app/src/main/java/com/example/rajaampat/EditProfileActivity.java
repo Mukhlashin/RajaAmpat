@@ -16,7 +16,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     protected Cursor cursor;
     DataHelper dbHelper;
-    Button ton1;
+    Button saveButton;
     EditText editNama, editKtp, editAlamat, editKecamatan, editKelurahan, editTempat, editTanggal;
 
     // Tombol Baligh
@@ -27,48 +27,13 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        dbHelper = new DataHelper(this);
-        editNama = (EditText) findViewById(R.id.edt_nama);
-        editKtp = (EditText) findViewById(R.id.edt_ktp);
-        editTanggal = (EditText) findViewById(R.id.edt_tanggal_lahir);
-        editTempat = (EditText) findViewById(R.id.edt_tempat_lahir);
-        editAlamat = (EditText) findViewById(R.id.edt_alamat);
-        editKecamatan = (EditText) findViewById(R.id.edt_kecamatan);
-        editKelurahan = (EditText) findViewById(R.id.edt_kelurahan);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM biodataprofil WHERE nama = '" +
-                getIntent().getStringExtra("nama") + "'",null);
-        cursor.moveToFirst();
-        if (cursor.getCount()>0)
+        saveButton = findViewById(R.id.btn_simpanedit);
 
-        {
-            cursor.moveToPosition(0);
-            editNama.setText(cursor.getString(0).toString());
-            editKtp.setText(cursor.getString(1).toString());
-            editTanggal.setText(cursor.getString(2).toString());
-            editTempat.setText(cursor.getString(3).toString());
-            editAlamat.setText(cursor.getString(4).toString());
-            editKecamatan.setText(cursor.getString(5).toString());
-            editKelurahan.setText(cursor.getString(6).toString());
-        }
-
-        ton1 = (Button) findViewById(R.id.btn_simpanedit);
-
-        ton1.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.execSQL("update biodataprofil set nama='"+
-                        editNama.getText().toString() +"', ktp='" +
-                        editKtp.getText().toString()+"', ttl='"+
-                        editTanggal.getText().toString() +"', tempat='" +
-                        editTempat.getText().toString() +"', alamat='" +
-                        editAlamat.getText().toString() + "' kecamatan='" +
-                        editKecamatan.getText().toString() + "' kelurahan='" +
-                        editKelurahan.getText().toString()+"'");
-                Toast.makeText(getApplicationContext(), "Berhasil Neh :V", Toast.LENGTH_LONG).show();
-                finish();
+
             }
         });
 
@@ -87,7 +52,5 @@ public class EditProfileActivity extends AppCompatActivity {
         Intent backToProfile = new Intent(EditProfileActivity.this, HomeActivity.class);
         startActivity(backToProfile);
         finish();
-
-
     }
 }

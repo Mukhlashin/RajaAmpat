@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -69,29 +71,31 @@ public class MenuFragment extends Fragment {
     }
 
     private void dialogLogOut() {
-        AlertDialog.Builder logOut = new AlertDialog.Builder(getActivity());
-        logOut.setTitle(R.string.logOut);
-        logOut.setMessage(R.string.messageLogout);
-        logOut.setPositiveButton("Logout", null);
-        logOut.setNegativeButton("Cancel", null);
-        logOut.setCancelable(false);
-        AlertDialog dialog = logOut.create();
-        logOut.show();
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle(R.string.logOut);
+        dialog.setMessage(R.string.messageLogout);
+        dialog.setPositiveButton("Logout", null);
+        dialog.setNegativeButton("Cancel", null);
+        dialog.setCancelable(false);
 
-        logOut.setPositiveButton(R.string.logOut, new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(R.string.logOut, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                Toast.makeText(getActivity(), "Berhasil Logout", Toast.LENGTH_SHORT).show();
                 editorLogin.remove("login");
                 editorLogin.apply();
-
                 Intent logOut = new Intent(getActivity(), LoginActivity.class);
                 startActivity(logOut);
                 getActivity().finish();
             }
         });
-        logOut.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            dialog.create();
+        }
+        dialog.show();
     }
 }
