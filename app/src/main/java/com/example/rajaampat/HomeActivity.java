@@ -1,40 +1,24 @@
 package com.example.rajaampat;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.os.Build;
-import android.provider.Settings.Secure;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
-import com.example.rajaampat.model.ResponseUser;
+import com.example.rajaampat.model.DataItem;
+import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.network.BaseApiService;
 import com.example.rajaampat.network.UtilsApi;
 
-import java.util.UUID;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,6 +31,8 @@ public class HomeActivity extends AppCompatActivity {
 
     SharedPreferences.Editor editor;
     SharedPreferences myPref;
+
+    public List<DataItem> dataItems;
 
     Context context;
 
@@ -69,17 +55,19 @@ public class HomeActivity extends AppCompatActivity {
         btnTransport = findViewById(R.id.btn_transport);
         btnEmergency = findViewById(R.id.btn_emergency);
 
+        mApiService = UtilsApi.getAPIService();
+
         myPref = getSharedPreferences("com.example.rajaampat_preferences", MODE_PRIVATE);
 
         imbSetting = findViewById(R.id.imb_settings);
 
-//        userId = myPref.getString("id", "");
+        userId = myPref.getString("id", "");
 
         Log.d("dapat id nya", myPref.getString("id", "gak dapat"));
 
         editor = getSharedPreferences("userInfo", MODE_PRIVATE).edit();
 
-//        singleUserInquiry();
+        singleUserInquiry();
 
 //        editor.putString("device_id", getDeviceUUID(context));
 
@@ -166,27 +154,44 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-//    private void singleUserInquiry() {
-//        mApiService.singleUserRequest(apiKey, userId)
-//                .enqueue(new Callback<ResponseUser>() {
-//                    @Override
-//                    public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
-//                        ResponseUser responseUser = response.body();
-//                        editor.putString("nama", responseUser.getNama());
-//                        editor.putString("alamat", responseUser.getAlamat());
-//                        editor.putString("no_tlp", responseUser.getNomorTelepon());
-//                        editor.putString("no_ktp", responseUser.getNomorKTP());
-//                        editor.putString("tempat_lahir", responseUser.getTempatLahir());
-//                        editor.putString("tanggal_lahir", responseUser.getTanggalLahir());
-//                        editor.apply();
-//                    }
+    private void singleUserInquiry() {
+        mApiService.singleUserRequest(userId)
+                .enqueue(new Callback<ResponseSingleUser>() {
+                    @Override
+                    public void onResponse(Call<ResponseSingleUser> call, Response<ResponseSingleUser> response) {
+                        ResponseSingleUser responseSingleUser = response.body();
+                        dataItems = responseSingleUser.getData();
+                        editor.putString("nama", dataItems.get(0).getNama());
+                        editor.putString("alamat", dataItems.get(0).getAlamat());
+                        editor.putString("no_tlp", dataItems.get(0).getNoTlp());
+                        editor.putString("no_ktp", dataItems.get(0).getNoKtp());
+                        editor.putString("tempat_lahir", dataItems.get(0).getTempatLahir());
+                        editor.putString("tanggal_lahir", dataItems.get(0).getTglLahir());
+                        editor.apply();
+//                        ooooooohhh. gttuu toh
 //
-//                    @Override
-//                    public void onFailure(Call<ResponseUser> call, Throwable t) {
-//                        Log.e("debug", "onFailure: ERROR > " + t.getLocalizedMessage());
-//                    }
-//                });
-//    }
+//                                ini lho yang dari tadi saya cari oawkoaw...ntar  coba dulu
+//                        dah coba dulu
+//                                okok
+//                        jadi yang diambil nanti ini dataItems nya? iya data itemnya kan belum ada datanya nah disini data itemnya disii dengan data  dari API nya
+//                                Wadoo ini bukan ngisi data tapi ngambil data dari APi nya oawkawo
+//                                mau di tampilin kan?
+//                        iya ya udah udah bener kan nanti ambil datanya dari data item?
+//                        iya bener iya
+//                                adaptenta mana? gak pake adapter... sebenarnya ini fungsi buat manggil data dari api berdasarkan id yang saya simpan di shareprefs
+//                                nah datanya udah masuk ni
+//                                udh success... tapi bingungnya katanya null gtu
+//                                ntar coba dulu ni
+
+                        // hmm ntar
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseSingleUser> call, Throwable t) {
+
+                    }
+                });
+    }
 
 //    public static String getDeviceUUID(Context context) {
 //        final TelephonyManager tm = (TelephonyManager) context

@@ -1,5 +1,7 @@
 package com.example.rajaampat.network;
 
+import com.example.rajaampat.model.DataItem;
+import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.model.ResponseUser;
 
 import okhttp3.ResponseBody;
@@ -23,11 +25,10 @@ public interface BaseApiService {
                                     @Field("email") String email,
                                     @Field("pwd") String password);
 
-    // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/users
-    @GET("api/users/{user_id}")
+    // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/users/id
+    @GET("api/users/{id}")
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
-    Call<ResponseUser> singleUserRequest(@Field("api_auth_key") String apiKey,
-                                         @Query("user_id") String userId);
+    Call<ResponseSingleUser> singleUserRequest(@Query("id") String userId);
 
     // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/register.php
     @FormUrlEncoded

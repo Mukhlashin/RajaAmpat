@@ -110,10 +110,6 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         Toast.makeText(mContext, "Selamat datang " + responseUser.getUserName(), Toast.LENGTH_SHORT).show();
                         startActivity(intent);
-                        Log.d("Prefs :", responseUser.getUserId());
-                        Log.d("Prefs :", responseUser.getUserName());
-                        Log.d("Prefs :", responseUser.getEmail());
-                        Log.d("Prefs :", myPref.getString("pass", ""));
                         SharedPreferences.Editor editorSpLogin = getSharedPreferences("login", MODE_PRIVATE).edit();
                         editorSpLogin.putBoolean("login", true);
                         editorSpLogin.apply();
