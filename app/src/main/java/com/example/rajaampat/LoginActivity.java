@@ -5,96 +5,131 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.rajaampat.forLogin.BaseApiService;
-import com.example.rajaampat.forLogin.UtilsApi;
+import com.example.rajaampat.model.ResponseUser;
+import com.example.rajaampat.network.BaseApiService;
+import com.example.rajaampat.network.UtilsApi;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText etEmail;
-    EditText etPassword;
+    public EditText etEmail;
+    public EditText etPassword;
     Button btnLogin;
     ProgressDialog loading;
 
+    //SharedPrefrences
+    SharedPreferences myPref;
+    SharedPreferences.Editor editor;
+    SharedPreferences.Editor editorLogin;
+
     Context mContext;
     BaseApiService mApiService;
+
+    //    TODO Taro di Gradle -fatih
+    public String apiKey = "s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mContext = this;
+        etEmail = findViewById(R.id.edt_emailnye);
+        etPassword = findViewById(R.id.edt_passwordnye);
+        btnLogin = findViewById(R.id.btn_login);
         mApiService = UtilsApi.getAPIService();
+
+        myPref = getSharedPreferences("userInfo", MODE_PRIVATE);
+        editor = getSharedPreferences("userInfo", MODE_PRIVATE).edit();
+        editorLogin = getSharedPreferences("login", MODE_PRIVATE).edit();
+
+        SharedPreferences isLogin = getSharedPreferences("login", MODE_PRIVATE);
+        if(isLogin.getBoolean("login", false)){
+            goToMain();
+        }
+
         initComponents();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
-                requestLogin();
-            }
-                private void requestLogin(){
-                    mApiService.loginRequest(etEmail.getText().toString(), etPassword.getText().toString())
-                            .enqueue(new Callback<ResponseBody>() {
-                                @Override
-                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                    if (response.isSuccessful()){
-                                        loading.dismiss();
-                                        try {
-                                            JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                            if (jsonRESULTS.getString("error").equals("false")){
-                                                // Jika login berhasil maka data nama yang ada di response API
-                                                // akan diparsing ke activity selanjutnya.
-                                                Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
-                                                String nama = jsonRESULTS.getJSONObject("user").getString("nama");
-                                                Intent intent = new Intent(mContext, HotelActivity.class);
-                                                intent.putExtra("result_nama", nama);
-                                                startActivity(intent);
-                                            } else {
-                                                // Jika login gagal
-                                                String error_message = jsonRESULTS.getString("error_msg");
-                                                Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
-                                            }
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        } catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
-                                    } else {
-                                        loading.dismiss();
-                                    }
-                                }
 
-                                @Override
-                                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                    Log.e("debug", "onFailure: ERROR > " + t.toString());
-                                    loading.dismiss();
-                                }
-                            });
+                String email = etEmail.getText().toString();
+                String pass = etPassword.getText().toString();
+
+                try {
+                    Log.d("email ", email+ " pass " + pass
+                            + " api_key " + apiKey);
+                } catch (Exception e) {
+                    Log.d("initComponents: ", e.getLocalizedMessage());
                 }
-            });
-        }
+                loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
+                requestLogin(email,pass);
+            }
+
+        });
+    }
+
+    private void goToMain() {
+        Intent goToMain = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(goToMain);
+    }
+
+    public void saveUser(ResponseUser user, String pass) {
+        //        Initial object
+        myPref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editorLogin = myPref.edit();
+        editorLogin.putString("id", user.getUserId());
+        editorLogin.putString("user_name", user.getUserName());
+        editorLogin.putString("email", user.getEmail());
+        editorLogin.putString("pass", pass);
+        editorLogin.apply();
+    }
+
+    private void requestLogin(String email, final String pass){
+        mApiService.loginRequest(apiKey,email, pass)
+                .enqueue(new Callback<ResponseUser>() {
+
+                    @Override
+                    public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
+                        ResponseUser responseUser = response.body();
+                        if (response.body().getIsError().equals("false")){
+                        loading.dismiss();
+                        saveUser(responseUser, pass);
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        Toast.makeText(mContext, "Selamat datang " + responseUser.getUserName(), Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                        SharedPreferences.Editor editorSpLogin = getSharedPreferences("login", MODE_PRIVATE).edit();
+                        editorSpLogin.putBoolean("login", true);
+                        editorSpLogin.apply();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseUser> call, Throwable t) {
+                        Log.e("debug", "onFailure: ERROR > " + t.getLocalizedMessage());
+                        loading.dismiss();
+                    }
+                });
+    }
 
     private void initComponents() {
-        etEmail = (EditText) findViewById(R.id.edt_emailnye);
-        etPassword = (EditText) findViewById(R.id.edt_passwordnye);
-        btnLogin = (Button) findViewById(R.id.btn_login);
+        etEmail = findViewById(R.id.edt_emailnye);
+        etPassword = findViewById(R.id.edt_passwordnye);
+        btnLogin = findViewById(R.id.btn_login);
+
+
     }
 
     public void goToRegister(View view) {

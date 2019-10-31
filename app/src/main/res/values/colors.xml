@@ -11,4 +11,5 @@
     <color name="colorTextHighlight">#005ACC</color>
     <color name="colorMenuButtonYellow">#FAB651</color>
     <color name="colorMenuButtonGreen">#9BB435</color>
+    <color name="colorMenuButtonBlu">#3C81C4</color>
 </resources>

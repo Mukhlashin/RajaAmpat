@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logOut">Keluar</string>
+    <string name="messageLogout">Apakah anda ingin keluar dari akun ?</string>
+    <string name="cancel">Batalkan</string>
 </resources>

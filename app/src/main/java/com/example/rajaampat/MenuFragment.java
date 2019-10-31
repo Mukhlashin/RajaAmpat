@@ -1,17 +1,24 @@
 package com.example.rajaampat;
 
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
-import java.util.zip.Inflater;
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -19,7 +26,9 @@ import java.util.zip.Inflater;
  */
 public class MenuFragment extends Fragment {
 
-    Button btnEditProfile, btnListPengaduan;
+    Button btnEditProfile, btnListPengaduan, btnLogout;
+
+    SharedPreferences.Editor editorLogin;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -32,8 +41,11 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        editorLogin = this.getActivity().getSharedPreferences("login", MODE_PRIVATE).edit();
+
         btnEditProfile = layout.findViewById(R.id.btn_edit_profile);
         btnListPengaduan = layout.findViewById(R.id.btn_list_pengaduan);
+        btnLogout = layout.findViewById(R.id.btn_logout);
         btnListPengaduan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +60,42 @@ public class MenuFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogLogOut();
+            }
+        });
         return layout;
+    }
+
+    private void dialogLogOut() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle(R.string.logOut);
+        dialog.setMessage(R.string.messageLogout);
+        dialog.setPositiveButton("Logout", null);
+        dialog.setNegativeButton("Cancel", null);
+        dialog.setCancelable(false);
+
+        dialog.setPositiveButton(R.string.logOut, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Toast.makeText(getActivity(), "Berhasil Logout", Toast.LENGTH_SHORT).show();
+                editorLogin.remove("login");
+                editorLogin.apply();
+                Intent logOut = new Intent(getActivity(), LoginActivity.class);
+                startActivity(logOut);
+                getActivity().finish();
+            }
+        });
+        dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            dialog.create();
+        }
+        dialog.show();
     }
 }
