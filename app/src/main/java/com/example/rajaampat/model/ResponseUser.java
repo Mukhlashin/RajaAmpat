@@ -22,6 +22,7 @@ public class ResponseUser{
 	@SerializedName("nama")
 	private String nama;
 
+<<<<<<< HEAD
 	@SerializedName("tempat_lahir")
 	private String tempatLahir;
 
@@ -37,6 +38,8 @@ public class ResponseUser{
 	@SerializedName("alamat")
 	private String alamat;
 
+=======
+>>>>>>> add somethink
 	@SerializedName("is_error")
 	private String isError;
 
@@ -59,10 +62,13 @@ public class ResponseUser{
 		this.responseCode = responseCode;
 	}
 
+<<<<<<< HEAD
 	public String getResponseCode(){
 		return responseCode;
 	}
 
+=======
+>>>>>>> add somethink
 	public String getPassword() {
 		return password;
 	}
@@ -71,6 +77,13 @@ public class ResponseUser{
 		this.password = password;
 	}
 
+<<<<<<< HEAD
+=======
+	public String getResponseCode(){
+		return responseCode;
+	}
+
+>>>>>>> add somethink
 	public void setResponseMessage(String responseMessage){
 		this.responseMessage = responseMessage;
 	}
@@ -95,6 +108,7 @@ public class ResponseUser{
 		return userId;
 	}
 
+<<<<<<< HEAD
 	public void setNama(String nama){
 		this.nama = nama;
 	}
@@ -144,6 +158,17 @@ public class ResponseUser{
 	}
 
 	public void setDeviceID(String deviceID){
+=======
+	public void setName(String userId){
+		this.userName = userName;
+	}
+
+	public String getName(){
+		return userName;
+	}
+
+	public void setDeviceID(String userId){
+>>>>>>> add somethink
 		this.deviceID = deviceID;
 	}
 
@@ -193,11 +218,14 @@ public class ResponseUser{
 			",user_id = '" + userId + '\'' + 
 			",user_name = '" + userName + '\'' +
 			",nama = '" + nama + '\'' +
+<<<<<<< HEAD
 			",alamat = '" + alamat + '\'' +
 			",tempat_lahir = '" + tempatLahir + '\'' +
 			",tanggal_lahir = '" + tanggalLahir + '\'' +
 			",no_tlp = '" + nomorTelepon + '\'' +
 			",no_ktp = '" + nomorKTP + '\'' +
+=======
+>>>>>>> add somethink
 			",is_error = '" + isError + '\'' +
 			",device_id = '" + deviceID + '\'' +
 			",device_name = '" + deviceName + '\'' +
