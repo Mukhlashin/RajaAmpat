@@ -1,6 +1,7 @@
 package com.example.rajaampat.network;
 
 import com.example.rajaampat.model.DataItem;
+import com.example.rajaampat.model.ResponseCurrency;
 import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.model.ResponseUser;
 
@@ -40,7 +41,6 @@ public interface BaseApiService {
                                        @Field("pwd") String password);
 
     // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/users/update.php
-
     @FormUrlEncoded
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @POST("api/users/update")

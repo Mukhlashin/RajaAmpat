@@ -16,7 +16,6 @@ import android.widget.Toast;
 public class EditProfileActivity extends AppCompatActivity {
 
     protected Cursor cursor;
-    DataHelper dbHelper;
     Button saveButton;
     EditText editNama, editKtp, editAlamat, editKecamatan, editKelurahan, editTempat, editTanggal;
 
