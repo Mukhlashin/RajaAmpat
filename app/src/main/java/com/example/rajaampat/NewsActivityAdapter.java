@@ -56,11 +56,8 @@ public class NewsActivityAdapter extends RecyclerView.Adapter<NewsActivityAdapte
                 .error(R.drawable.ic_launcher_background)
                 .into(holder.pic);
     }
-
     @Override
     public int getItemCount() {
         return 0;
     }
-
-
 }

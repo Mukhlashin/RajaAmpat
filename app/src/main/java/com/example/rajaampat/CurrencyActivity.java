@@ -85,7 +85,6 @@ public class CurrencyActivity extends AppCompatActivity {
     }
 
     private void convertCurrency() {
-
         int USD = Integer.parseInt(edtUSD.getText().toString());
         int rate = Integer.parseInt(myPrefs.getString("rate", "0"));
         if(rate != 0){

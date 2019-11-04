@@ -64,20 +64,11 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = etEmail.getText().toString();
                 String pass = etPassword.getText().toString();
-
-                try {
-                    Log.d("email ", email+ " pass " + pass
-                            + " api_key " + apiKey);
-                } catch (Exception e) {
-                    Log.d("initComponents: ", e.getLocalizedMessage());
-                }
                 loading = ProgressDialog.show(mContext, null, "Harap Tunggu...", true, false);
                 requestLogin(email,pass);
             }
-
         });
     }
 
@@ -100,11 +91,10 @@ public class LoginActivity extends AppCompatActivity {
     private void requestLogin(String email, final String pass){
         mApiService.loginRequest(apiKey,email, pass)
                 .enqueue(new Callback<ResponseUser>() {
-
                     @Override
                     public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {
                         ResponseUser responseUser = response.body();
-                        if (response.body().getIsError().equals("false")){
+                        if (response.isSuccessful()){
                         loading.dismiss();
                         saveUser(responseUser, pass);
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -113,6 +103,9 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences.Editor editorSpLogin = getSharedPreferences("login", MODE_PRIVATE).edit();
                         editorSpLogin.putBoolean("login", true);
                         editorSpLogin.apply();
+                        } else {
+                            Toast.makeText(mContext, "User or email not valid or not found" , Toast.LENGTH_SHORT).show();
+                            loading.dismiss();
                         }
                     }
 
