@@ -159,15 +159,19 @@ public class HomeActivity extends AppCompatActivity {
                 .enqueue(new Callback<ResponseSingleUser>() {
                     @Override
                     public void onResponse(Call<ResponseSingleUser> call, Response<ResponseSingleUser> response) {
-                        ResponseSingleUser responseSingleUser = response.body();
-                        dataItems = responseSingleUser.getData();
-                        editor.putString("nama", dataItems.get(0).getNama());
-                        editor.putString("alamat", dataItems.get(0).getAlamat());
-                        editor.putString("no_tlp", dataItems.get(0).getNoTlp());
-                        editor.putString("no_ktp", dataItems.get(0).getNoKtp());
-                        editor.putString("tempat_lahir", dataItems.get(0).getTempatLahir());
-                        editor.putString("tanggal_lahir", dataItems.get(0).getTglLahir());
-                        editor.apply();
+                        if (response.code() == 503) {
+                            Toast.makeText(context, "Gagal menyambungkan ke server, Hanya menampilkan data lokal", Toast.LENGTH_SHORT).show();
+                        } else {
+                            ResponseSingleUser responseSingleUser = response.body();
+                            dataItems = responseSingleUser.getData();
+                            editor.putString("nama", dataItems.get(0).getNama());
+                            editor.putString("alamat", dataItems.get(0).getAlamat());
+                            editor.putString("no_tlp", dataItems.get(0).getNoTlp());
+                            editor.putString("no_ktp", dataItems.get(0).getNoKtp());
+                            editor.putString("tempat_lahir", dataItems.get(0).getTempatLahir());
+                            editor.putString("tanggal_lahir", dataItems.get(0).getTglLahir());
+                            editor.apply();
+                        }
 //                        ooooooohhh. gttuu toh
 //
 //                                ini lho yang dari tadi saya cari oawkoaw...ntar  coba dulu
@@ -188,7 +192,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseSingleUser> call, Throwable t) {
-
+                        Toast.makeText(context, "onError : " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -221,6 +225,5 @@ public class HomeActivity extends AppCompatActivity {
 //        return deviceUuid.toString();
 //
 //    }
-
 }
 

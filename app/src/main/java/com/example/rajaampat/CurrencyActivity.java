@@ -2,7 +2,6 @@ package com.example.rajaampat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,20 +13,10 @@ import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.rajaampat.model.Rates;
-import com.example.rajaampat.model.ResponseCurrency;
-import com.example.rajaampat.network.BaseCurrencyService;
-import com.example.rajaampat.network.UtilsApi;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CurrencyActivity extends AppCompatActivity {
 
@@ -96,13 +85,12 @@ public class CurrencyActivity extends AppCompatActivity {
     }
 
     private void convertCurrency() {
-        try{
-            int USD = Integer.parseInt(edtUSD.getText().toString());
-            int rate = Integer.parseInt(myPrefs.getString("rates", ""));
-            edtIDR.setText(rate * USD);
-            Toast.makeText(CurrencyActivity.this, myPrefs.getString("timestamp", "Tidak dapat timestamp"), Toast.LENGTH_SHORT).show();
-        } catch(NumberFormatException ex){ // handle your exception
-            Log.d("onError", ex.getLocalizedMessage());
+
+        int USD = Integer.parseInt(edtUSD.getText().toString());
+        int rate = Integer.parseInt(myPrefs.getString("rate", "0"));
+        if(rate != 0){
+            edtIDR.setText(String.valueOf(rate * USD));
+            Toast.makeText(CurrencyActivity.this, "Timestamp = " + myPrefs.getString("timestamp", "Tidak dapat timestamp"), Toast.LENGTH_SHORT).show();
         }
     }
 }

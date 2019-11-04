@@ -85,6 +85,8 @@
                 android:id="@+id/edt_usd"
                 android:layout_width="135dp"
                 android:layout_height="42dp"
+                android:gravity="center"
+                android:fontFamily="@font/poppinsregular"
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/edittext_back" />
 
@@ -120,6 +122,8 @@
                 android:id="@+id/edt_idr"
                 android:layout_width="135dp"
                 android:layout_height="42dp"
+                android:gravity="center"
+                android:fontFamily="@font/poppinsregular"
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/edittext_back" />
 
