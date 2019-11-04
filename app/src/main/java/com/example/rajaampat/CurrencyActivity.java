@@ -2,33 +2,44 @@ package com.example.rajaampat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-public class CurrencyActivity extends AppCompatActivity {
-    EditText input_usd;
-    Button hasil_konversi;
-    TextView output_idr;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
-    double nilai;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class CurrencyActivity extends AppCompatActivity {
 
     ImageButton btnBack;
+    Button btnConvert;
+    SharedPreferences myPrefs;
+    SharedPreferences.Editor editor;
+    EditText edtUSD, edtIDR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
 
-        input_usd = (EditText) findViewById(R.id.uang_usd);
-        output_idr = (TextView) findViewById(R.id.uang_idr);
-        hasil_konversi = (Button) findViewById(R.id.btn_konversi);
-
+        btnConvert = findViewById(R.id.btn_convert);
         btnBack = findViewById(R.id.btn_back);
+        edtUSD = findViewById(R.id.edt_usd);
+        edtIDR = findViewById(R.id.edt_idr);
+
+        edtUSD.setText("0");
+
+        myPrefs = getSharedPreferences("currency", MODE_PRIVATE);
+        editor = getSharedPreferences("currency", MODE_PRIVATE).edit();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,29 +47,50 @@ public class CurrencyActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        btnConvert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                convertCurrency();
+            }
+        });
+
+        AndroidNetworking.post("https://www.freeforexapi.com/api/live")
+                .addQueryParameter("pairs", "USDIDR")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {if (response != null){
+                            String rate = response.getJSONObject("rates").getJSONObject("USDIDR").getString("rate");
+                            String timeStamp = response.getJSONObject("rates").getJSONObject("USDIDR").getString("timestamp");
+                            Log.d("responseRate", rate);
+                            Log.d("responseTimestamp", timeStamp);
+                            editor.putString("rate", rate);
+                            editor.putString("timestamp", timeStamp);
+                            editor.apply();
+                        } else {
+                            Log.d("error", "Respon gak dapat");
+                        }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
     }
 
-    public boolean cek(){
-        if (input_usd.getText().toString().isEmpty()){
-            Toast.makeText(this, "Silahkan Masukan Jumlah Uangnya", Toast.LENGTH_LONG).show();
-            return false;
-        }
-        return true;
-    }
+    private void convertCurrency() {
 
-    public void toUSD(View v){
-        if (!cek()){
-            return;
+        int USD = Integer.parseInt(edtUSD.getText().toString());
+        int rate = Integer.parseInt(myPrefs.getString("rate", "0"));
+        if(rate != 0){
+            edtIDR.setText(String.valueOf(rate * USD));
+            Toast.makeText(CurrencyActivity.this, "Timestamp = " + myPrefs.getString("timestamp", "Tidak dapat timestamp"), Toast.LENGTH_SHORT).show();
         }
-
-        try{
-            nilai = Double.parseDouble(input_usd.getText().toString());
-        }catch(Exception e){
-            Toast.makeText(this, "Masukkan Angkanya", Toast.LENGTH_SHORT).show();
-        }
-
-        output_idr.setText(Double.toString(nilai * 12000));
-        Toast.makeText(this, "Selesai", Toast.LENGTH_SHORT).show();
     }
 }
-

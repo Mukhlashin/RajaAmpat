@@ -8,5 +8,4 @@ public class UtilsApi {
     public static BaseApiService getAPIService(){
         return RetrofitClient.getClient(BASE_URL_API).create(BaseApiService.class);
     }
-
 }
