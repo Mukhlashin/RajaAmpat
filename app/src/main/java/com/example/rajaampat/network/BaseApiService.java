@@ -1,9 +1,12 @@
 package com.example.rajaampat.network;
 
 import com.example.rajaampat.model.DataItem;
+import com.example.rajaampat.model.News;
 import com.example.rajaampat.model.ResponseCurrency;
 import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.model.ResponseUser;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import okhttp3.internal.http2.Header;
@@ -49,4 +52,9 @@ public interface BaseApiService {
                                      @Field("nama") String nama,
                                      @Field("email") String email,
                                      @Field("pwd") String password);
+
+    @GET("api/artikel")
+    @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
+    Call<ResponseUser> newsRequest(@Query("id") String id_user);
+    Call<List<News>> getAllPhotos();
 }

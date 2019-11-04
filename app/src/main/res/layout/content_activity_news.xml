@@ -1,200 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rv_news"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"/>-->
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rv_news"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
+    <!--      <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="goToDetailNews"
-            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:onClick="goToDetailNews"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/img_destination"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/img_news1"
-                    android:layout_height="237dp" />
+                    android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_alignBottom="@+id/img_destination"
-                    android:layout_marginBottom="0dp"
-                    android:background="@drawable/detail_destination_back">
-
-                    <TextView
-                        android:id="@+id/tv_tanggal"
+                    <ImageView
+                        android:id="@+id/img_destination"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@id/img_destination"
-                        android:layout_alignParentRight="true"
-                        android:fontFamily="@font/poppinsregular"
-                        android:gravity="center|start"
-                        android:paddingLeft="20dp"
-                        android:text="Pulau Misool"
-                        android:textColor="@android:color/white"
-                        android:textSize="13dp" />
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/img_news1"
+                        android:layout_height="237dp" />
 
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsmedium"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="12sp"
-                android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsmedium"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="10sp"
-                android:textColor="@color/colorTextHighlight"
-                android:text="Baca Selengkapnya..."/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/img_destination2"
-                    android:layout_width="match_parent"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/img_news2"
-                    android:layout_height="237dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_alignBottom="@+id/img_destination2"
-                    android:layout_marginBottom="0dp"
-                    android:background="@drawable/detail_destination_back">
-
-                    <TextView
-                        android:id="@+id/tv_tanggal2"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@id/img_destination"
-                        android:layout_alignParentRight="true"
-                        android:fontFamily="@font/poppinsregular"
-                        android:gravity="center|start"
-                        android:paddingLeft="20dp"
-                        android:text="Pulau Misool"
-                        android:textColor="@android:color/white"
-                        android:textSize="13dp" />
+                        android:layout_height="30dp"
+                        android:layout_alignBottom="@+id/img_destination"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/detail_destination_back">
 
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_tanggal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBottom="@id/img_destination"
+                            android:layout_alignParentRight="true"
+                            android:fontFamily="@font/poppinsregular"
+                            android:gravity="center|start"
+                            android:paddingLeft="20dp"
+                            android:text="Pulau Misool"
+                            android:textColor="@android:color/white"
+                            android:textSize="13dp" />
 
-            </RelativeLayout>
+                    </LinearLayout>
 
-            <TextView
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="12sp"
+                    android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorTextHighlight"
+                    android:text="Baca Selengkapnya..."/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsmedium"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="12sp"
-                android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsmedium"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="10sp"
-                android:textColor="@color/colorTextHighlight"
-                android:text="Baca Selengkapnya..."/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/img_destination3"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/img_news3"
-                    android:layout_height="237dp" />
+                    android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_alignBottom="@+id/img_destination3"
-                    android:layout_marginBottom="0dp"
-                    android:background="@drawable/detail_destination_back">
-
-                    <TextView
-                        android:id="@+id/tv_tanggal3"
+                    <ImageView
+                        android:id="@+id/img_destination2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignBottom="@id/img_destination"
-                        android:layout_alignParentRight="true"
-                        android:fontFamily="@font/poppinsregular"
-                        android:gravity="center|start"
-                        android:paddingLeft="20dp"
-                        android:text="Pulau Misool"
-                        android:textColor="@android:color/white"
-                        android:textSize="13dp" />
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/img_news2"
+                        android:layout_height="237dp" />
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_alignBottom="@+id/img_destination2"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/detail_destination_back">
 
-            </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv_tanggal2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBottom="@id/img_destination"
+                            android:layout_alignParentRight="true"
+                            android:fontFamily="@font/poppinsregular"
+                            android:gravity="center|start"
+                            android:paddingLeft="20dp"
+                            android:text="Pulau Misool"
+                            android:textColor="@android:color/white"
+                            android:textSize="13dp" />
 
-            <TextView
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="12sp"
+                    android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorTextHighlight"
+                    android:text="Baca Selengkapnya..."/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsmedium"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="12sp"
-                android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppinsmedium"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="10sp"
-                android:textColor="@color/colorTextHighlight"
-                android:text="Baca Selengkapnya..."/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/img_destination3"
+                        android:layout_width="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/img_news3"
+                        android:layout_height="237dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_alignBottom="@+id/img_destination3"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/detail_destination_back">
+
+                        <TextView
+                            android:id="@+id/tv_tanggal3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBottom="@id/img_destination"
+                            android:layout_alignParentRight="true"
+                            android:fontFamily="@font/poppinsregular"
+                            android:gravity="center|start"
+                            android:paddingLeft="20dp"
+                            android:text="Pulau Misool"
+                            android:textColor="@android:color/white"
+                            android:textSize="13dp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="12sp"
+                    android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorTextHighlight"
+                    android:text="Baca Selengkapnya..."/>
+
+            </LinearLayout>
+
+        </LinearLayout>-->
 
     </LinearLayout>
-
-</ScrollView>
