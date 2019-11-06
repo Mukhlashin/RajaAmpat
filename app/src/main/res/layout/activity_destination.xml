@@ -65,7 +65,7 @@
 
 <!--    <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"/>-->
+<!--        android:layout_height="wrap_content"/>-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -102,7 +102,7 @@
                         android:background="@drawable/detail_destination_back">
 
                         <TextView
-                            android:id="@+id/tv_tanggal"
+                            android:id="@+id/tv_judul"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_alignBottom="@id/img_destination"
@@ -119,6 +119,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/tv_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppinsmedium"

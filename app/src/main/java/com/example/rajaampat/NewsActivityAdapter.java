@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.rajaampat.model.News;
-import com.jakewharton.picasso.OkHttp3Downloader;
-import com.squareup.picasso.Picasso;
+import com.example.rajaampat.model.DataItem;
+import com.example.rajaampat.model.NewsDataItem;
 
 import java.util.List;
 
@@ -17,47 +17,43 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class NewsActivityAdapter extends RecyclerView.Adapter<NewsActivityAdapter.NewsActivityViewHolder> {
 
-    private List<News> list;
+    private List<NewsDataItem> list;
     private Context context;
 
-    public NewsActivityAdapter(Context context, List<News> list) {
+    public NewsActivityAdapter(Context context, List<NewsDataItem> list) {
         this.context = context;
         this.list = list;
     }
 
-    class NewsActivityViewHolder extends RecyclerView.ViewHolder {
-
-        public View v;
-        private ImageView pic;
-
-        public NewsActivityViewHolder(@NonNull View itemView) {
-            super(itemView);
-            v = itemView;
-
-            pic= v.findViewById(R.id.img_destination);
-        }
-    }
-
-
     @NonNull
     @Override
     public NewsActivityAdapter.NewsActivityViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.itemview_activity_news, parent, false);
-        return new NewsActivityViewHolder(view);
+        View v = LayoutInflater.from(context).inflate(R.layout.itemview_activity_news, null);
+        return new NewsActivityViewHolder(v, context);
     }
 
     @Override
     public void onBindViewHolder(@NonNull NewsActivityAdapter.NewsActivityViewHolder holder, int position) {
-        Picasso.Builder builder = new Picasso.Builder(context);
-        builder.downloader(new OkHttp3Downloader(context));
-        builder.build().load(list.get(position).getPicture())
-                .placeholder((R.drawable.ic_launcher_background))
-                .error(R.drawable.ic_launcher_background)
-                .into(holder.pic);
+        holder.info.setText(list.get(position).getDetilArtikel());
+        holder.judul.setText(list.get(position).getJudulArtikel());
+//        holder.img.setImageResource(Integer.parseInt(list.get(position).getPicture()));
     }
+
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
+    }
+
+    public class NewsActivityViewHolder extends RecyclerView.ViewHolder {
+        TextView judul, info;
+        ImageView img;
+        public NewsActivityViewHolder(@NonNull View itemView, Context context) {
+            super(itemView);
+
+            judul = itemView.findViewById(R.id.tv_judul_news);
+            info = itemView.findViewById(R.id.tv_info_news);
+            img = itemView.findViewById(R.id.img_news);
+
+        }
     }
 }

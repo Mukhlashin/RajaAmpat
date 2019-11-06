@@ -1,22 +1,19 @@
 package com.example.rajaampat.network;
 
 import com.example.rajaampat.model.DataItem;
-import com.example.rajaampat.model.News;
-import com.example.rajaampat.model.ResponseCurrency;
+import com.example.rajaampat.model.NewsDataItem;
+import com.example.rajaampat.model.ResponseNews;
 import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.model.ResponseUser;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
-import okhttp3.internal.http2.Header;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface BaseApiService {
@@ -53,8 +50,7 @@ public interface BaseApiService {
                                      @Field("email") String email,
                                      @Field("pwd") String password);
 
-    @GET("api/artikel")
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
-    Call<ResponseUser> newsRequest(@Query("id") String id_user);
-    Call<List<News>> getAllPhotos();
+    @GET("api/artikel")
+    Call<ResponseNews> NewsRequest();
 }

@@ -20,7 +20,6 @@ public class DestinationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_destination);
 
         imbBack = findViewById(R.id.imb_back);
-        btnDetail = findViewById(R.id.btn_detail);
 
         btnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
