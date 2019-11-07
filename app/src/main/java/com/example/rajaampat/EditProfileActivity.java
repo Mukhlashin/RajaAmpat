@@ -1,13 +1,17 @@
 package com.example.rajaampat;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Camera;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,19 +20,29 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.theartofdev.edmodo.cropper.CropImage;
+
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
+
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class EditProfileActivity extends AppCompatActivity implements EditProfileContract.View {
     EditProfilePresenter presenter;
     SharedPreferences userInformation;
+    SharedPreferences userInformation2;
+    SharedPreferences.Editor editorUserInformation;
 
     //Data user
     EditText dataNama, dataTlp, dataKtp, dataTglLahir, dataTmpLahir, dataAlamat;
@@ -37,12 +51,17 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
     Button btnUpdateProfile;
 
     //Toolbar
-    ImageView back;
+    ImageView back, imgProfile;
+
+    //Take photo
+    private static final int RC_CAMERA = 1;
+    static final int REQUEST_TAKE_PHOTO = 1;
+    static final int REQUEST_CHOOSE_PHOTO = 2;
+    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 100;
+    public static final String ALLOW_KEY = "ALLOWED";
+    public static final String CAMERA_PREF = "camera_pref";
 
     Dialog loading;
-
-    //take photo
-    static final int REQUEST_TAKE_PHOTO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +79,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         //setup
         presenter = new EditProfilePresenter(this);
         userInformation = getSharedPreferences("userInfo", MODE_PRIVATE);
+        userInformation2 = getSharedPreferences("com.example.rajaampat_preferences", MODE_PRIVATE);
 
         //setupdata
         //data umum
@@ -69,6 +89,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         dataTglLahir = findViewById(R.id.edt_tanggal_lahir);
         dataTmpLahir = findViewById(R.id.edt_tempat_lahir);
         dataAlamat = findViewById(R.id.edt_alamat);
+        imgProfile = findViewById(R.id.img_profile);
         setTextDataUmum();
 
         loading = new Dialog(this);
@@ -81,6 +102,14 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
             @Override
             public void onClick(View v) {
                 pushEditProfile();
+            }
+        });
+
+        imgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkCameraPermission();
+                cropImageAutoSelection();
             }
         });
 
@@ -177,7 +206,6 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         String pushTmpLahir = dataTmpLahir.getText().toString();
         String pushAlamat = dataAlamat.getText().toString();
 
-
         String[] dataUser = {pushNama, pushTlp, pushKtp, pushTglLahir, pushTmpLahir, pushAlamat};
 
         presenter.pushEditProfile(dataUser);
@@ -186,7 +214,12 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     @Override
     public void pushPhoto(File imageFile) {
-        presenter.pushPhoto(imageFile);
+        presenter.pushPhoto(userInformation2.getString("id", ""), imageFile);
+    }
+
+    @Override
+    public void someThingFailed(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -212,13 +245,90 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
             } catch (Exception e) {
                 Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
             }
+            pushPhoto(imageFile);
+        } else if (requestCode == REQUEST_CHOOSE_PHOTO && resultCode == RESULT_OK){
+
+            Uri uri = data.getData();
+
+            //try crop
+            CropImage.activity(uri).setAspectRatio(1,1).start(this);
+
         }
 
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if(resultCode == RESULT_OK ){
+                Uri imageUri = result.getUri();
+                try {
+                    Bitmap bitmap = (Bitmap) MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
 
+                    File filesDir = getApplicationContext().getFilesDir();
+                    File imageFile = new File(filesDir, "image" + ".jpg");
+
+                    OutputStream os;
+                    os = new FileOutputStream(imageFile);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+                    os.flush();
+                    os.close();
+
+                    pushPhoto(imageFile);
+
+                } catch (IOException e) {
+                    Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+    public void cropImageAutoSelection() {
+        CropImage.activity()
+                .setAspectRatio(2,3)
+                .start(this);
+    }
+
+    @AfterPermissionGranted(RC_CAMERA)
+    private void checkCameraPermission() {
+        String perm = Manifest.permission.CAMERA;
+        if (EasyPermissions.hasPermissions(this, perm)) {
+        } else {
+            EasyPermissions.requestPermissions(this, "Butuh permission camera", RC_CAMERA, perm);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
     @Override
     public void recreate() {
         super.recreate();
+    }
+
+    @Override
+    public void getPicFromCamera() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+        }
+    }
+
+    @Override
+    public void getPicFromGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_CHOOSE_PHOTO);
+    }
+
+    @Override
+    public void uploadPhotoSucces(String photo) {
+        editorUserInformation
+                .putString("picture", "https://raja-ampat.dfiserver.com/api/users/id/" + photo)
+                .commit();
+        recreate();
     }
 }

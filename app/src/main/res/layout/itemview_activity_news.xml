@@ -11,9 +11,9 @@
         <ImageView
             android:id="@+id/img_news"
             android:layout_width="match_parent"
-            android:scaleType="centerCrop"
+            android:layout_height="237dp"
             android:background="@drawable/misool_island"
-            android:layout_height="237dp" />
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,6 +46,7 @@
         android:fontFamily="@font/poppinsmedium"
         android:layout_marginHorizontal="20dp"
         android:textSize="12sp"
+        android:maxLines="4"
         android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
 
     <TextView

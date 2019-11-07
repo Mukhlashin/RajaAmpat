@@ -1,14 +1,18 @@
 package com.example.rajaampat;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rajaampat.model.DataItem;
 import com.example.rajaampat.model.NewsDataItem;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,6 +40,9 @@ public class NewsActivityAdapter extends RecyclerView.Adapter<NewsActivityAdapte
     public void onBindViewHolder(@NonNull NewsActivityAdapter.NewsActivityViewHolder holder, int position) {
         holder.info.setText(list.get(position).getDetilArtikel());
         holder.judul.setText(list.get(position).getJudulArtikel());
+        Picasso.get()
+                .load(list.get(position).getPicture())
+                .into(holder.img);
 //        holder.img.setImageResource(Integer.parseInt(list.get(position).getPicture()));
     }
 
@@ -53,7 +60,6 @@ public class NewsActivityAdapter extends RecyclerView.Adapter<NewsActivityAdapte
             judul = itemView.findViewById(R.id.tv_judul_news);
             info = itemView.findViewById(R.id.tv_info_news);
             img = itemView.findViewById(R.id.img_news);
-
         }
     }
 }

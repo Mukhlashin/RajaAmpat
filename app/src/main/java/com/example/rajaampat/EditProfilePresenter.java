@@ -65,10 +65,11 @@ public class EditProfilePresenter implements EditProfileContract.Presenter {
     }
 
     @Override
-    public void pushPhoto(File file) {
+    public void pushPhoto(String userId, File file) {
         AndroidNetworking.upload("https://raja-ampat.dfiserver.com/api/users/id/")
                 .setPriority(Priority.HIGH)
                 .addMultipartFile("pic", file)
+                .addMultipartParameter("user_id", userId)
                 .build()
                 .setUploadProgressListener(new UploadProgressListener() {
                     @Override
@@ -78,12 +79,24 @@ public class EditProfilePresenter implements EditProfileContract.Presenter {
                 }).getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
-
+                if(response!=null){
+                    try {
+                        if(response.getString("error").equals("false")){
+                            String pic = response.getJSONObject("data").getString("picture");
+                            view.uploadPhotoSucces(pic);
+                        }else {
+                            view.someThingFailed(response.getString("msg"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        view.someThingFailed(e.getLocalizedMessage());
+                    }
+                }
             }
 
             @Override
             public void onError(ANError anError) {
-
+                view.someThingFailed(anError.getLocalizedMessage());
             }
         });
     }

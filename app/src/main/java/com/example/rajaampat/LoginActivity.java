@@ -122,7 +122,6 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.edt_passwordnye);
         btnLogin = findViewById(R.id.btn_login);
 
-
     }
 
     public void goToRegister(View view) {
