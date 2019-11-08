@@ -165,7 +165,7 @@ public class HomeActivity extends AppCompatActivity {
                         } else {
                             ResponseSingleUser responseSingleUser = response.body();
                             dataItems = responseSingleUser.getData();
-                            editor.putString("nama", dataItems.get(0).getNama());
+                            editor.putString("user_name", dataItems.get(0).getNama());
                             editor.putString("alamat", dataItems.get(0).getAlamat());
                             editor.putString("no_tlp", dataItems.get(0).getNoTlp());
                             editor.putString("no_ktp", dataItems.get(0).getNoKtp());

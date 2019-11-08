@@ -124,7 +124,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         Calendar newDate = Calendar.getInstance();
                         newDate.set(year, month, dayOfMonth);
-                        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
                         dataTglLahir.setText(dateFormatter.format(newDate.getTime()).toString());
                     }
                 },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
