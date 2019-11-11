@@ -1,4 +1,4 @@
-package com.example.rajaampat;
+package com.example.rajaampat.reportActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -9,6 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.rajaampat.ContactActivity;
+import com.example.rajaampat.R;
 
 public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 

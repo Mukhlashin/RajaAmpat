@@ -86,9 +86,9 @@ public class CurrencyActivity extends AppCompatActivity {
 
     private void convertCurrency() {
         int USD = Integer.parseInt(edtUSD.getText().toString());
-        int rate = Integer.parseInt(myPrefs.getString("rate", "0"));
+        int rate = Integer.parseInt(myPrefs.getString("rate", ""));
         if(rate != 0){
-            edtIDR.setText(String.valueOf(rate * USD));
+            edtIDR.setText(String.valueOf(USD * rate));
             Toast.makeText(CurrencyActivity.this, "Timestamp = " + myPrefs.getString("timestamp", "Tidak dapat timestamp"), Toast.LENGTH_SHORT).show();
         }
     }

@@ -44,9 +44,12 @@ public interface BaseApiService {
     @FormUrlEncoded
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @POST("api/users/update")
-    Call<ResponseUser> updateRequest(@Field("api_auth_key") String apiKey,
+    Call<ResponseUser> updateRequest(@Field("id") String userId,
                                      @Field("user_name") String user_name,
-                                     @Field("nama") String nama,
+                                     @Field("no_ktp") String noKTP,
+                                     @Field("tgl_lahir") String TanggalLahir,
+                                     @Field("tempat_lahir") String tempatLahir,
+                                     @Field("alamat") String alamat,
                                      @Field("email") String email,
                                      @Field("pwd") String password);
 

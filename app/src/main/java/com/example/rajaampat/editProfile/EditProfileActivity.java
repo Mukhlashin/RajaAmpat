@@ -1,4 +1,4 @@
-package com.example.rajaampat;
+package com.example.rajaampat.editProfile;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.Camera;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -24,6 +23,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.androidnetworking.AndroidNetworking;
+import com.example.rajaampat.HomeActivity;
+import com.example.rajaampat.R;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
@@ -32,7 +34,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
@@ -46,6 +47,9 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     //Data user
     EditText dataNama, dataTlp, dataKtp, dataTglLahir, dataTmpLahir, dataAlamat;
+
+    //File gambar
+    File file;
 
     //button
     Button btnUpdateProfile;
@@ -105,11 +109,17 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
             }
         });
 
+        String[] dataUser = {dataNama.getText().toString(), dataKtp.getText().toString(), dataAlamat.getText().toString(), dataTglLahir.getText().toString(), dataTmpLahir.getText().toString(), dataTlp.getText().toString()};
+
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkCameraPermission();
-                cropImageAutoSelection();
+                if (dataTglLahir.getText().toString().equals("")) {
+                    Toast.makeText(EditProfileActivity.this, "Isi data Terlebih dahulu sebelum update Foto Profil", Toast.LENGTH_SHORT).show();
+                } else {
+                    checkCameraPermission();
+                    cropImageAutoSelection();
+                }
             }
         });
 
@@ -145,12 +155,12 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     @Override
     public void setTextDataUmum() {
-        String strNama, strTlp, strKtp, strTglLahir, strTmpLahir, strAlamat, strKecamatan, strKelurahan;
+        String strNama, strTlp, strKtp, strTglLahir, strTmpLahir, strAlamat;
 
-        strNama = userInformation.getString("user_name", "");
+        strNama = userInformation2.getString("user_name", "");
         strTlp = userInformation.getString("no_tlp", "");
         strKtp = userInformation.getString("no_ktp", "");
-        strTglLahir = userInformation.getString("tgl_lahir", "");
+        strTglLahir = userInformation.getString("tanggal_lahir", "");
         strTmpLahir = userInformation.getString("tempat_lahir", "");
         strAlamat = userInformation.getString("alamat", "");
 
@@ -186,35 +196,46 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
     }
 
     @Override
-    public void updateSucces() {
-        onBackPressed();
-        Toast.makeText(EditProfileActivity.this, "Sukses mengupdate profil :)", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void updateFailed(String message) {
-        Toast.makeText(this, "Gagal :'(", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     public void pushEditProfile() {
 
+        String pushId = userInformation2.getString("id", "");
         String pushNama = dataNama.getText().toString();
         String pushTlp = dataTlp.getText().toString();
         String pushKtp = dataKtp.getText().toString();
         String pushTglLahir = dataTglLahir.getText().toString();
         String pushTmpLahir = dataTmpLahir.getText().toString();
         String pushAlamat = dataAlamat.getText().toString();
+        String pushEmail = userInformation2.getString("email", "");
+        String pushPassword = userInformation2.getString("pass", "");
 
-        String[] dataUser = {pushNama, pushTlp, pushKtp, pushTglLahir, pushTmpLahir, pushAlamat};
+        File fileGambar;
+        if(file != null){
+            fileGambar = file;
+            EditProfilModel model = new EditProfilModel();
+            model.setId(pushId);
+            model.setNama(pushNama);
+            model.setTelpon(pushTlp);
+            model.setKtp(pushKtp);
+            model.setTanggalLahir(pushTglLahir);
+            model.setTempatLahir(pushTmpLahir);
+            model.setAlamat(pushAlamat);
+            model.setEmail(pushEmail);
+            model.setPasspord(pushPassword);
+            model.setFileGambar(fileGambar);
 
-        presenter.pushEditProfile(dataUser);
+            presenter.pushAll(model);
+        }else {
+            Toast.makeText(this, "gambar masih kosong", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
     }
 
     @Override
-    public void pushPhoto(File imageFile) {
-        presenter.pushPhoto(userInformation2.getString("id", ""), imageFile);
+    public void setFotoProfile() {
+        AndroidNetworking.get("https://raja-ampat.dfiserver.com/api/users")
+                .addHeaders("api_auth_key", "s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
+                .addQueryParameter("id", userInformation2.getString("id", ""));
     }
 
     @Override
@@ -240,12 +261,12 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
                 os.flush();
                 os.close();
-                pushPhoto(imageFile);
+                file = imageFile;
+                imgProfile.setImageBitmap(bitmap);
 
             } catch (Exception e) {
                 Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
             }
-            pushPhoto(imageFile);
         } else if (requestCode == REQUEST_CHOOSE_PHOTO && resultCode == RESULT_OK){
 
             Uri uri = data.getData();
@@ -270,8 +291,8 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
                     os.flush();
                     os.close();
-
-                    pushPhoto(imageFile);
+                    this.file = imageFile;
+                    imgProfile.setImageBitmap(bitmap);
 
                 } catch (IOException e) {
                     Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
@@ -326,9 +347,10 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     @Override
     public void uploadPhotoSucces(String photo) {
-        editorUserInformation
-                .putString("picture", "https://raja-ampat.dfiserver.com/api/users/id/" + photo)
-                .commit();
-        recreate();
+//        editorUserInformation
+//                .putString("picture", "https://raja-ampat.dfiserver.com/api/users/id/" + photo)
+//                .commit();
+        Toast.makeText(this, "Berhasil", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

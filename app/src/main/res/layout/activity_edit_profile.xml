@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context=".EditProfileActivity"
+    tools:context=".editProfile.EditProfileActivity"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -59,7 +59,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="25dp"
-                android:background="@drawable/ic_profil" />
+                android:src="@drawable/ic_profil" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -192,53 +192,13 @@
                 android:textColor="#000"
                 android:textSize="18dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="815dp"
-                android:gravity="left|center"
-                android:text="Kecamatan"
-                android:textColor="#000"
-                android:textSize="14dp" />
-
-            <EditText
-                android:id="@+id/edt_kecamatan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="840dp"
-                android:layout_marginRight="25dp"
-                android:textColor="#000"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="915dp"
-                android:gravity="left|center"
-                android:text="Kelurahan"
-                android:textColor="#000"
-                android:textSize="14dp" />
-
-            <EditText
-                android:id="@+id/edt_kelurahan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="940dp"
-                android:layout_marginRight="25dp"
-                android:textColor="#000"
-                android:textSize="18dp" />
-
             <Button
                 android:id="@+id/btn_simpanedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="1015dp"
+                android:layout_marginTop="830dp"
                 android:layout_marginRight="25dp"
                 android:background="@drawable/button_background_yellow"
                 android:text="Simpan Perubahan"

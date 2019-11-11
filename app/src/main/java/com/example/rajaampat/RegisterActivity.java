@@ -34,9 +34,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText etNama;
-    EditText etEmail;
-    EditText etPassword;
+    EditText etNama, etEmail, etPassword;
     Button btnRegister;
     ProgressDialog loading;
 
@@ -93,19 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Log.i("debug", "onResponse: BERHASIL");
                                 Toast.makeText(mContext, "Berhasil Register Akun", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
-                                goToHome();
-                                try {
-                                    JSONObject jsonRESULTS = new JSONObject(response.body().toString());
-                                    if (jsonRESULTS.getString("is_error").equals("false")){
-                                        Toast.makeText(mContext, "BERHASIL REGISTRASI", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(mContext, LoginActivity.class));
-                                    } else {
-                                        String error_message = jsonRESULTS.getString("error_msg");
-                                        Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+                                goToLogin();
                             } else {
                                 Log.i("debug", "onResponse: GA BERHASIL");
                                 Toast.makeText(mContext,  "Gagal Register Akun, Coba lagi", Toast.LENGTH_SHORT).show();
@@ -121,8 +107,8 @@ public class RegisterActivity extends AppCompatActivity {
                     });
     }
 
-    private void goToHome() {
-        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-        startActivity(intent);
+    private void goToLogin() {
+        Intent goToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(goToLogin);
     }
 }
