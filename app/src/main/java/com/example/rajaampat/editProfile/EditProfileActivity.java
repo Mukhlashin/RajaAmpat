@@ -24,9 +24,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.bumptech.glide.Glide;
 import com.example.rajaampat.HomeActivity;
 import com.example.rajaampat.R;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -84,6 +92,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         presenter = new EditProfilePresenter(this);
         userInformation = getSharedPreferences("userInfo", MODE_PRIVATE);
         userInformation2 = getSharedPreferences("com.example.rajaampat_preferences", MODE_PRIVATE);
+        editorUserInformation = getSharedPreferences("com.example.rajaampat_preferences", (MODE_PRIVATE)).edit();
 
         //setupdata
         //data umum
@@ -95,6 +104,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         dataAlamat = findViewById(R.id.edt_alamat);
         imgProfile = findViewById(R.id.img_profile);
         setTextDataUmum();
+        setFotoProfile();
 
         loading = new Dialog(this);
         loading.setContentView(R.layout.loading_layout);
@@ -134,7 +144,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         Calendar newDate = Calendar.getInstance();
                         newDate.set(year, month, dayOfMonth);
-                        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+                        SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
                         dataTglLahir.setText(dateFormatter.format(newDate.getTime()).toString());
                     }
                 },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
@@ -197,7 +207,6 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     @Override
     public void pushEditProfile() {
-
         String pushId = userInformation2.getString("id", "");
         String pushNama = dataNama.getText().toString();
         String pushTlp = dataTlp.getText().toString();
@@ -233,9 +242,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     @Override
     public void setFotoProfile() {
-        AndroidNetworking.get("https://raja-ampat.dfiserver.com/api/users")
-                .addHeaders("api_auth_key", "s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
-                .addQueryParameter("id", userInformation2.getString("id", ""));
+            Glide.with(this).load(userInformation.getString("picture", "")).into(imgProfile);
     }
 
     @Override
@@ -285,6 +292,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
                     File filesDir = getApplicationContext().getFilesDir();
                     File imageFile = new File(filesDir, "image" + ".jpg");
+                    editorUserInformation.putString("picture", String.valueOf(imageFile));
 
                     OutputStream os;
                     os = new FileOutputStream(imageFile);

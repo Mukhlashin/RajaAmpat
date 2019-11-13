@@ -45,6 +45,7 @@ public class EditProfilePresenter implements EditProfileContract.Presenter {
                 .addMultipartParameter("user_name", model.getNama())
                 .addMultipartParameter("no_ktp", model.getKtp())
                 .addMultipartParameter("alamat", model.getAlamat())
+                .addMultipartParameter("email", model.getEmail())
                 .addMultipartParameter("tgl_lahir", model.getTanggalLahir())
                 .addMultipartParameter("tempat_lahir", model.getTempatLahir())
                 .addMultipartParameter("no_tlp", model.getTelpon())

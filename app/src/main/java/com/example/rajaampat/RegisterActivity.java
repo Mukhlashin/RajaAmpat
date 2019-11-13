@@ -41,6 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
     Context mContext;
     BaseApiService mApiService;
 
+    String defaultTglLahir = "00/00/0000";
+
     public String apiKey = "s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc";
 
     @Override
@@ -83,7 +85,8 @@ public class RegisterActivity extends AppCompatActivity {
                     apiKey,
                     etNama.getText().toString(),
                     etEmail.getText().toString(),
-                    etPassword.getText().toString())
+                    etPassword.getText().toString(),
+                    defaultTglLahir)
                     .enqueue(new Callback<ResponseUser>() {
                         @Override
                         public void onResponse(Call<ResponseUser> call, Response<ResponseUser> response) {

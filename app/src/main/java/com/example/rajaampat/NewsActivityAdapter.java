@@ -1,6 +1,7 @@
 package com.example.rajaampat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,13 +38,22 @@ public class NewsActivityAdapter extends RecyclerView.Adapter<NewsActivityAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsActivityAdapter.NewsActivityViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NewsActivityAdapter.NewsActivityViewHolder holder, final int position) {
         holder.info.setText(list.get(position).getDetilArtikel());
         holder.judul.setText(list.get(position).getJudulArtikel());
-        Picasso.get()
-                .load(list.get(position).getPicture())
-                .into(holder.img);
+        Picasso.get().load(list.get(position).getPicture()).into(holder.img);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentData = new Intent(context, DetailNewsActivity.class);
+                intentData.putExtra("detailArtikel", list.get(position).getDetilArtikel());
+                intentData.putExtra("judulArtikel", list.get(position).getJudulArtikel());
+                intentData.putExtra("pictureArtikel", list.get(position).getPicture());
+                context.startActivity(intentData);
+            }
+        });
 //        holder.img.setImageResource(Integer.parseInt(list.get(position).getPicture()));
+
     }
 
     @Override

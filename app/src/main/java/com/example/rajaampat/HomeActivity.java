@@ -171,6 +171,9 @@ public class HomeActivity extends AppCompatActivity {
                             editor.putString("no_ktp", dataItems.get(0).getNoKtp());
                             editor.putString("tempat_lahir", dataItems.get(0).getTempatLahir());
                             editor.putString("tanggal_lahir", dataItems.get(0).getTglLahir());
+                            if (response.body().getData().get(0).getPicture() != null){
+                                editor.putString("picture", String.valueOf(dataItems.get(0).getPicture()));
+                            }
                             editor.apply();
                         }
 //                        ooooooohhh. gttuu toh

@@ -65,37 +65,21 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/img"
+                    android:id="@+id/img_detail_news"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/img_news1"
                     android:scaleType="centerCrop"/>
-
-                <!--            <androidx.viewpager.widget.ViewPager-->
-                <!--                android:id="@+id/vpg_detail_report"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="match_parent"-->
-                <!--                android:background="@drawable/ic_launcher_background"/>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:background="@drawable/detail_destination_back"
                     android:gravity="center_vertical"
-                    android:layout_alignBottom="@+id/img">
+                    android:layout_alignBottom="@+id/img_detail_news">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:gravity="left|center"
-                        android:text="Pelapor : Narto Syaifuden"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp" />
-
-                    <TextView
+                        android:id="@+id/tv_judul_detail_news"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -111,6 +95,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_detail_news"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"

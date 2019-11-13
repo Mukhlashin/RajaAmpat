@@ -139,7 +139,7 @@ public class DataItem{
 	@Override
  	public String toString(){
 		return 
-			"DataItem{" + 
+			"ReportDataItem{" +
 			"device_name = '" + deviceName + '\'' + 
 			",nama = '" + nama + '\'' + 
 			",tempat_lahir = '" + tempatLahir + '\'' + 

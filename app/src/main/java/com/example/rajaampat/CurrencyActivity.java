@@ -36,10 +36,41 @@ public class CurrencyActivity extends AppCompatActivity {
         edtUSD = findViewById(R.id.edt_usd);
         edtIDR = findViewById(R.id.edt_idr);
 
-        edtUSD.setText("0");
-
         myPrefs = getSharedPreferences("currency", MODE_PRIVATE);
         editor = getSharedPreferences("currency", MODE_PRIVATE).edit();
+
+        AndroidNetworking.post("https://www.freeforexapi.com/api/live")
+                .addQueryParameter("pairs", "USDIDR")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            if (response != null) {
+                                String rate = response.getJSONObject("rates").getJSONObject("USDIDR").getString("rate");
+                                String timeStamp = response.getJSONObject("rates").getJSONObject("USDIDR").getString("timestamp");
+                                Log.d("responseRate", rate);
+                                Log.d("responseTimestamp", timeStamp);
+                                editor.putString("rate", rate);
+                                editor.putString("timestamp", timeStamp);
+                                editor.apply();
+                            } else {
+                                Log.d("error", "Respon gak dapat");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                    }
+                });
+
+        edtIDR.setText(myPrefs.getString("rate", ""));
+
+        edtUSD.setText("1");
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,42 +85,14 @@ public class CurrencyActivity extends AppCompatActivity {
                 convertCurrency();
             }
         });
-
-        AndroidNetworking.post("https://www.freeforexapi.com/api/live")
-                .addQueryParameter("pairs", "USDIDR")
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {if (response != null){
-                            String rate = response.getJSONObject("rates").getJSONObject("USDIDR").getString("rate");
-                            String timeStamp = response.getJSONObject("rates").getJSONObject("USDIDR").getString("timestamp");
-                            Log.d("responseRate", rate);
-                            Log.d("responseTimestamp", timeStamp);
-                            editor.putString("rate", rate);
-                            editor.putString("timestamp", timeStamp);
-                            editor.apply();
-                        } else {
-                            Log.d("error", "Respon gak dapat");
-                        }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-
-                    }
-                });
     }
 
     private void convertCurrency() {
         int USD = Integer.parseInt(edtUSD.getText().toString());
         int rate = Integer.parseInt(myPrefs.getString("rate", ""));
-        if(rate != 0){
-            edtIDR.setText(String.valueOf(USD * rate));
-            Toast.makeText(CurrencyActivity.this, "Timestamp = " + myPrefs.getString("timestamp", "Tidak dapat timestamp"), Toast.LENGTH_SHORT).show();
+            if (rate != 0) {
+                edtIDR.setText("" + USD * rate);
+                Toast.makeText(CurrencyActivity.this, "Timestamp = " + myPrefs.getString("timestamp", "Tidak dapat timestamp"), Toast.LENGTH_SHORT).show();
+            }
         }
     }
-}

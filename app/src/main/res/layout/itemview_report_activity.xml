@@ -25,6 +25,7 @@
             android:layout_alignBottom="@+id/img_report">
 
             <TextView
+                android:id="@+id/tv_pelapor"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
@@ -36,6 +37,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_judul_report"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -57,7 +59,8 @@
         android:layout_marginHorizontal="20dp"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_status"
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:layout_marginRight="10dp"
@@ -65,6 +68,7 @@
             android:layout_gravity="center"/>
 
         <TextView
+            android:id="@+id/tv_status_report"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Status"
@@ -81,6 +85,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_pengaduan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Jalan Rusak Dan Berlubang, Lokasi Di Jalan Merdeka KM 02 Raja Ampat Sangat Membahayakan Bagi Pengguna Jalan "
@@ -115,6 +120,7 @@
                 android:fontFamily="@font/poppinsmedium"/>
 
             <TextView
+                android:id="@+id/tv_respon_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jalan yang rusak di jalan Merdeka KM 02 akan segera diperbaiki oleh Dinas Pekerjaan Umum"

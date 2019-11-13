@@ -59,6 +59,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="25dp"
+                android:background="@drawable/ic_profil"
                 android:src="@drawable/ic_profil" />
 
             <TextView

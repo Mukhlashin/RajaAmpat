@@ -8,12 +8,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rajaampat.ContactActivity;
 import com.example.rajaampat.R;
 
-public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, ReportInterface.View {
 
     ImageButton btnBack, btnContact, btnMore;
 
@@ -77,5 +78,15 @@ public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMen
         }
 
         return true;
+    }
+
+    @Override
+    public void setDataReport() {
+
+    }
+
+    @Override
+    public void addNewReport() {
+
     }
 }

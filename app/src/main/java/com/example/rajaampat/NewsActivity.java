@@ -8,6 +8,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,7 +60,7 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     private void getDataNews() {
-        mApiService.NewsRequest()
+        mApiService.newsRequest()
                 .enqueue(new Callback<ResponseNews>() {
                     @Override
                     public void onResponse(Call<ResponseNews> call, Response<ResponseNews> response) {

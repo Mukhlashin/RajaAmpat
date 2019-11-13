@@ -5,6 +5,7 @@ import com.example.rajaampat.model.NewsDataItem;
 import com.example.rajaampat.model.ResponseNews;
 import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.model.ResponseUser;
+import com.example.rajaampat.model.modelReport.ResponseReport;
 
 import java.util.List;
 
@@ -38,7 +39,8 @@ public interface BaseApiService {
     Call<ResponseUser> registerRequest(@Field("api_auth_key") String apiKey,
                                        @Field("user_name") String nama,
                                        @Field("email") String email,
-                                       @Field("pwd") String password);
+                                       @Field("pwd") String password,
+                                       @Field("tgl_lahir") String tglLahir);
 
     // Fungsi ini untuk memanggil API https://raja-ampat.dfiserver.com/api/users/update.php
     @FormUrlEncoded
@@ -54,6 +56,10 @@ public interface BaseApiService {
                                      @Field("pwd") String password);
 
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
+    @GET("api/pengaduan")
+    Call<ResponseReport> reportRequest();
+
+    @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @GET("api/artikel")
-    Call<ResponseNews> NewsRequest();
+    Call<ResponseNews> newsRequest();
 }
