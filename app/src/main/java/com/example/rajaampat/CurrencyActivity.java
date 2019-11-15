@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -24,7 +25,8 @@ public class CurrencyActivity extends AppCompatActivity {
     Button btnConvert;
     SharedPreferences myPrefs;
     SharedPreferences.Editor editor;
-    EditText edtUSD, edtIDR;
+    EditText edtUSD;
+    TextView tvIDR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class CurrencyActivity extends AppCompatActivity {
         btnConvert = findViewById(R.id.btn_convert);
         btnBack = findViewById(R.id.btn_back);
         edtUSD = findViewById(R.id.edt_usd);
-        edtIDR = findViewById(R.id.edt_idr);
+        tvIDR = findViewById(R.id.tv_idr);
 
         myPrefs = getSharedPreferences("currency", MODE_PRIVATE);
         editor = getSharedPreferences("currency", MODE_PRIVATE).edit();
@@ -68,7 +70,7 @@ public class CurrencyActivity extends AppCompatActivity {
                     }
                 });
 
-        edtIDR.setText(myPrefs.getString("rate", ""));
+        tvIDR.setText(myPrefs.getString("rate", ""));
 
         edtUSD.setText("1");
 
@@ -91,7 +93,7 @@ public class CurrencyActivity extends AppCompatActivity {
         int USD = Integer.parseInt(edtUSD.getText().toString());
         int rate = Integer.parseInt(myPrefs.getString("rate", ""));
             if (rate != 0) {
-                edtIDR.setText("" + USD * rate);
+                tvIDR.setText("" + USD * rate);
                 Toast.makeText(CurrencyActivity.this, "Timestamp = " + myPrefs.getString("timestamp", "Tidak dapat timestamp"), Toast.LENGTH_SHORT).show();
             }
         }

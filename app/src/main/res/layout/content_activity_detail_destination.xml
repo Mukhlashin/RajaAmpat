@@ -4,60 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_travel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-<!--            <androidx.viewpager.widget.ViewPager-->
-<!--                android:id="@+id/vpg_detail_destination"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="435dp"/>-->
-
-            <ImageView
-                android:id="@+id/img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/misool_island"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/detail_destination_back"
-                android:layout_alignBottom="@+id/img">
-
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Pulau Misool"
-                    android:gravity="center|start"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:paddingLeft="20dp"/>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
-            android:layout_marginHorizontal="20dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:textSize="13sp"
-            android:text="Ke Misool, berarti kamu sudah menyentuh Raja Ampat. Ya, dari sini perjalanan dan petualangan Indonesia Timur kamu bisa dimulai.
-\n
-\n
-Selami setiap relung perairan di salah satu dari empat pulau besar di Raja Ampat ini dan kamu akan mendapati pemandangan, yang tidak hanya luar biasa, tapi juga istimewa. Sulit menggambarkan salah satu destinasi wisata di Raja Ampat yang paling hits ini secara pasti, jadi sebaiknya kamu menuju langsung ke lokasi!
-\n\n" />
-
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

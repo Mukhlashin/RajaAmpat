@@ -10,8 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        tools:ignore="MissingConstraints">
+        android:background="@color/colorPrimary">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
@@ -51,6 +50,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/itemview_hotel_activity"/>
+    <include layout="@layout/content_activity_hotel"/>
 
 </LinearLayout>
