@@ -17,6 +17,7 @@ import com.example.rajaampat.model.DataItem;
 import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.network.BaseApiService;
 import com.example.rajaampat.network.UtilsApi;
+import com.example.rajaampat.newsActivity.NewsActivity;
 import com.example.rajaampat.reportActivity.ReportActivity;
 
 import java.util.List;

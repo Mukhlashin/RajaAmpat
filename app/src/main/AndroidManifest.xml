@@ -14,10 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".DetailNewsActivity" />
-        <activity android:name=".NewsActivity" />
+        <activity android:name=".reportActivity.SendReportActivity"></activity>
+        <activity android:name=".newsActivity.DetailNewsActivity" />
+        <activity android:name=".newsActivity.NewsActivity" />
         <activity android:name=".CurrencyActivity" />
-        <activity android:name=".DetailReportActivity" />
+        <activity android:name=".reportActivity.DetailReportActivity" />
         <activity android:name=".DetailDestinationActivity" />
         <activity android:name=".TransportActivity" />
         <activity android:name=".HotelActivity" />
@@ -30,20 +31,19 @@
             android:noHistory="true" />
         <activity
             android:name=".LoginActivity"
-            android:noHistory="true">
-        </activity>
+            android:noHistory="true"></activity>
         <activity android:name=".SplashScreen2" />
         <activity android:name=".SplashScreen3" />
         <activity
             android:name=".SplashScreen"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

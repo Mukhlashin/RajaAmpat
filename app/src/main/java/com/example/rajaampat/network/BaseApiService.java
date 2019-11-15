@@ -7,6 +7,7 @@ import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.model.ResponseUser;
 import com.example.rajaampat.model.modelReport.ResponseReport;
 
+import java.io.File;
 import java.util.List;
 
 import retrofit2.Call;
@@ -58,6 +59,14 @@ public interface BaseApiService {
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @GET("api/pengaduan")
     Call<ResponseReport> reportRequest();
+
+    @Headers("api_auth_key : s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
+    @POST("api/pengaduan/create")
+    Call<ResponseReport> createReportRequest(@Field("judul_pengaduan") String judulPengaduan,
+                                             @Field("ket_pengaduan") String keteranganPengaduan,
+                                             @Field("pelapor") String pelapor,
+                                             @Field("picture") File picture,
+                                             @Field("status") String status);
 
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @GET("api/artikel")

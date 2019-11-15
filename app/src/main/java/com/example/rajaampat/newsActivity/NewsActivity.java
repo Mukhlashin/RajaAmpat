@@ -1,4 +1,4 @@
-package com.example.rajaampat;
+package com.example.rajaampat.newsActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,14 +8,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.rajaampat.model.DataItem;
+import com.example.rajaampat.HomeActivity;
+import com.example.rajaampat.R;
 import com.example.rajaampat.model.NewsDataItem;
 import com.example.rajaampat.model.ResponseNews;
 import com.example.rajaampat.network.BaseApiService;
