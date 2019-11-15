@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".newsActivity.NewsActivity"
-    android:orientation="vertical">
+    tools:context=".reportActivity.SendReportActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayoutCur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/petunjuk">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
@@ -38,7 +39,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:text="News"
+                    android:text="Make a Report"
                     android:textColor="@android:color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +50,5 @@
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_activity_news"/>
 
 </LinearLayout>

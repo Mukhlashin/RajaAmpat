@@ -62,8 +62,6 @@ public class EditProfilePresenter implements EditProfileContract.Presenter {
                         view.uploadPhotoSucces("Photo selesai di upload!");
                         Log.d("UploadFoto", "BERHASIL");
                         Log.d("UploadFoto", response.toString());
-
-
                     }
 
                     @Override

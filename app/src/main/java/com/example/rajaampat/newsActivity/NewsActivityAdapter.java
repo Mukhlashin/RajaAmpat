@@ -1,18 +1,15 @@
-package com.example.rajaampat;
+package com.example.rajaampat.newsActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.rajaampat.model.DataItem;
+import com.example.rajaampat.R;
 import com.example.rajaampat.model.NewsDataItem;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -52,7 +49,6 @@ public class NewsActivityAdapter extends RecyclerView.Adapter<NewsActivityAdapte
                 context.startActivity(intentData);
             }
         });
-//        holder.img.setImageResource(Integer.parseInt(list.get(position).getPicture()));
 
     }
 

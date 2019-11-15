@@ -1,21 +1,16 @@
-package com.example.rajaampat;
+package com.example.rajaampat.newsActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.example.rajaampat.model.NewsDataItem;
+import com.example.rajaampat.R;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 public class DetailNewsActivity extends AppCompatActivity {
 

@@ -104,7 +104,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         dataAlamat = findViewById(R.id.edt_alamat);
         imgProfile = findViewById(R.id.img_profile);
         setTextDataUmum();
-        setFotoProfile();
+//        setFotoProfile();
 
         loading = new Dialog(this);
         loading.setContentView(R.layout.loading_layout);
@@ -151,9 +151,6 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
                 datePickerDialog.show();
             }
         });
-
-
-
     }
 
     @Override
@@ -240,10 +237,10 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     }
 
-    @Override
-    public void setFotoProfile() {
-            Glide.with(this).load(userInformation.getString("picture", "")).into(imgProfile);
-    }
+//    @Override
+//    public void setFotoProfile() {
+//            Glide.with(this).load(userInformation.getString("picture", "")).into(imgProfile);
+//    }
 
     @Override
     public void someThingFailed(String msg) {
@@ -313,7 +310,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     public void cropImageAutoSelection() {
         CropImage.activity()
-                .setAspectRatio(2,3)
+                .setAspectRatio(2,2)
                 .start(this);
     }
 

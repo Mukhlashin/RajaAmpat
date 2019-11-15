@@ -6,7 +6,7 @@ public interface EditProfileContract {
     interface View{
         void setTextDataUmum();
         void pushEditProfile();
-        void setFotoProfile();
+//        void setFotoProfile();
         void getPicFromCamera();
         void getPicFromGallery();
         void uploadPhotoSucces(String photo);

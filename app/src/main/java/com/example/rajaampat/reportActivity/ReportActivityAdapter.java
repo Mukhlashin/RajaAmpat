@@ -12,18 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.rajaampat.DetailNewsActivity;
 import com.example.rajaampat.R;
 import com.example.rajaampat.model.modelReport.ReportDataItem;
-import com.example.rajaampat.model.modelReport.ResponseReport;
-import com.example.rajaampat.network.BaseApiService;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ReportActivityAdapter extends RecyclerView.Adapter<ReportActivityAdapter.ReportViewHolder> {
 
@@ -43,23 +36,30 @@ public class ReportActivityAdapter extends RecyclerView.Adapter<ReportActivityAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ReportViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ReportViewHolder holder, final int position) {
         holder.tvJudul.setText(list.get(position).getJudulPengaduan());
         holder.tvStatus.setText(list.get(position).getStatus());
-        holder.tvResponAdmin.setText(list.get(position).getRespon());
-        holder.tvPelapor.setText(list.get(position).getPelapor());
+        if (holder.tvResponAdmin.equals("")||holder.tvResponAdmin == null){
+            holder.tvResponAdmin.setText("Belum ada respon dari Admin");
+        } else {
+            holder.tvResponAdmin.setText(list.get(position).getRespon());
+        }
+        holder.tvPelapor.setText("Pelapor : " + list.get(position).getPelapor());
         holder.tvPengaduan.setText(list.get(position).getKetPengaduan());
+        holder.tvAdmin.setText("Admin");
+        holder.imgLogo.setImageResource(R.drawable.lra);
         Picasso.get().load(list.get(position).getPicture()).into(holder.imgReport);
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intentData = new Intent(context, DetailNewsActivity.class);
-//                intentData.putExtra("detailArtikel", list.get(position).getDetilArtikel());
-//                intentData.putExtra("judulArtikel", list.get(position).getJudulArtikel());
-//                intentData.putExtra("pictureArtikel", list.get(position).getPicture());
-//                context.startActivity(intentData);
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentData = new Intent(context, DetailReportActivity.class);
+                intentData.putExtra("judulReport", list.get(position).getJudulPengaduan());
+                intentData.putExtra("pelaporReport", list.get(position).getPelapor());
+                intentData.putExtra("keteranganReport", list.get(position).getKetPengaduan());
+                intentData.putExtra("pictureReport", list.get(position).getPicture());
+                context.startActivity(intentData);
+            }
+        });
     }
 
     @Override
@@ -68,8 +68,8 @@ public class ReportActivityAdapter extends RecyclerView.Adapter<ReportActivityAd
     }
 
     public class ReportViewHolder extends RecyclerView.ViewHolder {
-        TextView tvJudul, tvPelapor, tvPengaduan, tvResponAdmin, tvStatus;
-        ImageView imgReport;
+        TextView tvJudul, tvPelapor, tvPengaduan, tvResponAdmin, tvStatus, tvAdmin;
+        ImageView imgReport, imgLogo;
         Button btnStatus;
         public ReportViewHolder(@NonNull View itemView, Context context) {
             super(itemView);
@@ -80,6 +80,8 @@ public class ReportActivityAdapter extends RecyclerView.Adapter<ReportActivityAd
             tvResponAdmin = itemView.findViewById(R.id.tv_respon_admin);
             tvStatus = itemView.findViewById(R.id.tv_status_report);
             imgReport = itemView.findViewById(R.id.img_report);
+            tvAdmin = itemView.findViewById(R.id.tv_admin);
+            imgLogo = itemView.findViewById(R.id.img_logo);
             btnStatus = itemView.findViewById(R.id.btn_status);
 
         }
