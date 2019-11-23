@@ -2,6 +2,7 @@ package com.example.rajaampat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class DestinationActivityAdapter extends RecyclerView.Adapter<Destination
 
     @Override
     public void onBindViewHolder(@NonNull DestinationActivityAdapter.DestinationActivityViewHolder holder, final int position) {
-        holder.info.setText(list.get(position).getDeskripsi());
+        holder.info.setText(Html.fromHtml(list.get(position).getDeskripsi()));
         holder.judul.setText(list.get(position).getNamaTujuanWisata());
         Picasso.get().load(list.get(position).getPicture()).into(holder.img);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

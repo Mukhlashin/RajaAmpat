@@ -1,6 +1,8 @@
-package com.example.rajaampat;
+package com.example.rajaampat.hotelActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.rajaampat.R;
 import com.example.rajaampat.model.HotelDataItem;
+import com.example.rajaampat.newsActivity.DetailNewsActivity;
 import com.squareup.picasso.Picasso;
 
+import java.net.Inet4Address;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class HotelActivityAdapter extends RecyclerView.Adapter<HotelActivityAdapter.HotelActivityViewHolder> {
@@ -33,14 +39,28 @@ public class HotelActivityAdapter extends RecyclerView.Adapter<HotelActivityAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HotelActivityAdapter.HotelActivityViewHolder holder, int position) {
-        holder.nama.setText(list.get(position).getNamaHotel());
-        holder.alamat.setText(list.get(position).getAlamatHotel());
-        holder.harga.setText(list.get(position).getHargaKamar());
+    public void onBindViewHolder(@NonNull HotelActivityAdapter.HotelActivityViewHolder holder, final int position) {
+        DecimalFormat decim = new DecimalFormat("#,###.##");
+        String decimHarga = decim.format(Double.valueOf(list.get(position).getHargaKamar()));
+        holder.nama.setText(Html.fromHtml(list.get(position).getNamaHotel()));
+        holder.alamat.setText(Html.fromHtml(list.get(position).getAlamatHotel()));
+        holder.harga.setText("Rp." + decimHarga);
         Picasso.get()
                 .load(list.get(position).getPicture())
                 .into(holder.img);
-//        holder.img.setImageResource(Integer.parseInt(list.get(position).getPicture()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentData = new Intent(context, DetailHotelActivity.class);
+                intentData.putExtra("namaHotel", list.get(position).getNamaHotel());
+                intentData.putExtra("alamatHotel", list.get(position).getAlamatHotel());
+                intentData.putExtra("hargaHotel", list.get(position).getHargaKamar());
+                intentData.putExtra("emailHotel", list.get(position).getEmailHotel());
+                intentData.putExtra("telpHotel", list.get(position).getNoTlp());
+                intentData.putExtra("pictureHotel", list.get(position).getPicture());
+                context.startActivity(intentData);
+            }
+        });
     }
 
     @Override
@@ -55,7 +75,7 @@ public class HotelActivityAdapter extends RecyclerView.Adapter<HotelActivityAdap
             super(itemView);
 
             nama = itemView.findViewById(R.id.tv_namaHotel);
-            alamat = itemView.findViewById(R.id.tv_alamatHotel);
+            alamat = itemView.findViewById(R.id.tv_alamat_hotel);
             harga = itemView.findViewById(R.id.tv_hargaKamar);
             img = itemView.findViewById(R.id.img_hotel);
         }

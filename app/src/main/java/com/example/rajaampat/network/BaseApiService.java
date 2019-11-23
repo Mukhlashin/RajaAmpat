@@ -17,7 +17,9 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface BaseApiService {
@@ -62,13 +64,14 @@ public interface BaseApiService {
     @GET("api/pengaduan")
     Call<ResponseReport> reportRequest();
 
-    @Headers("api_auth_key : s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
-    @POST("api/pengaduan/create")
-    Call<ResponseReport> createReportRequest(@Field("judul_pengaduan") String judulPengaduan,
-                                             @Field("ket_pengaduan") String keteranganPengaduan,
-                                             @Field("pelapor") String pelapor,
-                                             @Field("picture") File picture,
-                                             @Field("status") String status);
+//    @FormUrlEncoded
+//    @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
+//    @POST("api/pengaduan/create")
+//    Call<ResponseReport> createReportRequest(@Field("judul_pengaduan") String judulPengaduan,
+//                                             @Field("ket_pengaduan") String keteranganPengaduan,
+//                                             @Field("pelapor") String pelapor,
+//                                             @Field("status") String status,
+//                                             @Field("picture") File picture);
 
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @GET("api/artikel")

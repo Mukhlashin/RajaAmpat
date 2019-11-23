@@ -34,12 +34,14 @@
         android:layout_gravity="center_horizontal"/>
 
     <Button
+        android:id="@+id/btn_let_me_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Biarkan Saya masuk"
+        android:text="Coba lagi"
         android:background="#6babd7"
         android:textAllCaps="false"
         android:textStyle="normal"
+        android:onClick="goToHome"
         android:textColor="#fff"
         android:layout_marginTop="20dp"/>
 

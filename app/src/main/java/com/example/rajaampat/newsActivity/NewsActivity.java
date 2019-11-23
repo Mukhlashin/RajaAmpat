@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.rajaampat.DestinationActivity;
+import com.example.rajaampat.DestinationActivityAdapter;
 import com.example.rajaampat.HomeActivity;
 import com.example.rajaampat.R;
 import com.example.rajaampat.model.NewsDataItem;
@@ -25,7 +27,6 @@ import java.util.List;
 
 public class NewsActivity extends AppCompatActivity {
 
-    ImageButton btnBack;
     RecyclerView rvNews;
     RecyclerView.Adapter newsAdapter;
     RecyclerView.LayoutManager mgNews;
@@ -41,22 +42,16 @@ public class NewsActivity extends AppCompatActivity {
 
         loading = new ProgressDialog(NewsActivity.this);
         loading.setMessage("Loading....");
+        loading.setCancelable(false);
         loading.show();
 
         mApiService = UtilsApi.getAPIService();
 
-        btnBack = findViewById(R.id.btn_back);
         rvNews = findViewById(R.id.rv_news);
 
         rvNews.setAdapter(adapter);
         getDataNews();
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToHome();
-            }
-        });
     }
 
     private void getDataNews() {
@@ -67,7 +62,10 @@ public class NewsActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             data = response.body().getData();
                             adapter = new NewsActivityAdapter(NewsActivity.this, data);
-                            rvNews.setLayoutManager(new LinearLayoutManager(NewsActivity.this));
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(NewsActivity.this);
+                            linearLayoutManager.setReverseLayout(true);
+                            linearLayoutManager.setStackFromEnd(true);
+                            rvNews.setLayoutManager(linearLayoutManager);
                             rvNews.setAdapter(adapter);
                             loading.dismiss();
                         }
@@ -91,6 +89,9 @@ public class NewsActivity extends AppCompatActivity {
         startActivity(goToDetaiNews);
     }
 
+    public void back(View view) {
+        super.onBackPressed();
+    }
 
 
 //    private void generateData (List<News>list){

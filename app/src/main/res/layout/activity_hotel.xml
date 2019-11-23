@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HotelActivity"
+    tools:context=".hotelActivity.HotelActivity"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -24,6 +24,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_height="match_parent"
+                android:onClick="back"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_arrow_back"/>
 

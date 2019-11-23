@@ -41,25 +41,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class ReportActivity extends AppCompatActivity {
 
-    ImageButton btnBack, btnContact, btnMore, btnAdd;
+    ImageButton btnContact, btnAdd;
     ImageView imgReport;
     RecyclerView rvReport;
     ProgressDialog loading;
     ReportActivityAdapter adapter;
     List<ReportDataItem> data;
     BaseApiService mApiService;
-
-    File file;
-
-    //Take photo
-    private static final int RC_CAMERA = 1;
-    static final int REQUEST_TAKE_PHOTO = 1;
-    static final int REQUEST_CHOOSE_PHOTO = 2;
-    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 100;
-    public static final String ALLOW_KEY = "ALLOWED";
-    public static final String CAMERA_PREF = "camera_pref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +58,12 @@ public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMen
 
         loading = new ProgressDialog(ReportActivity.this);
         loading.setMessage("Loading....");
+        loading.setCancelable(false);
         loading.show();
 
         mApiService = UtilsApi.getAPIService();
 
-        btnBack = findViewById(R.id.btn_back);
         btnContact = findViewById(R.id.btn_contact);
-        btnMore = findViewById(R.id.btn_more);
         btnAdd = findViewById(R.id.btn_add_report);
         imgReport = findViewById(R.id.img_report);
         rvReport = findViewById(R.id.rv_report);
@@ -84,22 +73,7 @@ public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMen
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkCameraPermission();
-                cropImageAutoSelection();
-            }
-        });
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
-        btnMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showMenu(view);
+                goToSendReportActivity();
             }
         });
 
@@ -116,6 +90,11 @@ public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMen
         });
     }
 
+    private void goToSendReportActivity() {
+        Intent goToSendReport = new Intent(ReportActivity.this, SendReportActivity.class);
+        startActivity(goToSendReport);
+    }
+
     private void getDataReport() {
         mApiService.reportRequest()
                 .enqueue(new Callback<ResponseReport>() {
@@ -123,9 +102,18 @@ public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMen
                     public void onResponse(Call<ResponseReport> call, Response<ResponseReport> response) {
                         if (response.isSuccessful()) {
                             data = response.body().getData();
-                            adapter = new ReportActivityAdapter(ReportActivity.this, data);
-                            rvReport.setLayoutManager(new LinearLayoutManager(ReportActivity.this));
-                            rvReport.setAdapter(adapter);
+                            if(data!=null){
+                                adapter = new ReportActivityAdapter(ReportActivity.this, data);
+                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ReportActivity.this);
+                                linearLayoutManager.setReverseLayout(true);
+                                linearLayoutManager.setStackFromEnd(true);
+                                rvReport.setLayoutManager(linearLayoutManager);
+                                rvReport.setAdapter(adapter);
+//                                rvReport.setLayoutManager(new LinearLayoutManager(ReportActivity.this));
+//                                rvReport.setAdapter(adapter);
+                            }else {
+                                Toast.makeText(ReportActivity.this, "Tidak ada data", Toast.LENGTH_SHORT).show();
+                            }
                             loading.dismiss();
                         }
                     }
@@ -138,129 +126,14 @@ public class ReportActivity extends AppCompatActivity implements PopupMenu.OnMen
                 });
     }
 
-    private void showMenu(View view) {
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.setOnMenuItemClickListener(this);
-        popupMenu.inflate(R.menu.main_menu);
-        popupMenu.show();
-    }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK){
-            Bundle extras = data.getExtras();
-            final Bitmap bitmap = (Bitmap) extras.get("data");
-            //ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            //bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
-
-            File filesDir = getApplicationContext().getFilesDir();
-            File imageFile = new File(filesDir, "image" + ".jpg");
-
-            OutputStream os;
-            try {
-                os = new FileOutputStream(imageFile);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
-                os.flush();
-                os.close();
-                file = imageFile;
-                imgReport.setImageBitmap(bitmap);
-
-            } catch (Exception e) {
-                Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
-            }
-        } else if (requestCode == REQUEST_CHOOSE_PHOTO && resultCode == RESULT_OK){
-
-            Uri uri = data.getData();
-
-            //try crop
-            CropImage.activity(uri).setAspectRatio(1,1).start(this);
-
-        }
-
-        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if(resultCode == RESULT_OK ){
-                Uri imageUri = result.getUri();
-                try {
-                    Bitmap bitmap = (Bitmap) MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-
-                    File filesDir = getApplicationContext().getFilesDir();
-                    File imageFile = new File(filesDir, "image" + ".jpg");
-
-                    OutputStream os;
-                    os = new FileOutputStream(imageFile);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
-                    os.flush();
-                    os.close();
-                    this.file = imageFile;
-//                    imgProfile.setImageBitmap(bitmap);
-
-                } catch (IOException e) {
-                    Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
-                    e.printStackTrace();
-                }
-
-            }
-        }
+    protected void onResume() {
+        super.onResume();
+        rvReport.setAdapter(null);
+        getDataReport();
     }
 
-    public void cropImageAutoSelection() {
-        CropImage.activity()
-                .setAspectRatio(2,3)
-                .start(this);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
-
-    @Override
-    public void recreate() {
-        super.recreate();
-    }
-
-    @AfterPermissionGranted(RC_CAMERA)
-    private void checkCameraPermission() {
-        String perm = Manifest.permission.CAMERA;
-        if (EasyPermissions.hasPermissions(this, perm)) {
-        } else {
-            EasyPermissions.requestPermissions(this, "Butuh permission camera", RC_CAMERA, perm);
-        }
-    }
-
-    public void getPicFromCamera() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-        }
-    }
-
-    public void getPicFromGallery() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_CHOOSE_PHOTO);
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        switch (menuItem.getItemId()){
-            case R.id.tester :
-                Toast.makeText(this, "Tester Berhasil", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.tester2 :
-                Toast.makeText(this, "Tester2 Berhasil", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.tester3 :
-                Toast.makeText(this, "Tester3 Berhasil", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-        return true;
+    public void back(View view) {
+        super.onBackPressed();
     }
 }

@@ -65,6 +65,4 @@ dependencies {
 
     // Circle Image
     implementation 'com.mikhaellopez:circularimageview:3.2.0'
-
-
 }

@@ -9,21 +9,13 @@ import android.widget.ImageButton;
 
 public class TransportActivity extends AppCompatActivity {
 
-    ImageButton imgBack;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport);
+    }
 
-        imgBack = findViewById(R.id.img_back);
-
-        imgBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
+    public void back(View view) {
+        super.onBackPressed();
     }
 }

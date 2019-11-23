@@ -21,12 +21,13 @@
                 android:id="@+id/img_report_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/img_report_back">
+                app:cardCornerRadius="7dp">
 
                 <ImageView
                     android:id="@+id/img_report"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:src="@drawable/ic_launcher_background"
                     android:background="@drawable/img_report_back"
                     android:scaleType="centerCrop" />
 
@@ -34,9 +35,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
                 android:layout_alignBottom="@+id/img_report_layout"
                 android:background="@drawable/detail_report_back"
+                android:elevation="2dp"
                 android:gravity="center_vertical">
 
                 <TextView
@@ -49,7 +52,7 @@
                     android:gravity="left|center"
                     android:text="Pelapor : Narto Syaifuden"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tv_judul_report"
@@ -57,11 +60,12 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="15dp"
                     android:layout_weight="1"
+                    android:maxLines="2"
                     android:fontFamily="@font/poppinsmedium"
                     android:gravity="right|center"
                     android:text="Jalan rusak berbahaya"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
@@ -80,7 +84,7 @@
                 android:layout_height="10dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/circle_back" />
+                android:background="@drawable/circle_back1" />
 
             <TextView
                 android:id="@+id/tv_status_report"
@@ -103,8 +107,9 @@
                 android:id="@+id/tv_pengaduan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:maxLines="3"
+                android:maxLines="2"
                 android:fontFamily="@font/poppinsmedium"
+                android:textSize="13dp"
                 android:text="Jalan Rusak Dan Berlubang, Lokasi Di Jalan Merdeka KM 02 Raja Ampat Sangat Membahayakan Bagi Pengguna Jalan "
                 android:textColor="@android:color/black" />
 

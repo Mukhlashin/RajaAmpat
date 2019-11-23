@@ -15,6 +15,8 @@ import com.example.rajaampat.model.modelReport.ResponseTravel;
 import com.example.rajaampat.model.modelReport.TravelDataItem;
 import com.example.rajaampat.network.BaseApiService;
 import com.example.rajaampat.network.UtilsApi;
+import com.example.rajaampat.reportActivity.ReportActivity;
+import com.example.rajaampat.reportActivity.ReportActivityAdapter;
 
 import java.util.List;
 
@@ -24,7 +26,6 @@ import retrofit2.Response;
 
 public class DestinationActivity extends AppCompatActivity {
 
-    ImageButton btnBack;
     RecyclerView rvTravel;
     RecyclerView.Adapter destinationAdapter;
     RecyclerView.LayoutManager mgDestination;
@@ -40,22 +41,15 @@ public class DestinationActivity extends AppCompatActivity {
 
         loading = new ProgressDialog(DestinationActivity.this);
         loading.setMessage("Loading....");
+        loading.setCancelable(false);
         loading.show();
 
         mApiService = UtilsApi.getAPIService();
 
-        btnBack = findViewById(R.id.btn_back);
         rvTravel = findViewById(R.id.rv_travel);
 
         rvTravel.setAdapter(adapter);
         getDataTravel();
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToHome();
-            }
-        });
     }
 
     private void getDataTravel() {
@@ -66,7 +60,10 @@ public class DestinationActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             data = response.body().getData();
                             adapter = new DestinationActivityAdapter(DestinationActivity.this, data);
-                            rvTravel.setLayoutManager(new LinearLayoutManager(DestinationActivity.this));
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DestinationActivity.this);
+                            linearLayoutManager.setReverseLayout(true);
+                            linearLayoutManager.setStackFromEnd(true);
+                            rvTravel.setLayoutManager(linearLayoutManager);
                             rvTravel.setAdapter(adapter);
                             loading.dismiss();
                         }
@@ -80,13 +77,12 @@ public class DestinationActivity extends AppCompatActivity {
                 });
     }
 
-        private void goToHome() {
-            Intent goToHome = new Intent(DestinationActivity.this, HomeActivity.class);
-            startActivity(goToHome);
-        }
-
         public void goToDetailDestination(View view) {
             Intent goToDestination = new Intent(DestinationActivity.this, DetailDestinationActivity.class);
             startActivity(goToDestination);
         }
+
+    public void back(View view) {
+        super.onBackPressed();
+    }
 }

@@ -2,6 +2,7 @@ package com.example.rajaampat.reportActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class ReportActivityAdapter extends RecyclerView.Adapter<ReportActivityAd
 
     private List<ReportDataItem> list;
     private Context context;
+    private ReportActivity view;
 
     public ReportActivityAdapter(Context context, List<ReportDataItem> list) {
         this.context = context;
@@ -39,11 +41,25 @@ public class ReportActivityAdapter extends RecyclerView.Adapter<ReportActivityAd
     public void onBindViewHolder(@NonNull ReportViewHolder holder, final int position) {
         holder.tvJudul.setText(list.get(position).getJudulPengaduan());
         holder.tvStatus.setText(list.get(position).getStatus());
-        if (holder.tvResponAdmin.equals("")||holder.tvResponAdmin == null){
+
+        if (list.get(position).getRespon() == null){
             holder.tvResponAdmin.setText("Belum ada respon dari Admin");
         } else {
             holder.tvResponAdmin.setText(list.get(position).getRespon());
         }
+
+        String status = list.get(position).getStatus();
+        if(status.equals("1")){
+            holder.tvStatus.setText("Open");
+            holder.btnStatus.setBackground(context.getResources().getDrawable(R.drawable.circle_back1));
+        }else if(status.equals("2")){
+            holder.tvStatus.setText("Process");
+            holder.btnStatus.setBackground(context.getResources().getDrawable(R.drawable.circle_back2));
+        }else if(status.equals("3")){
+            holder.tvStatus.setText("Closed");
+            holder.btnStatus.setBackground(context.getResources().getDrawable(R.drawable.circle_back3));
+        }
+
         holder.tvPelapor.setText("Pelapor : " + list.get(position).getPelapor());
         holder.tvPengaduan.setText(list.get(position).getKetPengaduan());
         holder.tvAdmin.setText("Admin");
@@ -57,6 +73,7 @@ public class ReportActivityAdapter extends RecyclerView.Adapter<ReportActivityAd
                 intentData.putExtra("pelaporReport", list.get(position).getPelapor());
                 intentData.putExtra("keteranganReport", list.get(position).getKetPengaduan());
                 intentData.putExtra("pictureReport", list.get(position).getPicture());
+                intentData.putExtra("lokasiReport", list.get(position).getLokasi());
                 context.startActivity(intentData);
             }
         });

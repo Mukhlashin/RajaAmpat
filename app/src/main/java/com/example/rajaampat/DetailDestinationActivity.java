@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,7 +16,6 @@ import com.squareup.picasso.Picasso;
 
 public class DetailDestinationActivity extends AppCompatActivity {
 
-    ImageButton btnBack;
     ImageView imgDetailDestination;
     TextView tvJudulDestination, tvDetailDestination;
 
@@ -24,7 +24,6 @@ public class DetailDestinationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_destination);
 
-        btnBack = findViewById(R.id.btn_back);
         tvDetailDestination = findViewById(R.id.tv_detail_travel);
         tvJudulDestination = findViewById(R.id.tv_judul_detail_travel);
         imgDetailDestination = findViewById(R.id.img_detail_travel);
@@ -35,17 +34,12 @@ public class DetailDestinationActivity extends AppCompatActivity {
         String detailTravel = getIntent.getExtras().getString("deskripsi");
         String pictureTravel = getIntent.getExtras().getString("picture");
 
-        tvJudulDestination.setText(judulTravel);
-        tvDetailDestination.setText(detailTravel);
+        tvJudulDestination.setText(Html.fromHtml(judulTravel));
+        tvDetailDestination.setText(Html.fromHtml(detailTravel));
         Picasso.get().load(pictureTravel).into(imgDetailDestination);
+    }
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent goToNews = new Intent(DetailDestinationActivity.this, DestinationActivity.class);
-                startActivity(goToNews);
-            }
-        });
-
+    public void back(View view) {
+        super.onBackPressed();
     }
 }

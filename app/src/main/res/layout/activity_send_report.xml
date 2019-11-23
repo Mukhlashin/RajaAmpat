@@ -45,15 +45,27 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <Button
+                    android:id="@+id/btn_send_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="Send Report"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,10 +77,10 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/img_detail_news"
+                    android:id="@+id/img_send_report"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/img_news1"
+                    android:layout_height="237dp"
+                    android:background="@drawable/ic_launcher_background"
                     android:scaleType="centerCrop"/>
 
             </RelativeLayout>
@@ -81,6 +93,7 @@
                 android:layout_marginHorizontal="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_report_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
@@ -96,6 +109,7 @@
                 android:layout_marginHorizontal="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_report_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
@@ -111,16 +125,16 @@
                 android:layout_marginHorizontal="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_report_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
-                    android:hint="Reporter"/>
+                    android:hint="Report Location"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
 
-    </ScrollView>
+        </LinearLayout>
 
 </LinearLayout>
 

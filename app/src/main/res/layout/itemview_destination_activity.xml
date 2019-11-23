@@ -12,7 +12,8 @@
                 android:id="@+id/img_destination"
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/memuat"
+                android:src="@drawable/img_news2"
+                android:adjustViewBounds="true"
                 android:layout_height="237dp" />
 
             <LinearLayout

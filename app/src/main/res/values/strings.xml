@@ -6,4 +6,7 @@
     <string name="logOut">Keluar</string>
     <string name="messageLogout">Apakah anda ingin keluar dari akun ?</string>
     <string name="cancel">Batalkan</string>
+    <string name="sendReport">Send Report</string>
+    <string name="messageSendReport">Apakah anda ingin mengirim laporan ?</string>
+
 </resources>

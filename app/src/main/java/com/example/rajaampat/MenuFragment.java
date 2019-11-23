@@ -30,6 +30,8 @@ public class MenuFragment extends Fragment {
     Button btnEditProfile, btnListPengaduan, btnLogout;
 
     SharedPreferences.Editor editorLogin;
+    SharedPreferences.Editor editorUser1;
+    SharedPreferences.Editor editorUser2;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -43,6 +45,8 @@ public class MenuFragment extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_menu, container, false);
 
         editorLogin = this.getActivity().getSharedPreferences("login", MODE_PRIVATE).edit();
+        editorUser1 = this.getActivity().getSharedPreferences("userInfo", MODE_PRIVATE).edit();
+        editorUser2 = this.getActivity().getSharedPreferences("com.example.rajaampat_preferences", MODE_PRIVATE).edit();
 
         btnEditProfile = layout.findViewById(R.id.btn_edit_profile);
         btnListPengaduan = layout.findViewById(R.id.btn_list_pengaduan);
@@ -83,7 +87,9 @@ public class MenuFragment extends Fragment {
             public void onClick(DialogInterface dialog, int id) {
                 Toast.makeText(getActivity(), "Berhasil Logout", Toast.LENGTH_SHORT).show();
                 editorLogin.remove("login");
+                editorUser1.remove("picture");
                 editorLogin.apply();
+                editorUser1.apply();
                 Intent logOut = new Intent(getActivity(), LoginActivity.class);
                 startActivity(logOut);
                 getActivity().finish();

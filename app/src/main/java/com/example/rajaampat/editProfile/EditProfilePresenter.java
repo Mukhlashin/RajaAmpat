@@ -27,7 +27,6 @@ public class EditProfilePresenter implements EditProfileContract.Presenter {
     EditProfileContract.View view;
     int SUCCESS_FULL_PUSH_CODE = 200;
     boolean[] booleans = {false, false, false};
-    BaseApiService mApiService;
 
     SharedPreferences myPref;
 
@@ -62,12 +61,14 @@ public class EditProfilePresenter implements EditProfileContract.Presenter {
                         view.uploadPhotoSucces("Photo selesai di upload!");
                         Log.d("UploadFoto", "BERHASIL");
                         Log.d("UploadFoto", response.toString());
+                        view.hideLoading();
                     }
 
                     @Override
                     public void onError(ANError anError) {
                         Log.d("UploadFoto", anError.getErrorDetail());
                         Log.d("UploadFoto", anError.getErrorBody());
+                        view.hideLoading();
                     }
                 });
     }

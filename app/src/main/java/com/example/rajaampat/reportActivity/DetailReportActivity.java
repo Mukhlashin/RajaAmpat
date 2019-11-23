@@ -15,9 +15,8 @@ import com.squareup.picasso.Picasso;
 
 public class DetailReportActivity extends AppCompatActivity {
 
-    ImageButton btnBack;
     ImageView imgDetailReport;
-    TextView tvJudulReport, tvPelaporReport, tvKeteranganReport;
+    TextView tvJudulReport, tvPelaporReport, tvKeteranganReport, tvLokasiReport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +28,7 @@ public class DetailReportActivity extends AppCompatActivity {
         tvJudulReport = findViewById(R.id.tv_judul_report_detail);
         tvPelaporReport = findViewById(R.id.tv_pelapor_detail);
         tvKeteranganReport = findViewById(R.id.tv_keterangan_report);
-
-        btnBack = findViewById(R.id.btn_back);
+        tvLokasiReport = findViewById(R.id.tv_lokasi_report);
 
         Intent getIntent = getIntent();
 
@@ -38,19 +36,16 @@ public class DetailReportActivity extends AppCompatActivity {
         String keteranganReport = getIntent.getStringExtra("keteranganReport");
         String pelaporReport = getIntent.getStringExtra("pelaporReport");
         String imgDetailReportFoto = getIntent.getStringExtra("pictureReport");
+        String lokasiReport = getIntent.getStringExtra("lokasiReport");
 
         tvKeteranganReport.setText(keteranganReport);
         tvPelaporReport.setText("Pelapor : " + pelaporReport);
         tvJudulReport.setText(judulReport);
+        tvLokasiReport.setText("Lokasi : " + lokasiReport);
         Picasso.get().load(imgDetailReportFoto).into(imgDetailReport);
+    }
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToReport = new Intent(DetailReportActivity.this, ReportActivity.class);
-                startActivity(goToReport);
-            }
-        });
-
+    public void back(View view) {
+        super.onBackPressed();
     }
 }

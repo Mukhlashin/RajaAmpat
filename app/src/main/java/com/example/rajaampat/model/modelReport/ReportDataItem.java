@@ -28,6 +28,9 @@ public class ReportDataItem {
 	@SerializedName("status")
 	private String status;
 
+	@SerializedName("lokasi")
+	private String lokasi;
+
 	public String getJudulPengaduan(){
 		return judulPengaduan;
 	}
@@ -56,6 +59,10 @@ public class ReportDataItem {
 		return picture;
 	}
 
+	public String getLokasi(){
+		return lokasi;
+	}
+
 	public String getStatus(){
 		return status;
 	}
@@ -68,7 +75,8 @@ public class ReportDataItem {
 			",respon = '" + respon + '\'' + 
 			",ispublished = '" + ispublished + '\'' + 
 			",ket_pengaduan = '" + ketPengaduan + '\'' + 
-			",pelapor = '" + pelapor + '\'' + 
+			",pelapor = '" + pelapor + '\'' +
+			",lokasi = '" + lokasi + '\'' +
 			",id_pengaduan = '" + idPengaduan + '\'' + 
 			",picture = '" + picture + '\'' + 
 			",status = '" + status + '\'' + 

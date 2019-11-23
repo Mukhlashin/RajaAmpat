@@ -2,6 +2,7 @@ package com.example.rajaampat.newsActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class NewsActivityAdapter extends RecyclerView.Adapter<NewsActivityAdapter.NewsActivityViewHolder> {
@@ -36,8 +38,8 @@ public class NewsActivityAdapter extends RecyclerView.Adapter<NewsActivityAdapte
 
     @Override
     public void onBindViewHolder(@NonNull NewsActivityAdapter.NewsActivityViewHolder holder, final int position) {
-        holder.info.setText(list.get(position).getDetilArtikel());
-        holder.judul.setText(list.get(position).getJudulArtikel());
+        holder.info.setText(Html.fromHtml(list.get(position).getDetilArtikel()));
+        holder.judul.setText(Html.fromHtml(list.get(position).getJudulArtikel()));
         Picasso.get().load(list.get(position).getPicture()).into(holder.img);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

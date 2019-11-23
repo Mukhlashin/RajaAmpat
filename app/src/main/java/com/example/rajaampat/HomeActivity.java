@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.rajaampat.hotelActivity.HotelActivity;
 import com.example.rajaampat.model.DataItem;
 import com.example.rajaampat.model.ResponseSingleUser;
 import com.example.rajaampat.network.BaseApiService;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button btnReport, btnTravel, btnNews, btnHotel, btnEmergency, btnCurrency, btnTransport;
+    Button btnReport, btnTravel, btnNews, btnHotel, btnEmergency, btnCurrency, btnTransport, btnLetMeIn;
     ImageButton imbSetting;
 
     SharedPreferences.Editor editor;
@@ -56,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         btnCurrency = findViewById(R.id.btn_currency);
         btnTransport = findViewById(R.id.btn_transport);
         btnEmergency = findViewById(R.id.btn_emergency);
+        btnLetMeIn = findViewById(R.id.btn_let_me_in);
 
         mApiService = UtilsApi.getAPIService();
 
@@ -197,7 +199,9 @@ public class HomeActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseSingleUser> call, Throwable t) {
-                        Toast.makeText(context, "onError : " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "Failed to get latest response from server, Please check your data service", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(HomeActivity.this, ErrorActivity.class);
+                            startActivity(intent);
                     }
                 });
     }

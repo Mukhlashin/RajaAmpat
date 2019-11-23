@@ -12,8 +12,6 @@ import android.widget.LinearLayout;
 
 public class ContactActivity extends AppCompatActivity {
 
-    ImageButton imbHome;
-
     LinearLayout lnr_police, lnr_sms,lnr_emergency,lnr_money_changer,lnr_ambulance,lnr_immigration,lnr_tourism_center,lnr_hospital;
     String dial_tourism = "223";
     String dial_ambulance = "08111000222";
@@ -29,7 +27,6 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        imbHome = findViewById(R.id.imb_home);
         lnr_ambulance = findViewById(R.id.lnr_ambulance);
         lnr_emergency = findViewById(R.id.lnr_emergency);
         lnr_hospital = findViewById(R.id.lnr_hospital);
@@ -39,77 +36,61 @@ public class ContactActivity extends AppCompatActivity {
         lnr_police = findViewById(R.id.lnr_police);
         lnr_tourism_center = findViewById(R.id.lnr_tourism_center);
 
-        lnr_tourism_center.setOnLongClickListener(new View.OnLongClickListener() {
+        lnr_police.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-                dial(dial_tourism);
-                return false;
-            }
-        });
-
-        lnr_police.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
+            public void onClick(View v) {
                 dial(dial_police);
-                return false;
             }
         });
 
-        lnr_sms.setOnLongClickListener(new View.OnLongClickListener() {
+        lnr_hospital.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-                dial(dial_sms);
-                return false;
-            }
-        });
-
-        lnr_money_changer.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                dial(dial_money_changer);
-                return false;
-            }
-        });
-
-        lnr_emergency.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                dial(dial_emergency);
-                return false;
-            }
-        });
-
-        lnr_ambulance.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                dial(dial_ambulance);
-                return false;
-            }
-        });
-
-        lnr_immigration.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                dial(dial_immigration);
-                return false;
-            }
-        });
-
-        lnr_hospital.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
+            public void onClick(View v) {
                 dial(dial_hospital);
-                return false;
             }
         });
 
-        imbHome.setOnClickListener(new View.OnClickListener() {
+        lnr_immigration.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                goToHome(view);
+            public void onClick(View v) {
+                dial(dial_immigration);
             }
         });
 
+        lnr_ambulance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dial(dial_ambulance);
+            }
+        });
+
+        lnr_money_changer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dial(dial_money_changer);
+            }
+        });
+
+        lnr_emergency.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dial(dial_emergency);
+            }
+        });
+
+        lnr_tourism_center.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dial(dial_tourism);
+            }
+        });
+
+        lnr_sms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dial(dial_sms);
+            }
+        });
     }
 
     public void dial(String dial_something) {
@@ -120,7 +101,7 @@ public class ContactActivity extends AppCompatActivity {
         }
     }
 
-    public void goToHome(View view) {
-        onBackPressed();
+    public void back(View view) {
+        super.onBackPressed();
     }
 }

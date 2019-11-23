@@ -14,24 +14,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".reportActivity.SendReportActivity"></activity>
+        <activity android:name=".hotelActivity.DetailHotelActivity"></activity>
+        <activity android:name=".reportActivity.SendReportActivity" />
         <activity android:name=".newsActivity.DetailNewsActivity" />
         <activity android:name=".newsActivity.NewsActivity" />
         <activity android:name=".CurrencyActivity" />
         <activity android:name=".reportActivity.DetailReportActivity" />
         <activity android:name=".DetailDestinationActivity" />
         <activity android:name=".TransportActivity" />
-        <activity android:name=".HotelActivity" />
+        <activity android:name=".hotelActivity.HotelActivity" />
         <activity android:name=".DestinationActivity" />
         <activity android:name=".reportActivity.ReportActivity" />
         <activity android:name=".ContactActivity" />
+        <activity android:name=".ErrorActivity"/>
         <activity android:name=".editProfile.EditProfileActivity" />
         <activity
             android:name=".RegisterActivity"
             android:noHistory="true" />
         <activity
             android:name=".LoginActivity"
-            android:noHistory="true"></activity>
+            android:noHistory="true" />
         <activity android:name=".SplashScreen2" />
         <activity android:name=".SplashScreen3" />
         <activity

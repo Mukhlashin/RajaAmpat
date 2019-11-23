@@ -63,7 +63,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
     Button btnUpdateProfile;
 
     //Toolbar
-    ImageView back, imgProfile;
+    ImageView imgProfile;
 
     //Take photo
     private static final int RC_CAMERA = 1;
@@ -80,13 +80,6 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         //for Toolbar
-        back = findViewById(R.id.kembali_editprofile);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
 
         //setup
         presenter = new EditProfilePresenter(this);
@@ -104,7 +97,7 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         dataAlamat = findViewById(R.id.edt_alamat);
         imgProfile = findViewById(R.id.img_profile);
         setTextDataUmum();
-//        setFotoProfile();
+        setFotoProfile();
 
         loading = new Dialog(this);
         loading.setContentView(R.layout.loading_layout);
@@ -151,6 +144,11 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
                 datePickerDialog.show();
             }
         });
+    }
+
+    private void goToHome() {
+        Intent intent = new Intent(EditProfileActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -204,6 +202,9 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     @Override
     public void pushEditProfile() {
+
+        loading.show();
+
         String pushId = userInformation2.getString("id", "");
         String pushNama = dataNama.getText().toString();
         String pushTlp = dataTlp.getText().toString();
@@ -237,10 +238,12 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
     }
 
-//    @Override
-//    public void setFotoProfile() {
-//            Glide.with(this).load(userInformation.getString("picture", "")).into(imgProfile);
-//    }
+    @Override
+    public void setFotoProfile() {
+        if (userInformation.getString("picture", "") != null) {
+            Glide.with(this).load(userInformation.getString("picture", "")).into(imgProfile);
+        }
+    }
 
     @Override
     public void someThingFailed(String msg) {
@@ -297,7 +300,12 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
                     os.flush();
                     os.close();
                     this.file = imageFile;
-                    imgProfile.setImageBitmap(bitmap);
+                    if (bitmap != null){
+                        imgProfile.setImageBitmap(bitmap);
+                    } else {
+                        setFotoProfile();
+                    }
+
 
                 } catch (IOException e) {
                     Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
@@ -312,6 +320,16 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
         CropImage.activity()
                 .setAspectRatio(2,2)
                 .start(this);
+    }
+
+    @Override
+    public void showLoading() {
+        loading.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        loading.dismiss();
     }
 
     @AfterPermissionGranted(RC_CAMERA)
@@ -357,5 +375,11 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 //                .commit();
         Toast.makeText(this, "Berhasil", Toast.LENGTH_SHORT).show();
         finish();
+        Intent goToHome = new Intent(EditProfileActivity.this, HomeActivity.class);
+        startActivity(goToHome);
+    }
+
+    public void back(View view) {
+        super.onBackPressed();
     }
 }

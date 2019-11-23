@@ -25,6 +25,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
+                android:onClick="back"
                 android:src="@drawable/ic_arrow_back"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,7 +68,7 @@
                     android:id="@+id/img_detail_travel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/img_news1"
+                    android:src="@drawable/img_news1"
                     android:scaleType="centerCrop" />
 
                 <LinearLayout

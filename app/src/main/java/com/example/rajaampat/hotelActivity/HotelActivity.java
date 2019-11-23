@@ -1,4 +1,4 @@
-package com.example.rajaampat;
+package com.example.rajaampat.hotelActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,8 +8,8 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 
+import com.example.rajaampat.R;
 import com.example.rajaampat.model.HotelDataItem;
 import com.example.rajaampat.model.ResponseHotel;
 import com.example.rajaampat.network.BaseApiService;
@@ -23,7 +23,6 @@ import retrofit2.Response;
 
 public class HotelActivity extends AppCompatActivity {
 
-    ImageButton btnBack;
     ProgressDialog loading;
     RecyclerView rvHotel;
     List<HotelDataItem> data;
@@ -37,21 +36,14 @@ public class HotelActivity extends AppCompatActivity {
 
         loading = new ProgressDialog(HotelActivity.this);
         loading.setMessage("Loading....");
+        loading.setCancelable(false);
         loading.show();
 
         mApiService = UtilsApi.getAPIService();
-        btnBack = findViewById(R.id.btn_back);
         rvHotel = findViewById(R.id.rv_hotel);
 
         rvHotel.setAdapter(adapter);
         getDataHotel();
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
     }
 
     private void getDataHotel() {
@@ -62,7 +54,10 @@ public class HotelActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             data = response.body().getData();
                             adapter = new HotelActivityAdapter(HotelActivity.this, data);
-                            rvHotel.setLayoutManager(new LinearLayoutManager(HotelActivity.this));
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(HotelActivity.this);
+                            linearLayoutManager.setReverseLayout(true);
+                            linearLayoutManager.setStackFromEnd(true);
+                            rvHotel.setLayoutManager(linearLayoutManager);
                             rvHotel.setAdapter(adapter);
                             loading.dismiss();
                         }
@@ -75,4 +70,9 @@ public class HotelActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    public void back(View view) {
+        super.onBackPressed();
+    }
+
 }
