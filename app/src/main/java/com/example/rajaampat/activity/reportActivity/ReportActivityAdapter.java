@@ -73,6 +73,8 @@ public class ReportActivityAdapter extends RecyclerView.Adapter<ReportActivityAd
                 intentData.putExtra("keteranganReport", list.get(position).getKetPengaduan());
                 intentData.putExtra("pictureReport", list.get(position).getPicture());
                 intentData.putExtra("lokasiReport", list.get(position).getLokasi());
+                intentData.putExtra("statusReport", list.get(position).getStatus());
+                intentData.putExtra("responAdmin", list.get(position).getRespon());
                 context.startActivity(intentData);
             }
         });
