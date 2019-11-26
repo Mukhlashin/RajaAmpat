@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.reportActivity.DetailReportActivity"
+    tools:context=".reportActivity.DetailReportActivity"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout_drep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintBottom_toTopOf="@+id/rv_drep"
+        android:background="@color/colorPrimary">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
@@ -25,7 +26,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_height="match_parent"
-                android:onClick="back"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_arrow_back"/>
 
@@ -52,85 +52,63 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/rv_drep"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="270dp"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout_drep">
+
+        <ImageView
+            android:id="@+id/img_detail_report"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/ic_launcher_background"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="410dp">
-
-                <ImageView
-                    android:id="@+id/img_detail_report"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/ic_launcher_background"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/detail_destination_back"
-                    android:gravity="center_vertical"
-                    android:paddingVertical="3dp"
-                    android:layout_alignBottom="@+id/img_detail_report">
-
-                    <TextView
-                        android:id="@+id/tv_pelapor_detail"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppinsmedium"
-                        android:gravity="left|center"
-                        android:text="Pelapor : Narto Syaifuden"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/tv_judul_report_detail"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textSize="12sp"
-                        android:gravity="right|center"
-                        android:layout_marginEnd="15dp"
-                        android:text="Jalan rusak berbahaya"
-                        android:textColor="@android:color/white"
-                        android:fontFamily="@font/poppinsmedium"/>
-
-                </LinearLayout>
-
-            </RelativeLayout>
+            android:layout_height="30dp"
+            android:background="@drawable/detail_destination_back"
+            android:gravity="center_vertical"
+            android:layout_alignBottom="@+id/img_detail_report">
 
             <TextView
-                android:id="@+id/tv_keterangan_report"
+                android:id="@+id/tv_pelapor_detail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginHorizontal="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
                 android:fontFamily="@font/poppinsmedium"
-                android:textSize="13sp"
-                android:text="Jalan Rusak Dan Berlubang, Lokasi Di Jalan Merdeka KM 02 Raja Ampat Sangat Membahayakan Bagi Pengguna Jalan.  Mohon bantuannya dari dinas terkait untuk segera memperbaiki jalan ini, karena sudah sering terjadi kecelakaan akibat dari jalan yang berlubang ini."  />
+                android:gravity="left|center"
+                android:text="Pelapor : Narto Syaifuden"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/tv_lokasi_report"
+                android:id="@+id/tv_judul_report_detail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lokasi"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppinsbold"
-                android:textColor="@android:color/black"
-                android:layout_marginHorizontal="20dp"
-                android:textSize="14sp"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:gravity="right|center"
+                android:layout_marginEnd="15dp"
+                android:text="Jalan rusak berbahaya"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/poppinsmedium"/>
 
         </LinearLayout>
 
-    </ScrollView>
+    </RelativeLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_keterangan_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@+id/rv_drep"
+        android:text="Jalan Rusak Dan Berlubang, Lokasi Di Jalan Merdeka KM 02 Raja Ampat Sangat Membahayakan Bagi Pengguna Jalan.  Mohon bantuannya dari dinas terkait untuk segera memperbaiki jalan ini, karena sudah sering terjadi kecelakaan akibat dari jalan yang berlubang ini."  />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

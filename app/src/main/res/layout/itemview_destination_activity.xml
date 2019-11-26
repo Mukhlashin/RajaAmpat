@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/rl_des"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/tv_info_destination">
 
             <ImageView
                 android:id="@+id/img_destination"
@@ -49,6 +52,7 @@
         android:layout_marginHorizontal="20dp"
         android:textSize="12sp"
         android:maxLines="4"
+        app:layout_constraintTop_toBottomOf="@+id/rl_des"
         android:text="Liputan6.com, Sorong - Masyarakat Misool Kabupaten Raja Ampat, Provinsi Papua Barat, sangat gembira dengan hadirnya jaringan internet 4G karena dapat memudahkan komunikasi dan promosi pariwisata."/>
 
     <TextView
@@ -59,6 +63,7 @@
         android:layout_marginHorizontal="20dp"
         android:textSize="10sp"
         android:textColor="@color/colorTextHighlight"
-        android:text="Baca Selengkapnya..."/>
+        android:text="Baca Selengkapnya..."
+        app:layout_constraintTop_toBottomOf="@+id/tv_info_destination"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
