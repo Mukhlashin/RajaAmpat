@@ -1,25 +1,19 @@
 package com.example.rajaampat.network;
 
-import com.example.rajaampat.model.DataItem;
-import com.example.rajaampat.model.NewsDataItem;
-import com.example.rajaampat.model.ResponseHotel;
-import com.example.rajaampat.model.ResponseNews;
-import com.example.rajaampat.model.ResponseSingleUser;
-import com.example.rajaampat.model.ResponseUser;
+import com.example.rajaampat.model.modelContact.ResponseContact;
+import com.example.rajaampat.model.modelHotel.ResponseHotel;
+import com.example.rajaampat.model.modelNews.ResponseNews;
+import com.example.rajaampat.model.modelUser.ResponseSingleUser;
+import com.example.rajaampat.model.modelUser.ResponseUser;
 import com.example.rajaampat.model.modelReport.ResponseReport;
 import com.example.rajaampat.model.modelReport.ResponseTravel;
-
-import java.io.File;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface BaseApiService {
@@ -84,4 +78,8 @@ public interface BaseApiService {
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
     @GET("api/travel")
     Call<ResponseTravel> travelRequest();
+
+    @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
+    @GET("endpoint api kontak")
+    Call<ResponseContact> contactRequest();
 }

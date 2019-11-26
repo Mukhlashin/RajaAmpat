@@ -2,10 +2,8 @@ package com.example.rajaampat.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
-import com.example.rajaampat.LoginActivity;
-import com.example.rajaampat.model.ResponseUser;
+import com.example.rajaampat.activity.logRegActivity.LoginActivity;
 
 public class MyPref extends LoginActivity {
 

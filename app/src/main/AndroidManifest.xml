@@ -14,30 +14,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".hotelActivity.DetailHotelActivity"></activity>
-        <activity android:name=".reportActivity.SendReportActivity" />
-        <activity android:name=".newsActivity.DetailNewsActivity" />
-        <activity android:name=".newsActivity.NewsActivity" />
-        <activity android:name=".CurrencyActivity" />
-        <activity android:name=".reportActivity.DetailReportActivity" />
-        <activity android:name=".DetailDestinationActivity" />
-        <activity android:name=".TransportActivity" />
-        <activity android:name=".hotelActivity.HotelActivity" />
-        <activity android:name=".DestinationActivity" />
-        <activity android:name=".reportActivity.ReportActivity" />
-        <activity android:name=".ContactActivity" />
-        <activity android:name=".ErrorActivity"/>
-        <activity android:name=".editProfile.EditProfileActivity" />
+        <activity android:name=".activity.logRegActivity.ForgotPasswordActivity"></activity>
+        <activity android:name=".activity.hotelActivity.DetailHotelActivity" />
+        <activity android:name=".activity.reportActivity.SendReportActivity" />
+        <activity android:name=".activity.newsActivity.DetailNewsActivity" />
+        <activity android:name=".activity.newsActivity.NewsActivity" />
+        <activity android:name=".activity.currencyActivity.CurrencyActivity" />
+        <activity android:name=".activity.reportActivity.DetailReportActivity" />
+        <activity android:name=".activity.destinationActivity.DetailDestinationActivity" />
+        <activity android:name=".activity.transportActivity.TransportActivity" />
+        <activity android:name=".activity.hotelActivity.HotelActivity" />
+        <activity android:name=".activity.destinationActivity.DestinationActivity" />
+        <activity android:name=".activity.reportActivity.ReportActivity" />
+        <activity android:name=".activity.contactActivity.ContactActivity" />
+        <activity android:name=".activity.handler.ErrorActivity" />
+        <activity android:name=".activity.editProfileActivity.EditProfileActivity" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activity.logRegActivity.RegisterActivity"
             android:noHistory="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.logRegActivity.LoginActivity"
             android:noHistory="true" />
         <activity android:name=".SplashScreen2" />
         <activity android:name=".SplashScreen3" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".activity.SplashScreen"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".activity.homeActivity.HomeActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
