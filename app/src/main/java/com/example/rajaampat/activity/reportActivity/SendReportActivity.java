@@ -1,10 +1,5 @@
 package com.example.rajaampat.activity.reportActivity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -22,6 +17,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
@@ -30,7 +30,6 @@ import com.androidnetworking.interfaces.UploadProgressListener;
 import com.example.rajaampat.R;
 import com.example.rajaampat.network.BaseApiService;
 import com.example.rajaampat.network.UtilsApi;
-import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.json.JSONObject;
 
@@ -62,9 +61,6 @@ public class SendReportActivity extends AppCompatActivity {
     private static final int RC_CAMERA = 1;
     static final int REQUEST_TAKE_PHOTO = 1;
     static final int REQUEST_CHOOSE_PHOTO = 2;
-    public static final int MY_PERMISSIONS_REQUEST_CAMERA = 100;
-    public static final String ALLOW_KEY = "ALLOWED";
-    public static final String CAMERA_PREF = "camera_pref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,11 +93,10 @@ public class SendReportActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkCameraPermission();
-                cropImageAutoSelection();
             }
         });
+
         checkCameraPermission();
-        cropImageAutoSelection();
     }
 
     private void dialogSendReport() {
@@ -135,7 +130,7 @@ public class SendReportActivity extends AppCompatActivity {
 
         loading.show();
 
-        if (filegambar != null){
+        if (filegambar != null) {
             AndroidNetworking.upload("https://raja-ampat.dfiserver.com/api/pengaduan/create")
                     .setPriority(Priority.HIGH)
                     .addHeaders("api_auth_key", "s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
@@ -173,79 +168,51 @@ public class SendReportActivity extends AppCompatActivity {
                             finish();
                         }
                     });
-
-//            mApiService.createReportRequest(
-//                    edtReportTitle.getText().toString(),
-//                    edtReportDesc.getText().toString(),
-//                    myPref.getString("user_name", ""),
-//                    status, filegambar)
-//                    .enqueue(new Callback<ResponseReport>() {
-//                        @Override
-//                        public void onResponse(Call<ResponseReport> call, Response<ResponseReport> response) {
-//                            try {
-//                                Log.d("onResponse", response.body().getStatus());
-//                            } catch (Exception e){
-//                                e.printStackTrace();
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<ResponseReport> call, Throwable t) {
-//                            Log.d("onResponse", t.getLocalizedMessage());
-//                        }
-//                    });
         } else {
             Toast.makeText(this, "File gambar masih null", Toast.LENGTH_SHORT).show();
             Log.d("error", "File gambar masih null");
         }
     }
 
-    public void cropImageAutoSelection() {
-        CropImage.activity()
-                .start(this);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK){
-            Bundle extras = data.getExtras();
-            final Bitmap bitmap = (Bitmap) extras.get("data");
-            //ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            //bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+            if(data!=null && data.getExtras() != null){
+                Bundle extras = data.getExtras();
+                final Bitmap bitmap = (Bitmap) extras.get("data");
 
-            File filesDir = getApplicationContext().getFilesDir();
-            File imageFile = new File(filesDir, "image" + ".jpg");
+                File filesDir = getApplicationContext().getFilesDir();
+                File imageFile = new File(filesDir, "image" + ".jpg");
 
-            OutputStream os;
-            try {
-                os = new FileOutputStream(imageFile);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
-                os.flush();
-                os.close();
-                file = imageFile;
-                imgSendReport.setImageBitmap(bitmap);
-
-            } catch (Exception e) {
-                Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
-            }
-        } else if (requestCode == REQUEST_CHOOSE_PHOTO && resultCode == RESULT_OK){
-
-            Uri uri = data.getData();
-
-        }
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if(resultCode == RESULT_OK ){
-                Uri imageUri = result.getUri();
+                OutputStream os;
                 try {
-                    Bitmap bitmap = (Bitmap) MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                    os = new FileOutputStream(imageFile);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+                    os.flush();
+                    os.close();
+                    file = imageFile;
+                    imgSendReport.setImageBitmap(bitmap);
+
+                } catch (Exception e) {
+                    Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
+                }
+            }
+        } else if (requestCode == REQUEST_CHOOSE_PHOTO && resultCode == RESULT_OK) {
+
+            if(data != null && data.getData() != null){
+
+                Uri uri = data.getData();
+
+                try {
+                    Bitmap bitmap =  MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
 
                     File filesDir = getApplicationContext().getFilesDir();
                     File imageFile = new File(filesDir, "image" + ".jpg");
 
                     OutputStream os;
                     os = new FileOutputStream(imageFile);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 1000, os);
                     os.flush();
                     os.close();
                     this.file = imageFile;
@@ -255,25 +222,25 @@ public class SendReportActivity extends AppCompatActivity {
                     Log.e(getClass().getSimpleName(), "Error writing bitmap", e);
                     e.printStackTrace();
                 }
-
             }
+
         }
+
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+        showDialogTakeImage();
     }
 
-    @Override
-    public void recreate() {
-        super.recreate();
-    }
 
     @AfterPermissionGranted(RC_CAMERA)
     private void checkCameraPermission() {
         String perm = Manifest.permission.CAMERA;
         if (EasyPermissions.hasPermissions(this, perm)) {
+            showDialogTakeImage();
         } else {
             EasyPermissions.requestPermissions(this, "Butuh permission camera", RC_CAMERA, perm);
         }
@@ -291,6 +258,25 @@ public class SendReportActivity extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_CHOOSE_PHOTO);
+    }
+
+    public void showDialogTakeImage() {
+        android.app.AlertDialog.Builder choosePhoto = new android.app.AlertDialog.Builder(this);
+        choosePhoto.setTitle("Pilih Gambar");
+        choosePhoto.setNegativeButton("Kamera", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                getPicFromCamera();
+            }
+        });
+        choosePhoto.setPositiveButton("Galeri", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                getPicFromGallery();
+            }
+        });
+        choosePhoto.create();
+        choosePhoto.show();
     }
 
 }
