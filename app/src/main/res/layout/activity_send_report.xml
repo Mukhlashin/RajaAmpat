@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.reportActivity.SendReportActivity"
+    tools:context="activity.reportActivity.SendReportActivity"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout_sendr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintBottom_toTopOf="@+id/sv_sendr">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
@@ -67,6 +68,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ScrollView
+        android:id="@+id/sv_sendr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout_sendr">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -79,8 +86,8 @@
                 <ImageView
                     android:id="@+id/img_send_report"
                     android:layout_width="match_parent"
-                    android:layout_height="237dp"
-                    android:background="@drawable/ic_launcher_background"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/img_news1"
                     android:scaleType="centerCrop"/>
 
             </RelativeLayout>
@@ -128,13 +135,14 @@
                     android:id="@+id/edt_report_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
-                    android:hint="Report Location"/>
+                    android:hint="Report Location"
+                    android:textColor="@android:color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
         </LinearLayout>
 
-</LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 

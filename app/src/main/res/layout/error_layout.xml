@@ -1,48 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="25dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
+    android:background="#BF000000"
     android:gravity="center">
 
     <ImageView
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/ic_nointernet"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_salah"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_salah"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:text="Kesalahan"
         android:textStyle="bold"
         android:textColor="#FFF"
         android:textSize="28sp"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"/>
+        android:gravity="center"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_desk"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
         android:text="Sepertinya koneksi internet di daerah Anda tidak stabil. Cobalah cek koneksi internet atau berpindah tempat"
         android:textStyle="normal"
         android:textColor="#FFF"
         android:textSize="14sp"
         android:gravity="center"
-        android:layout_gravity="center_horizontal"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_salah"/>
 
     <Button
         android:id="@+id/btn_let_me_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Coba lagi"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Biarkan Saya masuk"
         android:background="#6babd7"
         android:textAllCaps="false"
         android:textStyle="normal"
-        android:onClick="goToHome"
         android:textColor="#fff"
-        android:layout_marginTop="20dp"/>
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/tv_desk"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
