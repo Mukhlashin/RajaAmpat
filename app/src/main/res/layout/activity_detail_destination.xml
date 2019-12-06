@@ -68,24 +68,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/img_detail_travel"
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vpg_detail_travel"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/img_news1"
+                    android:layout_height="250dp"
                     android:scaleType="centerCrop" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="45dp"
                     android:background="@drawable/detail_destination_back"
                     android:gravity="center_vertical"
-                    android:layout_alignBottom="@+id/img_detail_travel">
+                    android:orientation="vertical"
+                    android:layout_alignBottom="@+id/vpg_detail_travel">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        app:tabBackground="@drawable/tab_selector"
+                        app:tabGravity="center"
+                        app:tabIndicatorHeight="0dp"/>
 
                     <TextView
                         android:id="@+id/tv_judul_detail_travel"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="12sp"
                         android:gravity="right|center"

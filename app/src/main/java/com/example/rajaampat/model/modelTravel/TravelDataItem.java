@@ -1,4 +1,4 @@
-package com.example.rajaampat.model.modelReport;
+package com.example.rajaampat.model.modelTravel;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -15,6 +15,9 @@ public class TravelDataItem {
 
     @SerializedName("picture")
     private String picture;
+
+    @SerializedName("main_pict")
+    private String mainPicture;
 
     @SerializedName("ispublished")
     private String ispublished;
@@ -35,6 +38,10 @@ public class TravelDataItem {
         return picture;
     }
 
+    public String getMainPicture(){
+        return mainPicture;
+    }
+
     public String getIspublished(){
         return ispublished;
     }
@@ -47,6 +54,7 @@ public class TravelDataItem {
                         ",nama_tujuan_wisata = '" + namaTujuanWisata + '\'' +
                         ",deskripsi = '" + deskripsi + '\'' +
                         ",picture = '" + picture + '\'' +
+                        ",main_icture = '" + mainPicture + '\'' +
                         ",ispublished = '" + ispublished + '\'' +
                         "}";
     }

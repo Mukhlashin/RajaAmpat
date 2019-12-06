@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +10,6 @@
     <LinearLayout
         android:id="@+id/navbarnye"
         android:layout_width="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/sv_trans"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="#3295A8">
@@ -29,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="25dp"
+            android:fontFamily="@font/poppinsmedium"
             android:text="Transport"
             android:textColor="#FFF"
             android:textStyle="bold"
@@ -36,283 +36,288 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/sv_trans"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_transport"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/navbarnye">
+        android:layout_height="wrap_content"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+<!--    <ScrollView-->
+<!--        android:id="@+id/sv_trans"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/navbarnye">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" >-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:text="Flight And Airlines"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:textSize="20sp"/>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:background="#C4C4C4" >
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="15dp"-->
+<!--                android:text="Flight And Airlines"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="#000"-->
+<!--                android:textSize="20sp"/>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Susi Air"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginHorizontal="15dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:background="#C4C4C4" >-->
 
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Susi Air"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="18sp" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:background="#FFF" >
+<!--            </LinearLayout>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Mondays"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="bold"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="15dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:background="#FFF" >-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Flight Time: 15 minutes"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Mondays"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="16sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10:30 Sorong – Waisai"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Flight Time: 15 minutes"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:00 Waisai – Kabare"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="10:30 Sorong – Waisai"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:25 Kabare – Waisai"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="11:00 Waisai – Kabare"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:45 Waisai – Sorong"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="11:25 Kabare – Waisai"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fridays"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="50dp"
-                    android:textStyle="bold"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="11:45 Waisai – Sorong"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Flight Time: 15 minutes"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Fridays"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="50dp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="16sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10:30 Sorong – Waisai"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Flight Time: 15 minutes"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:00 Waisai – Kabare"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="10:30 Sorong – Waisai"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:25 Kabare – Waisai"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="11:00 Waisai – Kabare"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11.50 Waisai – Kabare"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="11:25 Kabare – Waisai"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12.15 Kabare – Waisai"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="11.50 Waisai – Kabare"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12.40 Waisai – Sorong"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="normal"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="12.15 Kabare – Waisai"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="12.40 Waisai – Sorong"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textStyle="normal"-->
+<!--                    android:textColor="#000"-->
+<!--                    android:textSize="14sp" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="25dp"
-                android:orientation="vertical">
+<!--            </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    android:background="#C4C4C4" >
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Susi Air"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:background="#C4C4C4" >-->
 
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Susi Air"-->
+<!--                        android:layout_marginHorizontal="15dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="#000"-->
+<!--                        android:textSize="18sp" />-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    android:background="#FFF" >
+<!--                </LinearLayout>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Everyday"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginTop="5dp"
-                        android:textStyle="bold"
-                        android:textColor="#000"
-                        android:textSize="16sp" />
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="15dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:background="#FFF" >-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Flight Time: 15 minutes"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginTop="5dp"
-                        android:textStyle="normal"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Everyday"-->
+<!--                        android:layout_marginHorizontal="15dp"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textColor="#000"-->
+<!--                        android:textSize="16sp" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="13.45 Sorong – Waisai"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginTop="5dp"
-                        android:textStyle="normal"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Flight Time: 15 minutes"-->
+<!--                        android:layout_marginHorizontal="15dp"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:textStyle="normal"-->
+<!--                        android:textColor="#000"-->
+<!--                        android:textSize="14sp" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="14.40 Waisai – Sorong"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="15dp"
-                        android:textStyle="normal"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="13.45 Sorong – Waisai"-->
+<!--                        android:layout_marginHorizontal="15dp"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:textStyle="normal"-->
+<!--                        android:textColor="#000"-->
+<!--                        android:textSize="14sp" />-->
 
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="14.40 Waisai – Sorong"-->
+<!--                        android:layout_marginHorizontal="15dp"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:layout_marginBottom="15dp"-->
+<!--                        android:textStyle="normal"-->
+<!--                        android:textColor="#000"-->
+<!--                        android:textSize="14sp" />-->
 
-            </LinearLayout>
+<!--                </LinearLayout>-->
 
-        </LinearLayout>
+<!--            </LinearLayout>-->
 
-        </RelativeLayout>
+<!--        </LinearLayout>-->
 
-    </ScrollView>
+<!--        </RelativeLayout>-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </ScrollView>-->
+
+</LinearLayout>

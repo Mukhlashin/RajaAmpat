@@ -43,7 +43,7 @@ public class ContactActivityAdapter extends RecyclerView.Adapter<ContactActivity
     public void onBindViewHolder(@NonNull ContactActivityViewHolder holder, final int position) {
         holder.tvNamaInstansi.setText(Html.fromHtml(list.get(position).getNamaInstansi()));
         holder.tvNomorInstansi.setText(Html.fromHtml(list.get(position).getNomorInstansi()));
-        Picasso.get().load(list.get(position).getPicture()).into(holder.imgIconInstansi);
+        Picasso.get().load(list.get(position).getLogo()).into(holder.imgIconInstansi);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +58,7 @@ public class ContactActivityAdapter extends RecyclerView.Adapter<ContactActivity
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class ContactActivityViewHolder extends RecyclerView.ViewHolder {

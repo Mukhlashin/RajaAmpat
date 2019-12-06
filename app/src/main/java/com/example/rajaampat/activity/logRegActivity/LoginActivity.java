@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rajaampat.R;
+import com.example.rajaampat.activity.forgotPasswordActivity.ForgotPasswordActivity;
 import com.example.rajaampat.activity.homeActivity.HomeActivity;
 import com.example.rajaampat.model.modelUser.ResponseUser;
 import com.example.rajaampat.network.BaseApiService;
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public EditText etEmail;
     public EditText etPassword;
-    Button btnLogin;
+    Button btnLogin, btnLetMeIn;
     ProgressDialog loading;
 
     //SharedPrefrences
@@ -115,6 +116,15 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFailure(Call<ResponseUser> call, Throwable t) {
                         Log.e("debug", "onFailure: ERROR > " + t.getLocalizedMessage());
                         loading.dismiss();
+                        LoginActivity.this.setContentView(R.layout.error_layout);
+                        btnLetMeIn = findViewById(R.id.btn_let_me_in);
+                        btnLetMeIn.setText("Kembali ke halaman Login");
+                        btnLetMeIn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                LoginActivity.this.setContentView(R.layout.activity_login);
+                            }
+                        });
                     }
                 });
     }
@@ -129,5 +139,10 @@ public class LoginActivity extends AppCompatActivity {
     public void goToRegister(View view) {
         Intent goToRegister = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(goToRegister);
+    }
+
+    public void goToForgotPassword(View view) {
+        Intent goToForgotPassword = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+        startActivity(goToForgotPassword);
     }
 }

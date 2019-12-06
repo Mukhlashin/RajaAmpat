@@ -77,7 +77,7 @@ public class HotelDataItem {
     @Override
     public String toString(){
         return
-                "HotelDataItem{" +
+                "ForgotPasswordDataItem{" +
                         "id_hotel = '" + idHotel + '\'' +
                         ",nama_hotel = '" + namaHotel + '\'' +
                         ",alamat = '" + alamatHotel + '\'' +

@@ -31,6 +31,7 @@ public class EditProfilePresenter implements EditProfileContract.Presenter {
                 .addMultipartFile("picture", model.getFileGambar())
                 .addMultipartParameter("id", model.getId())
                 .addMultipartParameter("user_name", model.getNama())
+                .addMultipartParameter("pwd", model.getPasspord())
                 .addMultipartParameter("no_ktp", model.getKtp())
                 .addMultipartParameter("alamat", model.getAlamat())
                 .addMultipartParameter("email", model.getEmail())

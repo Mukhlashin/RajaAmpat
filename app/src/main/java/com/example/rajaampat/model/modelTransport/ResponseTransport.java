@@ -1,15 +1,17 @@
-package com.example.rajaampat.model.modelReport;
+package com.example.rajaampat.model.modelTransport;
 
-import java.util.List;
+import com.example.rajaampat.model.modelNews.NewsDataItem;
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseTravel{
+import java.util.List;
+
+public class ResponseTransport {
 
     @SerializedName("response_code")
     private String responseCode;
 
     @SerializedName("data")
-    private List<TravelDataItem> data;
+    private List<TransportDataItem> data;
 
     @SerializedName("is_error")
     private String isError;
@@ -18,7 +20,7 @@ public class ResponseTravel{
         return responseCode;
     }
 
-    public List<TravelDataItem> getData(){
+    public List<TransportDataItem> getData(){
         return data;
     }
 
@@ -29,10 +31,11 @@ public class ResponseTravel{
     @Override
     public String toString(){
         return
-                "ResponseTravel{" +
+                "ResponseTransport{" +
                         "response_code = '" + responseCode + '\'' +
                         ",data = '" + data + '\'' +
                         ",is_error = '" + isError + '\'' +
                         "}";
     }
+
 }

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rajaampat.R;
-import com.example.rajaampat.model.modelReport.TravelDataItem;
+import com.example.rajaampat.model.modelTravel.TravelDataItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -39,14 +39,19 @@ public class DestinationActivityAdapter extends RecyclerView.Adapter<Destination
     public void onBindViewHolder(@NonNull DestinationActivityAdapter.DestinationActivityViewHolder holder, final int position) {
         holder.info.setText(Html.fromHtml(list.get(position).getDeskripsi()));
         holder.judul.setText(list.get(position).getNamaTujuanWisata());
-        Picasso.get().load(list.get(position).getPicture()).into(holder.img);
+        if (list.get(position).getMainPicture() == null || list.get(position).getMainPicture().equals("")){
+            holder.img.setImageResource(R.drawable.no_image);
+        } else {
+            Picasso.get().load(list.get(position).getMainPicture()).into(holder.img);
+        }
+        final String[] picture = list.get(position).getPicture().split(",");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentData = new Intent(context, DetailDestinationActivity.class);
                 intentData.putExtra("deskripsi", list.get(position).getDeskripsi());
                 intentData.putExtra("nama_tujuan_wisata", list.get(position).getNamaTujuanWisata());
-                intentData.putExtra("picture", list.get(position).getPicture());
+                intentData.putExtra("picture", picture);
                 context.startActivity(intentData);
             }
         });

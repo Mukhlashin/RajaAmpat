@@ -102,12 +102,12 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="315dp"
                 android:gravity="left|center"
-                android:text="Nomor Whatsapp / Handphone"
+                android:text="Email"
                 android:textColor="#000"
                 android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/edt_tlp"
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -122,19 +122,19 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="415dp"
                 android:gravity="left|center"
-                android:text="Nomor KTP"
+                android:text="Password"
                 android:textColor="#000"
                 android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/edt_ktp"
+                android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="440dp"
                 android:layout_marginRight="25dp"
                 android:textColor="#000"
-                android:textSize="18dp" />
+                android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -142,12 +142,12 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="515dp"
                 android:gravity="left|center"
-                android:text="Tanggal Lahir"
+                android:text="Nomor Whatsapp / Handphone"
                 android:textColor="#000"
                 android:textSize="14dp" />
 
             <EditText
-                android:id="@+id/edt_tanggal_lahir"
+                android:id="@+id/edt_tlp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -162,6 +162,46 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="615dp"
                 android:gravity="left|center"
+                android:text="Nomor KTP"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/edt_ktp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="640dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="715dp"
+                android:gravity="left|center"
+                android:text="Tanggal Lahir"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+            <EditText
+                android:id="@+id/edt_tanggal_lahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="740dp"
+                android:layout_marginRight="25dp"
+                android:textColor="#000"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="815dp"
+                android:gravity="left|center"
                 android:text="Tempat Lahir"
                 android:textColor="#000"
                 android:textSize="14dp" />
@@ -171,7 +211,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="640dp"
+                android:layout_marginTop="840dp"
                 android:layout_marginRight="25dp"
                 android:textColor="#000"
                 android:textSize="18dp"/>
@@ -180,7 +220,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="715dp"
+                android:layout_marginTop="915dp"
                 android:gravity="left|center"
                 android:text="Alamat"
                 android:textColor="#000"
@@ -191,7 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="740dp"
+                android:layout_marginTop="940dp"
                 android:layout_marginRight="25dp"
                 android:textColor="#000"
                 android:textSize="18dp"/>
@@ -200,9 +240,9 @@
                 android:id="@+id/btn_simpanedit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="80dp"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="830dp"
+                android:layout_marginTop="1030dp"
                 android:layout_marginRight="25dp"
                 android:background="@drawable/button_background_yellow"
                 android:text="Simpan Perubahan"

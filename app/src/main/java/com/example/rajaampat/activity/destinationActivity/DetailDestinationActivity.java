@@ -11,14 +11,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rajaampat.R;
+import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
 public class DetailDestinationActivity extends AppCompatActivity {
 
-    ImageView imgDetailDestination;
     TextView tvJudulDestination, tvDetailDestination;
+    ViewPager vpgTravelDetail;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +30,27 @@ public class DetailDestinationActivity extends AppCompatActivity {
 
         tvDetailDestination = findViewById(R.id.tv_detail_travel);
         tvJudulDestination = findViewById(R.id.tv_judul_detail_travel);
-        imgDetailDestination = findViewById(R.id.img_detail_travel);
+        vpgTravelDetail = findViewById(R.id.vpg_detail_travel);
+        tabLayout = findViewById(R.id.tab_layout);
 
         Intent getIntent = getIntent();
 
         String judulTravel = getIntent.getExtras().getString("nama_tujuan_wisata");
         String detailTravel = getIntent.getExtras().getString("deskripsi");
-        String pictureTravel = getIntent.getExtras().getString("picture");
+        String[] picture = getIntent.getStringArrayExtra("picture");
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getApplicationContext(), picture);
+
+        if (picture == null || picture.equals("")){
+            Toast.makeText(this, "Image tidak ditemukan", Toast.LENGTH_SHORT).show();
+            vpgTravelDetail.setBackgroundResource(R.drawable.no_image);
+        } else {
+            vpgTravelDetail.setAdapter(adapter);
+            tabLayout.setupWithViewPager(vpgTravelDetail, true);
+        }
 
         tvJudulDestination.setText(Html.fromHtml(judulTravel));
         tvDetailDestination.setText(Html.fromHtml(detailTravel));
-        Picasso.get().load(pictureTravel).into(imgDetailDestination);
     }
 
     public void back(View view) {

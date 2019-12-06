@@ -26,6 +26,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_height="match_parent"
+                android:onClick="back"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_arrow_back"/>
 
@@ -81,14 +82,24 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp">
 
-                <ImageView
-                    android:id="@+id/img_send_report"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/img_news1"
-                    android:scaleType="centerCrop"/>
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp">
+
+                    <ImageView
+                        android:id="@+id/img_send_report"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_insert_image"
+                        android:scaleType="centerCrop"/>
+
+                </androidx.cardview.widget.CardView>
+
 
             </RelativeLayout>
 

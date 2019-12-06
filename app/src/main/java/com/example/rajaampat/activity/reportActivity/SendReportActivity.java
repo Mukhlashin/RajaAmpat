@@ -279,4 +279,7 @@ public class SendReportActivity extends AppCompatActivity {
         choosePhoto.show();
     }
 
+    public void back(View view) {
+        super.onBackPressed();
+    }
 }

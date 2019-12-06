@@ -1,12 +1,14 @@
 package com.example.rajaampat.network;
 
 import com.example.rajaampat.model.modelContact.ResponseContact;
+import com.example.rajaampat.model.modelForgotPassword.ResponseForgotPassword;
 import com.example.rajaampat.model.modelHotel.ResponseHotel;
 import com.example.rajaampat.model.modelNews.ResponseNews;
+import com.example.rajaampat.model.modelTransport.ResponseTransport;
 import com.example.rajaampat.model.modelUser.ResponseSingleUser;
 import com.example.rajaampat.model.modelUser.ResponseUser;
 import com.example.rajaampat.model.modelReport.ResponseReport;
-import com.example.rajaampat.model.modelReport.ResponseTravel;
+import com.example.rajaampat.model.modelTravel.ResponseTravel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -80,6 +82,15 @@ public interface BaseApiService {
     Call<ResponseTravel> travelRequest();
 
     @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
-    @GET("endpoint api kontak")
+    @GET("api/call_center")
     Call<ResponseContact> contactRequest();
+
+    @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
+    @GET("api/transport")
+    Call<ResponseTransport> transportRequest();
+
+    @FormUrlEncoded
+    @Headers("api_auth_key: s0g84k84g8kc0kw44k8sgs408kc00kgs0g404koc")
+    @POST("api/auth/forgetpass")
+    Call<ResponseForgotPassword> forgotPasswordRequest(@Field("email") String email);
 }

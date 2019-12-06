@@ -4,17 +4,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class ContactDataItem {
 
-    @SerializedName("id_contact")
+    @SerializedName("id_call_center")
     private String idKontak;
 
-    @SerializedName("instansi_kontak")
+    @SerializedName("nm_call_center")
     private String namaInstansi;
 
-    @SerializedName("nomor_kontak")
+    @SerializedName("no_call_center")
     private String nomorInstansi;
 
-    @SerializedName("picture")
-    private String picture;
+    @SerializedName("logo")
+    private String logo;
+
+    @SerializedName("is_published")
+    private String isPublished;
 
     public String getIdKontak() {
         return idKontak;
@@ -28,8 +31,12 @@ public class ContactDataItem {
         return nomorInstansi;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getLogo() {
+        return logo;
+    }
+
+    public String getIsPublished() {
+        return isPublished;
     }
 
     @Override
@@ -39,7 +46,8 @@ public class ContactDataItem {
                         "id_kontak = '" + idKontak + '\'' +
                         ",nama_kontak = '" + namaInstansi + '\'' +
                         ",nomor_kontak = '" + nomorInstansi + '\'' +
-                        ",picture = '" + picture + '\'' +
+                        ",picture = '" + logo + '\'' +
+                        ",is_published = '" + isPublished + '\'' +
                         "}";
 
     }

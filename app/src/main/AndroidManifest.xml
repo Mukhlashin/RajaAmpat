@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".activity.logRegActivity.ForgotPasswordActivity"></activity>
+        <activity android:name=".activity.forgotPasswordActivity.ForgotPasswordActivity"></activity>
         <activity android:name=".activity.hotelActivity.DetailHotelActivity" />
         <activity android:name=".activity.reportActivity.SendReportActivity" />
         <activity android:name=".activity.newsActivity.DetailNewsActivity" />

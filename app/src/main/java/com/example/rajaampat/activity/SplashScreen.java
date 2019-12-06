@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import com.example.rajaampat.R;
-import com.example.rajaampat.SplashFragment;
 import com.example.rajaampat.activity.logRegActivity.LoginActivity;
 
 public class SplashScreen extends AppCompatActivity {
@@ -17,17 +16,10 @@ public class SplashScreen extends AppCompatActivity {
     //Setting Dulu Durasi Splash Screennya...
     private static int splashInterval = 2000;
 
-    FragmentManager fm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        fm = getSupportFragmentManager();
-        fm.beginTransaction()
-                .add(R.id.fragment_container, new SplashFragment())
-                .commit();
 
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

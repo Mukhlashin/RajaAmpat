@@ -19,6 +19,8 @@ import com.example.rajaampat.activity.contactActivity.ContactActivity;
 import com.example.rajaampat.activity.destinationActivity.DestinationActivity;
 import com.example.rajaampat.activity.hotelActivity.HotelActivity;
 import com.example.rajaampat.activity.currencyActivity.CurrencyActivity;
+import com.example.rajaampat.activity.logRegActivity.LoginActivity;
+import com.example.rajaampat.activity.logRegActivity.RegisterActivity;
 import com.example.rajaampat.activity.transportActivity.TransportActivity;
 import com.example.rajaampat.model.modelUser.DataItem;
 import com.example.rajaampat.model.modelUser.ResponseSingleUser;
@@ -206,8 +208,16 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<ResponseSingleUser> call, Throwable t) {
                             Toast.makeText(HomeActivity.this, "Failed to get latest response from server, Please check your data service", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(HomeActivity.this, ErrorActivity.class);
-                            startActivity(intent);
+                            HomeActivity.this.setContentView(R.layout.error_layout);
+                            btnLetMeIn = findViewById(R.id.btn_let_me_in);
+                            btnLetMeIn.setText("Saya sudah menyalakan data internet saya");
+                            btnLetMeIn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
                     }
                 });
     }

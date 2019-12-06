@@ -11,8 +11,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.rajaampat.R;
-import com.example.rajaampat.model.modelReport.ResponseTravel;
-import com.example.rajaampat.model.modelReport.TravelDataItem;
+import com.example.rajaampat.model.modelTravel.ResponseTravel;
+import com.example.rajaampat.model.modelTravel.TravelDataItem;
 import com.example.rajaampat.network.BaseApiService;
 import com.example.rajaampat.network.UtilsApi;
 

@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rajaampat.R;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
 
     EditText etNama, etEmail, etPassword;
-    Button btnRegister;
+    Button btnRegister, btnLetMeIn;
     ProgressDialog loading;
 
     Context mContext;
@@ -97,8 +98,19 @@ public class RegisterActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<ResponseUser> call, Throwable t) {
+                            loading.dismiss();
                             Log.e("debug", "onFailure: ERROR > " + t.getMessage());
                             Toast.makeText(mContext, "Koneksi Internet Bermasalah", Toast.LENGTH_SHORT).show();
+                            RegisterActivity.this.setContentView(R.layout.error_layout);
+                            btnLetMeIn = findViewById(R.id.btn_let_me_in);
+                            btnLetMeIn.setText("Kembali ke halaman Login");
+                            btnLetMeIn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
                         }
                     });
     }
