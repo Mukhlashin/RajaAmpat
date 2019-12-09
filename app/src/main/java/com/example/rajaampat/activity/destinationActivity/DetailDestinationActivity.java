@@ -39,15 +39,21 @@ public class DetailDestinationActivity extends AppCompatActivity {
         String detailTravel = getIntent.getExtras().getString("deskripsi");
         String[] picture = getIntent.getStringArrayExtra("picture");
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getApplicationContext(), picture);
-
-        if (picture == null || picture.equals("")){
+        /*if (picture == null || picture.equals("")){
             Toast.makeText(this, "Image tidak ditemukan", Toast.LENGTH_SHORT).show();
             vpgTravelDetail.setBackgroundResource(R.drawable.no_image);
         } else {
+            ViewPagerAdapter adapter = new ViewPagerAdapter(getApplicationContext(), picture);
             vpgTravelDetail.setAdapter(adapter);
             tabLayout.setupWithViewPager(vpgTravelDetail, true);
-        }
+        }*/
+
+        vpgTravelDetail.setBackgroundResource(R.drawable.no_image);
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getApplicationContext(), picture);
+        vpgTravelDetail.setAdapter(adapter);
+
+        tabLayout.setupWithViewPager(vpgTravelDetail, true);
 
         tvJudulDestination.setText(Html.fromHtml(judulTravel));
         tvDetailDestination.setText(Html.fromHtml(detailTravel));

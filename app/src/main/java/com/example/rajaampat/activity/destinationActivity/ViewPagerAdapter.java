@@ -35,6 +35,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         ImageView imageView = new ImageView(context);
         if (imageUrls[position] == null || imageUrls[position].equals("")){
+            imageView.setImageResource(R.drawable.no_image);
         } else {
             Picasso.get()
                     .load(imageUrls[position])
